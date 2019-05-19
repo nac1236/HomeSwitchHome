@@ -1,7 +1,7 @@
 module.exports = {
 
     database: {
-        URI: 'mongodb://localhost/hsm'
+        URI: 'mongodb://localhost/hsh'
     }
 
 }
