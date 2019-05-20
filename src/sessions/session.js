@@ -29,12 +29,26 @@ module.exports = app => {
             next()
         }
     } //esta funcion es por ejemplo para que no entre a la pagina si no esta logueado
+    */
+    router.get('/session', (req,res)=>{
+        res.json(req.session.userId);
+    }
+    )
 
-    router.get('/login/session', (req,res) => {
-        res.json(req.session.userId)
-    })*/
+    router.get('/login/:id', (req,res) => {
+        if (req.params.id){ //si se paso un user id como parametro
+            const usuario = usuarios.find(
+                usuario => usuario.id = req.params.id
+            )
+        if(usuario){
+            req.session.userId = usuario.id; 
+            res.json(req.session.userId); 
+        }
+        } 
+    })
 
-    router.post('/login/',(req,res) =>{ 
+    /*
+    router.post('/login',(req,res) =>{ 
         const user_ID = req.body.user_ID
         if (user_ID){ //si se paso un user id como parametro
             const usuario = usuarios.find(
@@ -46,7 +60,7 @@ module.exports = app => {
         }
         } 
         //res.redirect('/login')
-    } )
+    } )*/
 
    app.post('/logout', (req, res) => {
         // Assuming the request was authenticated in /login above,
@@ -65,7 +79,7 @@ module.exports = app => {
             // session is already destroyed at this point, so either way, they
             // won't be able to authenticate with that same cookie again.
             res.clearCookie('sid')
-            res.redirect('/')
+            //res.redirect('/')
           })
         })
 
