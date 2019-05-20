@@ -6,6 +6,8 @@ const errorHandler = require('errorhandler')
 
 const routes = require('../routes/index')
 
+const session = require('../sessions/session')
+
 module.exports = app => {
 
     // Configuracion
@@ -15,6 +17,10 @@ module.exports = app => {
     app.use(morgan('dev'))
     app.use(express.urlencoded({extended: false}))
     app.use(express.json())
+
+
+    //Sesiones
+    session(app);
 
     // Rutas
     routes(app)
