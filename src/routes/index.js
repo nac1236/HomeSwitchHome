@@ -12,10 +12,10 @@ module.exports = app => {
     });
 
     /* PROPIEDADES */
-
+    router.get('/propiedades', ctrl.all)
     router.get('/propiedad/:propiedad_id', ctrl.index)
     router.post('/propiedad/',ctrl.create)
-    router.put('/propiedad/')
+    router.put('/propiedad/:propiedad_id',ctrl.modify)
     router.delete('/propiedad/:propiedad_id',ctrl.remove)
 
 
