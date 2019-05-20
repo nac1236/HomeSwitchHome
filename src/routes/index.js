@@ -7,7 +7,8 @@ const ctrlSubasta = require('../consultas/subastas')
 module.exports = app => {
 
     router.get('/',(req,res) => {
-        console.log('Hola mundo')
+       console.log('Hola mundo')
+       res.json('Recibido!')
     });
 
     /* PROPIEDADES */
@@ -30,6 +31,9 @@ module.exports = app => {
     router.post('/propiedad/:propiedad_id/hotsale/')
     router.put('/propiedad/')
     router.delete('/propiedad/:propiedad_id/hotsale/:hotsale_id')
+
+    /* LOGIN ADMIN */
+    
 
 
     app.use(router)
