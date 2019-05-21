@@ -1,6 +1,5 @@
 const Propiedad = require ('../models/propiedades')
-
-
+const Subastas = require('../models/propiedades')
 
 const ctrl = {};
 
@@ -40,11 +39,16 @@ ctrl.modify =  async (req,res) => {
 
 ctrl.remove = async (req,res) => {
     const id = req.params.propiedad_id;
+    const subastas = Subastas.find(Subastas.propiedad_id = id)
+    if(!subastas){
     Propiedad.remove({_id: id})
     .exec()
     .then(result => {result.status(200).json(result);})
     .catch(err =>{console.log(err);
         res.status(500).json({error: err})});
+    } else{
+        res.json('Esta propiedad no puede eliminarse porque tiene subastas pendientes.')
+    }
 }
 
 
