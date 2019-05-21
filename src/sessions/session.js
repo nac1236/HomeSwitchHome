@@ -31,7 +31,7 @@ module.exports = app => {
     } //esta funcion es por ejemplo para que no entre a la pagina si no esta logueado
     */
     router.get('/session', (req,res)=>{
-        res.json(req.session.userId);
+        res.json(session.userId);
     }
     )
 
@@ -41,8 +41,8 @@ module.exports = app => {
                 usuario => usuario.id = req.params.id
             )
         if(usuario){
-            req.session.userId = usuario.id; 
-            res.json(req.session.userId); 
+            session.userId = usuario.id; 
+            res.json(session.userId); 
         }
         } 
     })
@@ -62,10 +62,11 @@ module.exports = app => {
         //res.redirect('/login')
     } )*/
 
-   app.post('/logout', (req, res) => {
+   app.get('/logout', (req, res) => { //podria cambiarlo por un get
         // Assuming the request was authenticated in /login above,
-         console.log(session.user);
-          session ({
+        //res.json(session.userId)
+         console.log(session.userId);
+          /*session ({
             cookie: {
               path: '/',
               originalMaxAge: 7200000,
@@ -73,13 +74,13 @@ module.exports = app => {
               secure: false,
               sameSite: true
             }
-          })
+          })*/
           req.session.destroy(err => {
             // We can also clear out the cookie here. But even if we don't, the
             // session is already destroyed at this point, so either way, they
             // won't be able to authenticate with that same cookie again.
             res.clearCookie('sid')
-            //res.redirect('/')
+            res.redirect('/')
           })
         })
 
