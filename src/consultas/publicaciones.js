@@ -5,11 +5,13 @@ const Reserva = require ('../models/reserva') //Para poder validar que la public
 const ctrlPropiedad = {};
 
 const validar_disponibilidad  = (fecha,propiedad_id) => {
-    const reservas = Reserva.find(
-        Reserva.propiedad_id = propiedad_id &&
-        Reserva.semana_reserva = fecha)
+    const reservas = Reserva.find(Reserva.propiedad_id = propiedad_id)
     if(reservas){
+        if(Reserva.semana_reserva = fecha){
         res.json('La propiedad tiene reservas para esa semana. ')
+        }
+    }else{
+        return true
     }
 }
 
@@ -24,7 +26,9 @@ ctrlPropiedad.create = (req,res) => {
         mes_creacion: Date.today.month,
         mes_vencimiento: Date.today.month + 6
     })
-    
+    if(validar_disponibilidad(publicacion.semana_para_reserva,publicacion.propiedad_id)){
+        
+    }
 }
 
 
