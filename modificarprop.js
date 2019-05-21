@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 class App extends Component {
     constructor() {
       super();
+      this.handleChange = this.handleChange.bind(this);
       }
+      handleChange(e) {
+        const { name, value } = e.target;
+        this.setState({
+          [name]: value
+          });
+         }
  render(){
      return(
         <div className="pantalla formulario">
@@ -21,18 +28,21 @@ class App extends Component {
             </div>
             <div className="formulario">
                 <div className="form">
-                    <form>
+                    <form method="post" enctrype="multipart/form-data">
                         <div className="nombre">
-                            <label>Nombre: <input type="text" id="nombre" name="nombre"></input></label>
+                            <label>Nombre: <input type="text" id="nombre" name="nombre"  onChange={this.handleChange}></input></label>
                         </div>
                         <div className="localidad">
-                            <label>Localidad: <input type="text" id="localidad" name="localidad"></input></label>
+                            <label>Localidad: <input type="text" id="localidad" name="localidad"  onChange={this.handleChange}></input></label>
                         </div>
                         <div className="provincia">
-                            <label>Provincia: <input type="text" id="provincia" name="provincia"></input></label>
+                            <label>Provincia: <input type="text" id="provincia" name="provincia"  onChange={this.handleChange}></input></label>
                         </div>
                         <div className="descripcion">
-                            <label>Descripción: <input type="text" id="decripcion" name="descripcion"></input></label>
+                            <label>Descripción: <textarea type="text" id="decripcion" name="descripcion"  onChange={this.handleChange}></textarea></label>
+                        </div>
+                        <div className="imagenes">
+                            <label>imagenes: <textarea type="file" id="imagenes" name="imagenes[]" multiple required accept="image/png , .jpg, .jpeg" onChange={this.handleChange}></textarea></label>
                         </div>
                         <div className="botones">
                             <button type="submit">

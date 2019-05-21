@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 class App extends Component {
     constructor() {
       super();
-      }
+      this.handleChange = this.handleChange.bind(this);
+}
+handleChange(e) {
+   const { name, value } = e.target;
+   this.setState({
+   [name]: value
+    });
+ }
  render(){
      return(
         <div className="pantalla agregar subasta">
@@ -23,7 +30,7 @@ class App extends Component {
                 <div className="form">
                     <form>
                         <div className="monto">
-                            <label>Monto minimo: <input type="text" id="monto" name="monto"></input></label>
+                            <label>Monto minimo: <input type="number" step="any" id="monto" name="monto" required></input></label>
                         </div>
                         <div className="botones">
                             <button type="submit">
