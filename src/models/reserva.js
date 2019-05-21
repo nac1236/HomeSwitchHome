@@ -3,7 +3,8 @@ const { ObjectId } = Schema
 
 const ReservaSchema = new Schema({
     propiedad_id: { type: ObjectId },
-    semana: { type: Date }
+    //subasta_id: { type: ObjectId },
+    semana_reserva: { type: Number }
 })
 
 module.exports = mongoose.model('Reserva', ReservaSchema)

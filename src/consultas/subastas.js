@@ -1,4 +1,6 @@
 const Subasta = require ('../models/subastas')
+const Reserva = require ('../models/reserva')
+const Publicacion = require ('../models/publicacion')
 
 const ctrlSubasta = {};
 
@@ -8,20 +10,34 @@ ctrlSubasta.index =  async (req,res) => {
     res.json(subastas)
 };
 
+/*
 ctrlSubasta.create = async (req,res) => {
-    const subastas = new Subasta ({
+    const subasta = new Subasta ({
         monto_minimo: req.body.monto_minimo,
         //puja_id:req.body.puja_id,
         //en algun momento hay que obligar a que se establezca la fecha de finalizacion
         //y el id de la reserva
+        semana_reserva: req.body.semana_reserva,
+        propiedad_id: req.body.propiedad_id
     })
-    await subastas.save();
-    res.json('Recibido. Subasta creada!')
+    const reserva = Reserva.find(
+        Reserva.propiedad_id = subasta.propiedad_id &&
+        Reserva.semana == subasta.semana_reserva)
+    if(reserva){
+        res.json('La reserva no se puede crear porque esta reservada para ese semana.')
+    }else{
+        const publicacion = Publicacion.find(Publicacion.publicacion_id = req.params.publicacion_id)
+        if(publicacion.mes_vencimiento > Date.today.month){
+            res.json('La reserva no se puede crear porque todavia no se cumplio el plazo de reserva normal.')
+    }else{
+        
+        await subasta.save();
+        res.json('Recibido. Subasta creada!')
+    }
 }
-
-ctrlSubasta.modify = (req,res) =>{
-
 }
+*/
+
 
 ctrlSubasta.remove = async (req,res) => {
     const id = req.params.subasta_id;
@@ -31,6 +47,7 @@ ctrlSubasta.remove = async (req,res) => {
     .catch(err =>{console.log(err);
         res.status(500).json({error: err})});
 }
+
 
 
 module.exports = ctrlSubasta
