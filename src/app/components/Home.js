@@ -6,10 +6,9 @@ class Home extends Component {
     render(){
         return(
             <div>
-                <img src="C:\Users\Usuario\Documents\HomeSwitchHome-develop\logos\HSH-Complete.jpg" alt="Logo"/>
+                <img src="C:\Users\Usuario\Documents\HomeSwitchHome-develop\logos\Logo-HSH.png"/>
             </div>
         )
     }
 }
-
 export default Home

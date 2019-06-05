@@ -7,8 +7,8 @@ class ListaDePropiedades extends Component {
       propiedades: [],
       _id: ''
     }
+    var propiedadP;
   }
-
   componentDidMount() {
     this.fetchPropiedades()
   }

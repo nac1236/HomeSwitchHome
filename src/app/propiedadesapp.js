@@ -1,22 +1,15 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { Link } from 'react-router-dom'
 import ListaDePropiedades from './components/listaDePropiedades'
-
-
+import {Route, Link } from 'react-router-dom'
+import FormAgregarPropiedad from './agregarprop';
 class ActionPropiedad extends Component {
   constructor() {
     super();
-    this.state = {
-      isLogged: 'false'
-  }
-    
-  }
-  
-  
-  render() {
-    return (
-      <div className="pantalla1">
+}
+render() {
+  return(
+      <div className="pantalla1">        
         <div className="header">
           <header>
             <div className="titulo2">
@@ -29,33 +22,29 @@ class ActionPropiedad extends Component {
           </ListaDePropiedades>
         </div>
         <div className="botones">
-        <div className="agregar propiedad">
-           <button className=" indigo accent-1 left" > 
+        <button className=" indigo accent-1 left">
+        <Link  style={{color: 'black'}} to="/propiedades/agregar" > 
                Agregar
-            <i class="tiny material-icons">add</i>
-           </button>
-          </div>
-          <div className="modificar propiedad">
-            <button className=" indigo accent-1 left" >
-              Modificar
-            <i class="tiny material-icons">edit</i>
-                </button>
-          </div>
+        </Link>
+        </button>    
+        <button className=" indigo accent-1 left" >
+        <Link  style={{color: 'black'}} to="/propiedades/modificar" > 
+               Modificar
+        </Link>
+        </button>
           <div className="eliminar">
             <button className=" indigo accent-1 left">
-              Eliminar
-              <i class="tiny material-icons">delete</i>
-                </button>
+              Eliminar               
+            </button>
           </div>
           <div className="subastar">
             <button className=" indigo accent-1 left">
               Subastar
-             <i class="tiny material-icons">assessment</i>
-                </button>
+            </button>
           </div>
+          <Route path="/propiedades/agregar" component={FormAgregarPropiedad}></Route>
         </div>
       </div>
-    )
-  }
+    )}
 }
 export default ActionPropiedad;

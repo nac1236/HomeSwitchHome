@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
-class App extends Component {
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import { Link } from 'react-router-dom'
+class ModificarProp extends Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);
@@ -61,4 +63,4 @@ class App extends Component {
     )
   }
 }
-export default App;
+export default ModificarProp;

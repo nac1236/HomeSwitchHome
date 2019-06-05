@@ -27,6 +27,9 @@ class Navbar extends React.Component {
                                     {this.state.isLogged &&
                                     <li><Link to="/subastas">Subastas</Link></li>
                                    }
+                                     {this.state.isLogged &&
+                                    <li><Link to="/usuarios">Usuarios</Link></li>
+                                   }
                                 </ul>
                             </div>
                        </nav>
@@ -36,5 +39,4 @@ class Navbar extends React.Component {
         )
     }
 }
-
 export default Navbar
