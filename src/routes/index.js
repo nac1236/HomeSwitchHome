@@ -35,9 +35,9 @@ module.exports = app => {
 
     /* RESERVAS */
 
-    router.get('/api/propiedad/:propiedad_id/reservas',ctrlReserva.all)
-    router.get('/api/propiedad/:propiedad_id/reserva',ctrlReserva.index)
-    router.post('/api/propiedad',ctrlReserva.create)
+    router.get('/api/reservas/',ctrlReserva.all)
+    router.get('/api/reserva/:propiedad_id/reserva',ctrlReserva.index)
+    router.post('/api/reserva',ctrlReserva.create)
     //router.delete()
 
 
