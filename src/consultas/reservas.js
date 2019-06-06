@@ -21,16 +21,11 @@ ctrlReserva.all = async (req,res) => {
 }
 
 ctrlReserva.index = (req,res) => {
-<<<<<<< HEAD
     const reserva = Reserva.findOne( ) //agregar id de propiedad para buscar?
-=======
-    const reserva = Reserva.findOne( )
->>>>>>> 37957a64f63871c10bcebe9d6d8dba8160f0221c
     res.json(reserva)
 }
 
 ctrlReserva.create = async (req,res) => {
-<<<<<<< HEAD
     const hoy = new Date
     const reserva = new Reserva({
         propiedad_id: req.body.propiedad_id,
@@ -43,17 +38,6 @@ ctrlReserva.create = async (req,res) => {
         await reserva.save()
         res.json('Recibido')
     //}
-=======
-    const reserva = new Reserva({
-        propiedad_id: req.body.propiedad_id,
-        semana_reserva: req.body.semana_reserva,
-        mes_creacion: req.body.mes_creacion,
-        mes_vencimiento: req.body.mes_vencimiento
-    })
-    if(validar_disponibilidad(reserva)){
-        await Reserva.save(reserva)
-    }
->>>>>>> 37957a64f63871c10bcebe9d6d8dba8160f0221c
 }
 
 module.exports = ctrlReserva
