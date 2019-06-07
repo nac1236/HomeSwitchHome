@@ -1,19 +1,7 @@
 const Ṕropiedad = require ('../models/propiedades')
-const Reserva = require ('../models/reserva') //Para poder validar que la publicacion esta en una fecha que no esta reservada
+const Reserva = require ('../models/reserva') 
 
 const ctrlReserva = {}
-
-const validar_disponibilidad  = reserva => {
-    const reservas = Reserva.find(reserva.propiedad_id = Reseva.propiedad_id)
-    if(reservas){
-        const resultado = find(reserva.semana_reserva = reservas.semana_reserva)
-        if(resultado) {
-        res.json('La propiedad tiene reservas para esa semana. ')
-        }
-    }else{
-        return true
-    }
-}
 
 ctrlReserva.all = async (req,res) => {
     const reservas = await Reserva.find()
@@ -31,13 +19,22 @@ ctrlReserva.create = async (req,res) => {
         propiedad_id: req.body.propiedad_id,
         semana_reserva: req.body.semana_reserva,
         año: new Date,
-        mes_creacion: hoy.getMonth() //,req.body.mes_creacion, El método getMonth() devuelve el mes del objeto Date según la hora local, donde el número cero indica el primer mes del año.
-        //mes_vencimiento: (Date.month.today + 6)//req.body.mes_vencimiento
+        mes_creacion: hoy.getMonth(), //El método getMonth() devuelve el mes del objeto Date según la hora local, donde el número cero indica el primer mes del año.
+        mes_vencimiento: hoy.setMonth((new Date).getMonth() + 6)
     })
-    //if(validar_disponibilidad(reserva)){
+    const reservas = await Reserva.findOne({ propiedad_id : reserva.propiedad_id, semana_reserva : reserva.semana_reserva})
+    if(!reservas){
         await reserva.save()
-        res.json('Recibido')
-    //}
+         res.json('Recibido')
+    }else{
+         res.json('La propiedad ya tiene reservas para esa semana')
+     }
+}
+
+ctrlReserva.removeAll = (req,res) => {
+
+        Reserva.remove({id : "5cf958b482d7320cb5f8f99b"})
+        res.json('Hecho. Borrado terminado.')
 }
 
 module.exports = ctrlReserva

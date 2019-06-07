@@ -5,7 +5,7 @@ const ReservaSchema = new Schema({
     propiedad_id: { type: ObjectId },
     semana_reserva: { type: Number },
     año: { type: Date},
-    mes_creacion: { type:Number},
+    mes_creacion: { type:Date},
     mes_vencimiento: {type: Date}
 })
 

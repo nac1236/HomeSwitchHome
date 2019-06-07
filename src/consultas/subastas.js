@@ -23,7 +23,6 @@ ctrlSubasta.create = async (req,res) => {
         Reserva.propiedad_id = subasta.propiedad_id &&
         Reserva.semana == subasta.semana_reserva)
     if(reserva){
-<<<<<<< HEAD
         res.json('La reserva no se puede crear porque esta reservada para ese semana.')
     }/*else{
         const publicacion = Publicacion.find(Publicacion.publicacion_id = req.params.publicacion_id)
@@ -34,17 +33,6 @@ ctrlSubasta.create = async (req,res) => {
         await subasta.save();
         res.json('Recibido. Subasta creada!')
     }
-=======
-        res.json('La reserva no se puede crear porque la propiedad esta reservada para ese semana.')
-    }else{
-        if(reserva.mes_vencimiento <= Date.today.month){
-            res.json('La reserva no se puede crear porque todavia no se cumplio el plazo de reserva normal.')
-    }else{
-        await subasta.save();
-        res.json('Recibido. Subasta creada!')
-    }
-    }
->>>>>>> 37957a64f63871c10bcebe9d6d8dba8160f0221c
 }
 
 
