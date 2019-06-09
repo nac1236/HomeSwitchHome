@@ -1,39 +1,37 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
-import ListaDeSubastas from './components/listaDeSubastas';
-import ActionPropiedad from './propiedadesapp';
+import ListaDeUsuarios from './components/listaDeUsuarios';
 
-class ActionSubastas extends Component{
+class ActionUsuarios extends Component{
   constructor() {
     super();
     
   }
     render() {
         return (
-          <div className="pantalla2">
+          <div className="pantalla3">
              <div className="header">
                <header>
                   <div className="titulo2">
-                     <h5 align="center">Subastas</h5>
+                     <h5 align="center">Usuarios</h5>
                   </div>
                  </header>
                </div>
               <div>
-                <ListaDeSubastas>
-                 </ListaDeSubastas>
+                <ListaDeUsuarios>
+                 </ListaDeUsuarios>
                </div>    
                 <div className="terminar subasta">
                    <button className=" indigo accent-1">
-                      Terminar subasta
-<<<<<<< HEAD
-                      <i className="tiny material-icons">event_available</i>
-=======
->>>>>>> b54cf5c1c8ce8d95d52f5b8601527cf603832bec
+                      Premium/Standar
+                    </button>
+                    <button className=" indigo accent-1">
+                      Cambiar Precio
                     </button>
                   </div>
                 </div>
         )
     }
 }
-export default ActionSubastas;
+export default ActionUsuarios;

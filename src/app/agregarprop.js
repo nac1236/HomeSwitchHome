@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import { Link } from 'react-router-dom'
 
 class FormAgregarPropiedad extends Component {
   constructor() {
@@ -17,29 +19,23 @@ class FormAgregarPropiedad extends Component {
         <div className="formulario">
           <div className="form">
             <form method="post" enctrype="multipart/form-data">
-              <div className="nombre">
                 <label>Nombre: <input type="text" id="nombre" name="nombre" required onChange={this.handleChange}></input></label>
-              </div>
-              <div className="localidad">
                 <label>Localidad: <input type="text" id="localidad" name="localidad" required onChange={this.handleChange}></input></label>
-              </div>
-              <div className="provincia">
                 <label>Provincia: <input type="text" id="provincia" name="provincia" required onChange={this.handleChange}></input></label>
-              </div>
-              <div className="descripcion">
                 <label>Descripción: <textarea type="text" id="decripcion" name="descripcion" required onChange={this.handleChange}></textarea></label>
-              </div>
-              <div className="imagenes">
                 <label>imagenes: <input type="file" id="imagenes" name="imagenes[]" multiple required accept="image/png , .jpg, .jpeg" onChange={this.handleChange}></input></label>
-              </div>
               <div className="botones">
                 <button type="submit">
-                  Aceptar
-                            </button>
+                <Link style={{color: 'black'}} to="/propiedades">
+                       Aceptar
+                </Link>
+                </button>
                 <div className="cancelar">
                   <button>
-                    Cancelar
-                            </button>
+                    <Link style={{color: 'black'}} to="/propiedades">
+                       Cancelar
+                    </Link>
+                  </button>
                 </div>
               </div>
             </form>
