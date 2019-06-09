@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+mongoose.set('useFindAndModify', false);
+
 const { database } = require('./keys')
 
 mongoose.connect(database.URI, { useNewUrlParser: true })
