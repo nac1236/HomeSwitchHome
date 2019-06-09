@@ -26,7 +26,7 @@ class ActionSubastas extends Component{
                 <div className="terminar subasta">
                    <button className=" indigo accent-1">
                       Terminar subasta
-                      <i class="tiny material-icons">event_available</i>
+                      <i className="tiny material-icons">event_available</i>
                     </button>
                   </div>
                 </div>
