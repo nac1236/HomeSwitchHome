@@ -1,10 +1,9 @@
 const Propiedad = require ('../models/propiedades')
-const Subastas = require('../models/propiedades')
+const Subastas = require('../models/propiedades') //cambiar las subastas por semanas.
 
 const ctrl = {};
 
 ctrl.all =  async (req,res) => {
-    //res.json('Hola mundo!');
     const propiedades = await Propiedad.find();
     res.json(propiedades)
 };
