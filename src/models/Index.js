@@ -4,5 +4,6 @@ module.exports = {
     Reserva: require('./reserva'),
     Puja: require('./pujas'),
     Hotsale: require('./hotsale'),
-    Usuario: require('./usuarios')
+    Usuario: require('./usuarios'),
+    Semana: require('./semana')
 }
