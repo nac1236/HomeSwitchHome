@@ -58,7 +58,6 @@ class ListaDePropiedades extends Component {
       propiedades: [],
       _id: ''
     }
-    var propiedadP;
   }
   componentDidMount() {
     this.fetchPropiedades()
@@ -84,6 +83,9 @@ class ListaDePropiedades extends Component {
     <th>Localidad</th>
     <th>Provincia</th>
     <th>Descripcion</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
   </thead>
   <tbody className="white">
@@ -95,7 +97,10 @@ class ListaDePropiedades extends Component {
             <td>{propiedad.localidad}</td>
             <td>{propiedad.provincia}</td>
             <td>{propiedad.descripcion}</td>
-            </tr>
+            <td><button className=" indigo accent-1 left">Eliminar</button></td>
+            <td><button className=" indigo accent-1 left">Modificar</button></td>
+            <td><button className=" indigo accent-1 left">Subastar</button></td>
+       </tr>
        )
     })
   }
