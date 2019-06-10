@@ -1,0 +1,49 @@
+Para probar ABM de propiedades:
+
+http://localhost:5000/propiedad/5ce0bbcbe8f6b40b68e9a993/ 
+{
+	"nombre": "casa 1",
+	"localidad": "ensenada",
+	"provincia": "buenos aires",
+	"descripcion": "casa bonita"
+}
+
+{
+	"nombre": "casa 2",
+	"localidad": "ensenada",
+	"provincia": "buenos aires",
+	"descripcion": "casa bonita"
+}
+
+{
+	"nombre": "casa 3",
+	"localidad": "ensenada",
+	"provincia": "buenos aires",
+	"descripcion": "casa bonita"
+}
+
+Para probar ABM de subastas:
+
+Para hacer un post, por ejemplo.
+http://localhost:5000/propiedad/..idpropiedad../subasta
+{
+    "monto_minimo": 500,
+	"semana_reserva": req.body.semana_reserva,
+    "propiedad_id": "req.body.propiedad_id"
+}
+
+Falta cargar mas datos!!
+
+
+Si quiero hacer un get hago:
+http://localhost:5000/propiedad/5ce0bbcbe8f6b40b68e9a993/subasta/"5ce0bdaf5ee2790c5d6f7be1"
+(lo hice a partir de la subasta creada anteriormente).
+
+Si quiero modificar una propiedad:
+Hago put con el siguiente body:
+{
+	"nombre": "casa modificada",
+	"localidad": "ensenada",
+	"provincia": "buenos aires",
+	"descripcion": "casa bonita"
+}

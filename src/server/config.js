@@ -1,6 +1,7 @@
 const morgan = require('morgan')
 const multer = require('multer')
 const express = require('express')
+const path = require('path')
 
 const errorHandler = require('errorhandler')
 
@@ -24,6 +25,9 @@ module.exports = app => {
 
     // Rutas
     routes(app)
+
+    // archivos estáticos
+    app.use(express.static(path.join(__dirname, '../public')))
 
     // Manejo de errores
     if ('development' === app.get('env')) {
