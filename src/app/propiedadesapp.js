@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import ListaDePropiedades from './components/listaDePropiedades'
 import { Link } from 'react-router-dom'
+
 class ActionPropiedad extends Component {
   constructor() {
     super();

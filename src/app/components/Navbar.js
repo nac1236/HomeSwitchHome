@@ -16,21 +16,6 @@ class Navbar extends React.Component {
         return (
             <div className="navbar">
                 <header>
-<<<<<<< HEAD
-                    <div className="imagen">
-
-                    </div>
-
-                    <div className="titulo">
-                        <Link to="/">HomeSwitchHome</Link>
-                    </div>
-                    {this.state.isLogged &&
-
-                        <div className="titulo2">
-                            <Link to="/propiedades">Propiedades</Link>
-                        </div>
-                    }
-=======
                     <div className="nav">
                         <nav className=" indigo accent-1">
                             <div>
@@ -49,15 +34,9 @@ class Navbar extends React.Component {
                             </div>
                        </nav>
                     </div>
->>>>>>> 44df1c2d90285d8f86e978c79437718a1ba7bb21
                 </header>
             </div>
         )
     }
 }
-<<<<<<< HEAD
-
 export default Navbar
-=======
-export default Navbar
->>>>>>> 44df1c2d90285d8f86e978c79437718a1ba7bb21
