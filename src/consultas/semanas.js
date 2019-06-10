@@ -32,24 +32,21 @@ ctrlSemana.create = async (p_id,inicio,fin) => {
         propiedad_id: p_id
     })
     //await semana.save() descomentar para crear semanas
-    res.json('Recibido')
 }
 
 
-ctrlSemana.crearMes = (propiedad_id,año,mes,dia) => {
-    const fecha = new Date(año,mes,dia)
-    const mesActual = fecha.getMonth()
-    //const dia = fecha.getDate()
-    var inicio = fecha;
-    if(inicio.getDate()!= 0){
-        inicio = inicio.setDate(6 - inicio.getDate())
+ctrlSemana.crearMes = (propiedad_id,año,mes) => {
+    var inicio = new Date(año,mes,1);
+    const mesActual = inicio.getMonth()
+    while(inicio.getDay()!= 0){
+        inicio.setDate(inicio.getDate() + 1)
     }
-    console.log(inicio.toDateString())
-    var fin = new Date(fecha.getYear(),fecha.getMonth()).setDate(fecha.getDate() + 6)
-    while(inicio.getMonth() = mesActual){
+    const fin = new Date(año,mes,1)
+    fin.setDate(inicio.getDate() + 6)
+    while(inicio.getMonth() == mesActual){
         ctrlSemana.create(propiedad_id,inicio,fin)
-        inicio = fin.setDate(fin.getDate() + 1)
-        fin = fin.setDate(fin.getDate() + 6)
+        inicio.setDate(inicio.getDate() + 7)
+        fin.setDate(fin.getDate() + 7)
     }
 }
 

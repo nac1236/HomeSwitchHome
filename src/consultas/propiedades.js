@@ -36,7 +36,7 @@ ctrl.modify =  async (req,res) => {
         res.json('Recibido')
 }
 
-ctrl.remove = async (req,res) => {
+ctrl.remove = async (req,res) => { //modificar para que sea baja logica
     const id = req.params.propiedad_id;
     const subastas = Subastas.find(Subastas.propiedad_id = id)
     if(!subastas){
