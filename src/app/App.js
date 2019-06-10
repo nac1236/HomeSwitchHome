@@ -11,7 +11,6 @@ import ActionPropiedad from './propiedadesapp'
 import AppProp from './components/AppProp'
 
 import Home from './components/Home'
-import AdminForm from './components/admin';
 import ActionSubastas from './subastasapp';
 import Usuarios from './usuarioapp';
 
