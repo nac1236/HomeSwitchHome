@@ -86,8 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-<<<<<<< HEAD
-=======
 /***/ "./node_modules/@babel/runtime/helpers/esm/extends.js":
 /*!************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/extends.js ***!
@@ -624,15 +622,11 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 
->>>>>>> 1e0b525338469ffe6802db534c77cad34e35df1d
 /***/ "./src/app/index.js":
 /*!**************************!*\
   !*** ./src/app/index.js ***!
   \**************************/
 /*! no static exports found */
-<<<<<<< HEAD
-/***/ (function(module, exports) {
-=======
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -670,7 +664,6 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
   \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
->>>>>>> 1e0b525338469ffe6802db534c77cad34e35df1d
 
 eval("throw new Error(\"Module build failed (from ./node_modules/babel-loader/lib/index.js):\\nError: Plugin/Preset files are not allowed to export objects, only functions. In /home/nacho/HomeSwitchHome/node_modules/babel-preset-react/lib/index.js\\n    at createDescriptor (/home/nacho/HomeSwitchHome/node_modules/@babel/core/lib/config/config-descriptors.js:178:11)\\n    at items.map (/home/nacho/HomeSwitchHome/node_modules/@babel/core/lib/config/config-descriptors.js:109:50)\\n    at Array.map (<anonymous>)\\n    at createDescriptors (/home/nacho/HomeSwitchHome/node_modules/@babel/core/lib/config/config-descriptors.js:109:29)\\n    at createPresetDescriptors (/home/nacho/HomeSwitchHome/node_modules/@babel/core/lib/config/config-descriptors.js:101:10)\\n    at presets (/home/nacho/HomeSwitchHome/node_modules/@babel/core/lib/config/config-descriptors.js:47:19)\\n    at mergeChainOpts (/home/nacho/HomeSwitchHome/node_modules/@babel/core/lib/config/config-chain.js:320:26)\\n    at /home/nacho/HomeSwitchHome/node_modules/@babel/core/lib/config/config-chain.js:283:7\\n    at buildRootChain (/home/nacho/HomeSwitchHome/node_modules/@babel/core/lib/config/config-chain.js:120:22)\\n    at loadPrivatePartialConfig (/home/nacho/HomeSwitchHome/node_modules/@babel/core/lib/config/partial.js:85:55)\\n    at Object.loadPartialConfig (/home/nacho/HomeSwitchHome/node_modules/@babel/core/lib/config/partial.js:110:18)\\n    at Object.<anonymous> (/home/nacho/HomeSwitchHome/node_modules/babel-loader/lib/index.js:144:26)\\n    at Generator.next (<anonymous>)\\n    at asyncGeneratorStep (/home/nacho/HomeSwitchHome/node_modules/babel-loader/lib/index.js:3:103)\\n    at _next (/home/nacho/HomeSwitchHome/node_modules/babel-loader/lib/index.js:5:194)\\n    at /home/nacho/HomeSwitchHome/node_modules/babel-loader/lib/index.js:5:364\\n    at new Promise (<anonymous>)\\n    at Object.<anonymous> (/home/nacho/HomeSwitchHome/node_modules/babel-loader/lib/index.js:5:97)\\n    at Object._loader (/home/nacho/HomeSwitchHome/node_modules/babel-loader/lib/index.js:224:18)\\n    at Object.loader (/home/nacho/HomeSwitchHome/node_modules/babel-loader/lib/index.js:60:18)\\n    at Object.<anonymous> (/home/nacho/HomeSwitchHome/node_modules/babel-loader/lib/index.js:55:12)\");\n\n//# sourceURL=webpack:///./src/app/index.js?");
 

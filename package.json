@@ -4,14 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "webpack": "webpack --mode development --watch"
-=======
-    "dev": "nodemon src/index.js",
-    "webpack": "webpack --mode development"
->>>>>>> 44df1c2d90285d8f86e978c79437718a1ba7bb21
   },
   "keywords": [],
   "author": "",
