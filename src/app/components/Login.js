@@ -1,10 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
+import { Link } from 'react-router-dom'
 class Login extends Component {
-    constructor() {
-        super();
-    }
     render(){
         return (
             <div>
@@ -16,7 +13,7 @@ class Login extends Component {
                         <label>Correo electronico: <input type="email"></input></label>
                         <label>Contraseña: <input type="password"></input></label>
                         <button>Aceptar</button>
-                        <Link>Registrase</Link>
+                        <Link>Registrace</Link>
                     </form>
                 </div>
             </div>   

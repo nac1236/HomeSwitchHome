@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import ListaDePropiedades from './components/listaDePropiedades'
-import {Route, Link } from 'react-router-dom'
-import FormAgregarPropiedad from './agregarprop';
+import { Link } from 'react-router-dom'
 class ActionPropiedad extends Component {
   constructor() {
     super();
@@ -22,28 +21,12 @@ render() {
           </ListaDePropiedades>
         </div>
         <div className="botones">
-        <button className=" indigo accent-1 left">
-        <Link  style={{color: 'black'}} to="/propiedades/agregar" > 
-               Agregar
-        </Link>
+        <button className=" indigo accent-1 left" > 
+           <Link to="/propiedades/agregar">             
+         Agregar
+            </Link>
         </button>    
-        <button className=" indigo accent-1 left" >
-        <Link  style={{color: 'black'}} to="/propiedades/modificar" > 
-               Modificar
-        </Link>
-        </button>
-          <div className="eliminar">
-            <button className=" indigo accent-1 left">
-              Eliminar               
-            </button>
-          </div>
-          <div className="subastar">
-            <button className=" indigo accent-1 left">
-              Subastar
-            </button>
-          </div>
-          <Route path="/propiedades/agregar" component={FormAgregarPropiedad}></Route>
-        </div>
+      </div>
       </div>
     )}
 }
