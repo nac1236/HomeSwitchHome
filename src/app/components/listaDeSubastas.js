@@ -24,7 +24,7 @@ class ListaDeSubastas extends Component{
       return (
   
   <div>
-  <table class="striped bordered">
+  <table className="striped bordered">
     <thead className="grey">
     <tr>
       <th>Nombre de la propiedad</th>
