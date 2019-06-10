@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
-import { Link } from 'react-router-dom'
 import ListaDeSubastas from './components/listaDeSubastas';
-import ActionPropiedad from './propiedadesapp';
+
 
 class ActionSubastas extends Component{
   constructor() {

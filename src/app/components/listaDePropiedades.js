@@ -12,6 +12,24 @@ class ListaDePropiedades extends Component {
     this.fetchPropiedades()
   }
 
+  deletePropiedades(id) {
+    if(confirm('Deseas eliminar esta propiedad?')) {
+      fetch(`/api/propiedades/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          M.toast({html: 'Propiedad deleted'});
+          this.fetchPropiedades();
+        });
+    }
+  }
+
   fetchPropiedades() {
     fetch('api/propiedades')
       .then(res => res.json())
@@ -46,7 +64,7 @@ class ListaDePropiedades extends Component {
             <td>{propiedad.localidad}</td>
             <td>{propiedad.provincia}</td>
             <td>{propiedad.descripcion}</td>
-            <td><button className=" indigo accent-1 left">Eliminar</button></td>
+            <td><button className=" indigo accent-1 left"  onClick={() => this.deletePropiedades(propiedad._id)}>Eliminar</button></td>
             <td><button className=" indigo accent-1 left">Modificar</button></td>
             <td><button className=" indigo accent-1 left">Subastar</button></td>
        </tr>

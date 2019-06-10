@@ -21,11 +21,9 @@ render() {
           </ListaDePropiedades>
         </div>
         <div className="botones">
-        <button className=" indigo accent-1 left" > 
-           <Link to="/propiedades/agregar">             
-         Agregar
-            </Link>
-        </button>    
+        <Link to="/propiedades/agregar" className="indigo accent-1 left" style={{ color: 'black' }} type="button">
+              Agregar
+         </Link>  
       </div>
       </div>
     )}

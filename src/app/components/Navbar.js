@@ -19,7 +19,7 @@ class Navbar extends React.Component {
                     <div className="nav">
                         <nav className=" indigo accent-1">
                             <div>
-                                <ul class="left hide-on-med-and-down">
+                                <ul className="left hide-on-med-and-down">
                                     <li><Link to="/">HomeSwitchHome</Link></li>
                                     {this.state.isLogged &&
                                     <li><Link to="/propiedades">Propiedades</Link></li>

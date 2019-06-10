@@ -6,7 +6,7 @@ class Home extends Component {
     render(){
         return(
             <div>
-                <img src="C:\Users\Usuario\Documents\HomeSwitchHome-develop\logos\Logo-HSH.png"/>
+                <img src="C:\Users\Usuario\Documents\HomeSwitchHome-develop\logos\Logo-HSH.png" alt="HomeSwitchHome"/>
             </div>
         )
     }
