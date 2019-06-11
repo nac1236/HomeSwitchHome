@@ -23,7 +23,7 @@ ctrl.create = async (req,res) => {
     const p = await propiedad.save();
     const fecha = new Date
     fecha.setMonth(fecha.getMonth() + 7) //crea para dentro de 7 meses, las semanas disponibles
-    ctrlSemana.crearMes(p.propiedad_id,fecha.getFullYear(),fecha.getMonth())//revisar, crea semanas pero todas con la misma fecha inicio y fin
+    ctrlSemana.crearMes(p.propiedad_id,fecha.getYear(),fecha.getMonth())//revisar, crea semanas pero todas con la misma fecha inicio y fin
     res.json('Recibido')
 }
 

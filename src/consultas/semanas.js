@@ -22,6 +22,10 @@ ctrlSemana.index = (req,res) => {
 //     res.json('Recibido')
 // }
 
+ctrlSemana.deleteAll = async (req,res) => {
+    await Semana.deleteMany({propiedad_id :req.params.propiedad_id}) //cambiar
+    res.json('Se borraron todas las semanas.')
+}
 
 ctrlSemana.create = async (p_id,inicio,fin) => {
     const semana = new Semana({
@@ -48,6 +52,8 @@ ctrlSemana.crearMes = (propiedad_id,año,mes) => {
         ctrlSemana.create(propiedad_id,inicio,fin)
         inicio.setDate(inicio.getDate() + 7)
         fin.setDate(fin.getDate() + 7)
+        console.log(inicio.toDateString())
+        console.log(fin.toDateString())
     }
 }
 
