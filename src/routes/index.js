@@ -41,7 +41,7 @@ module.exports = app => {
 
     router.get('/api/semanas/', ctrlSemana.all)
     router.post('/api/semana/:propiedad_id',ctrlSemana.crear)
-    router.delete('/api/semana',ctrlSemana.deleteAll)
+    router.delete('/api/semana/:propiedad_id',ctrlSemana.deleteAll)
 
     /* USUARIOS */
     

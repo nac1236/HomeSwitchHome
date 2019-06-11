@@ -9,21 +9,31 @@ ctrl.all =  async (req,res) => {
 };
 
 ctrl.index = async (req,res) => {
-    const propiedad = await Propiedad.findOne(Propiedad.id = req.params.propiedad_id);
+    const propiedad = await Propiedad.findById({_id : req.params.propiedad_id});
     res.json(propiedad);
 }
 
-ctrl.create = async (req,res) => {
+ctrl.crearMes = async (req) => {
+    const p = await Propiedad.findOne({nombre : req.body.nombre})
+    const fecha = new Date
+    fecha.setMonth(fecha.getMonth() + 7) //crea para dentro de 7 meses, las semanas disponibles
+    ctrlSemana.crearMes(p._id,fecha.getFullYear(),fecha.getMonth())
+}
+
+ctrl.crearProp = async (req) => {
     const propiedad = new Propiedad ({
         nombre: req.body.nombre,
         localidad:req.body.localidad,
         provincia: req.body.provincia,
         descripcion: req.body.descripcion
     })
-    const p = await propiedad.save();
-    const fecha = new Date
-    fecha.setMonth(fecha.getMonth() + 7) //crea para dentro de 7 meses, las semanas disponibles
-    ctrlSemana.crearMes(p.propiedad_id,fecha.getYear(),fecha.getMonth())//revisar, crea semanas pero todas con la misma fecha inicio y fin
+    await propiedad.save(); 
+    
+}
+
+ctrl.create = async (req,res) => {
+    ctrl.crearProp(req)
+    ctrl.crearMes(req)
     res.json('Recibido')
 }
 
