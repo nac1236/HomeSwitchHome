@@ -5,6 +5,7 @@ const ctrlProp = require('../consultas/propiedades')
 const ctrlSubasta = require('../consultas/subastas')
 const ctrlReserva = require ('../consultas/reservas')
 const ctrlSemana = require('../consultas/semanas')
+const ctrlUsuario = require('../consultas/usuarios')
 
 module.exports = app => {
 
@@ -36,10 +37,17 @@ module.exports = app => {
     router.post('/api/reserva',ctrlReserva.create)
     router.delete('/api/reserva',ctrlReserva.removeAll)
 
-    /* Semanas */
+    /* SEMANAS */
 
     router.get('/api/semanas/', ctrlSemana.all)
     router.post('/api/semana/:propiedad_id',ctrlSemana.crear)
+
+    /* USUARIOS */
+    
+    router.get('/api/usuarios',ctrlUsuario.all)
+    router.get('/api/usuario/',ctrlUsuario.index)
+    router.post('/api/usuario',ctrlUsuario.create)
+
 
     app.use(router)
 }

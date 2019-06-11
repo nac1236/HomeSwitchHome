@@ -22,8 +22,6 @@ ctrlSemana.index = (req,res) => {
 //     res.json('Recibido')
 // }
 
-ctrlSemana.removeAll = (req,res) => {
-}
 
 ctrlSemana.create = async (p_id,inicio,fin) => {
     const semana = new Semana({
@@ -31,7 +29,10 @@ ctrlSemana.create = async (p_id,inicio,fin) => {
         fecha_fin: fin,
         propiedad_id: p_id
     })
-    //await semana.save() descomentar para crear semanas
+    const semanas = await Semana.findOne({fecha_inicio: semana.fecha_inicio, propiedad_id: semana.propiedad_id}) 
+    if(!semanas){
+    await semana.save()
+    }
 }
 
 
