@@ -1,4 +1,4 @@
-const Ṕropiedad = require ('../models/propiedades')
+const Propiedad = require ('../models/propiedades')
 const Reserva = require ('../models/reserva') 
 
 const ctrlReserva = {}
