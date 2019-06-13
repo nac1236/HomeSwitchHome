@@ -6,12 +6,12 @@ class FormAgregarPropiedad extends Component {
   constructor() {
     super();
     this.state={
-      propiedades:[],
       _id:'',
       nombre:'',
       localidad:'',
       provincia:'',
-      descripcion:''
+      descripcion:'',
+      propiedades:[]
     }
     this.handleChange = this.handleChange.bind(this);
     this.addPropiedades = this.addPropiedades.bind(this);
@@ -31,9 +31,10 @@ class FormAgregarPropiedad extends Component {
           console.log(this.state.propiedades)
       })
   }
-
+  componentDidMount() {
+    this.fetchPropiedades();
+  }
   addPropiedades(e) {
-    e.preventDefault();
       fetch('/api/propiedades', {
         method: 'POST',
         body: JSON.stringify(this.state),
@@ -45,19 +46,26 @@ class FormAgregarPropiedad extends Component {
         .then(res => res.json())
         .then(data => {
           console.log(data);
-          window.M.toast({html: 'Propiedades Saved'});
+          M.toast({html: 'Propiedad guardada'});
           this.setState({nombre: '', localidad: '', provincia:'', description: ''});
           this.fetchPropiedades();
         })
         .catch(err => console.error(err));
+        e.preventDefault();
   }
 
   render() {
     return (
-      <div className="pantalla formulario">
+      <div >
+        <nav className="indigo accent-1">
+          <ul>
+            <li className="right hide-on-med-and-down"><Link to="/">Cerrar sesion</Link></li>
+          </ul>
+        </nav>
         <h5 align="center">Agregar propiedad</h5>
           <div className="container">
-            <form method="post" enctrype="multipart/form-data" onSubmit={this.addTask}>
+            <div className="row">
+            <form method="post" enctrype="multipart/form-data" onSubmit={this.addPropiedades}>
             <div input-field>
                 <label style={{ color: 'black' }}>Nombre:<input type="text" id="nombre" name="nombre" className="white" required onChange={this.handleChange} autoFocus></input></label>
                 <label  style={{ color: 'black' }}>Localidad: <input type="text" id="localidad" name="localidad" className="white" required onChange={this.handleChange}></input></label>
@@ -71,6 +79,7 @@ class FormAgregarPropiedad extends Component {
                 </button>
               </div>
             </form>
+            </div>
             <div>
                   <Link to="/propiedades" className="indigo accent-1 left" style={{ color: 'black' }} type="button">
                   Cancelar

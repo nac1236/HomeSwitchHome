@@ -13,7 +13,7 @@ class ListaDePropiedades extends Component {
   }
 
   deletePropiedades(id) {
-    if(confirm('Deseas eliminar esta propiedad?')) {
+    if(confirm('¿Deseas eliminar esta propiedad?')) {
       fetch(`/api/propiedades/${id}`, {
         method: 'DELETE',
         headers: {
@@ -24,7 +24,7 @@ class ListaDePropiedades extends Component {
         .then(res => res.json())
         .then(data => {
           console.log(data);
-          M.toast({html: 'Propiedad deleted'});
+          M.toast({html: 'Propiedad eliminada'});
           this.fetchPropiedades();
         });
     }
@@ -43,6 +43,16 @@ class ListaDePropiedades extends Component {
     return (
 
 <div>
+<div className="row">
+      <div className="col s6 ">
+         <label>Filtrar por nombre:</label>
+         <input type="text" size="15"></input>
+      </div>
+      <div className="col s6">
+         <label>Filtrar por localidad:</label>
+         <input type="text" size="15"></input>
+      </div>
+</div> 
 <table class="striped bordered">
   <thead className="grey">
   <tr>
@@ -77,5 +87,4 @@ class ListaDePropiedades extends Component {
     )
   }
 }
-
 export default ListaDePropiedades

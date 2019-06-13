@@ -19,16 +19,19 @@ class Navbar extends React.Component {
                     <div className="nav">
                         <nav className=" indigo accent-1">
                             <div>
-                                <ul className="left hide-on-med-and-down">
-                                    <li><Link to="/">HomeSwitchHome</Link></li>
+                                <ul>
+                                    <li className="left hide-on-med-and-down"><Link to="/home">HomeSwitchHome</Link></li>
                                     {this.state.isLogged &&
                                     <li><Link to="/propiedades">Propiedades</Link></li>
                                     }
                                     {this.state.isLogged &&
-                                    <li><Link to="/subastas">Subastas</Link></li>
+                                    <li className="left hide-on-med-and-down"><Link to="/subastas">Subastas</Link></li>
                                    }
                                      {this.state.isLogged &&
-                                    <li><Link to="/usuarios">Usuarios</Link></li>
+                                    <li className="left hide-on-med-and-down"><Link to="/usuarios">Usuarios</Link></li>
+                                    }
+                                       {this.state.isLogged &&
+                                    <li className="right hide-on-med-and-down"><Link to="/">Cerrar sesion</Link></li>
                                    }
                                 </ul>
                             </div>

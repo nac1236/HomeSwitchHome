@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 import ListaDeSubastas from './components/listaDeSubastas';
-
+import Navbar from './components/Navbar';
 
 class ActionSubastas extends Component{
   constructor() {
@@ -11,6 +11,7 @@ class ActionSubastas extends Component{
     render() {
         return (
           <div className="pantalla2">
+             <Navbar/>
              <div className="header">
                <header>
                   <div className="titulo2">
