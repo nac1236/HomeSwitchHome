@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import {Link} from 'react-router-dom'
-
+import Navbar from './Navbar';
 class Home extends Component {
     render(){
         return(
             <div>
-                <img src="C:\Users\Usuario\Documents\HomeSwitchHome-develop\logos\Logo-HSH.png"/>
+                <Navbar/>
+                <img src="C:\Users\Usuario\Documents\HomeSwitchHome-develop\logos\Logo-HSH.png" alt="HomeSwitchHome"/>
             </div>
         )
     }
