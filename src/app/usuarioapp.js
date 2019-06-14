@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
 import ListaDeUsuarios from './components/listaDeUsuarios';
+import Navbar from './components/Navbar';
 
 class ActionUsuarios extends Component{
   constructor() {
@@ -10,10 +11,11 @@ class ActionUsuarios extends Component{
   }
     render() {
         return (
-          <div className="pantalla3">
-             <div className="header">
+          <div>
+             <Navbar/> 
+             <div>
                <header>
-                  <div className="titulo2">
+                  <div>
                      <h5 align="center">Usuarios</h5>
                   </div>
                  </header>

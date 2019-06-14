@@ -12,6 +12,24 @@ class ListaDePropiedades extends Component {
     this.fetchPropiedades()
   }
 
+  deletePropiedades(id) {
+    if(confirm('¿Deseas eliminar esta propiedad?')) {
+      fetch(`/api/propiedades/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          M.toast({html: 'Propiedad eliminada'});
+          this.fetchPropiedades();
+        });
+    }
+  }
+
   fetchPropiedades() {
     fetch('api/propiedades')
       .then(res => res.json())
@@ -25,7 +43,21 @@ class ListaDePropiedades extends Component {
     return (
 
 <div>
+<<<<<<< HEAD
 <table className="striped bordered">
+=======
+<div className="row">
+      <div className="col s6 ">
+         <label>Filtrar por nombre:</label>
+         <input type="text" size="15"></input>
+      </div>
+      <div className="col s6">
+         <label>Filtrar por localidad:</label>
+         <input type="text" size="15"></input>
+      </div>
+</div> 
+<table class="striped bordered">
+>>>>>>> bef70f10707a62af18d2ad53a01c26fac1048cc7
   <thead className="grey">
   <tr>
     <th>Nombre</th>
@@ -46,7 +78,7 @@ class ListaDePropiedades extends Component {
             <td>{propiedad.localidad}</td>
             <td>{propiedad.provincia}</td>
             <td>{propiedad.descripcion}</td>
-            <td><button className=" indigo accent-1 left">Eliminar</button></td>
+            <td><button className=" indigo accent-1 left"  onClick={() => this.deletePropiedades(propiedad._id)}>Eliminar</button></td>
             <td><button className=" indigo accent-1 left">Modificar</button></td>
             <td><button className=" indigo accent-1 left">Subastar</button></td>
        </tr>
@@ -59,5 +91,4 @@ class ListaDePropiedades extends Component {
     )
   }
 }
-
 export default ListaDePropiedades
