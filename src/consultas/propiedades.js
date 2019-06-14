@@ -1,5 +1,5 @@
 const Propiedad = require ('../models/propiedades')
-const Subastas = require('../models/propiedades') //cambiar las subastas por semanas.
+const ctrlSemana = require('./semanas') 
 
 const ctrl = {};
 
@@ -9,18 +9,31 @@ ctrl.all =  async (req,res) => {
 };
 
 ctrl.index = async (req,res) => {
-    const propiedad = await Propiedad.findOne(Propiedad.id = req.params.propiedad_id);
+    const propiedad = await Propiedad.findById({_id : req.params.propiedad_id});
     res.json(propiedad);
 }
 
-ctrl.create = async (req,res) => {
-    const propiedades = new Propiedad ({
+ctrl.crearMes = async (req) => {
+    const p = await Propiedad.findOne({nombre : req.body.nombre})
+    const fecha = new Date
+    fecha.setMonth(fecha.getMonth() + 7) //crea para dentro de 7 meses, las semanas disponibles
+    ctrlSemana.crearMes(p._id,fecha.getFullYear(),fecha.getMonth())
+}
+
+ctrl.crearProp = async (req) => {
+    const propiedad = new Propiedad ({
         nombre: req.body.nombre,
         localidad:req.body.localidad,
         provincia: req.body.provincia,
         descripcion: req.body.descripcion
     })
-    await propiedades.save();
+    await propiedad.save(); 
+    
+}
+
+ctrl.create = async (req,res) => {
+    ctrl.crearProp(req)
+    ctrl.crearMes(req)
     res.json('Recibido')
 }
 
@@ -36,7 +49,7 @@ ctrl.modify =  async (req,res) => {
         res.json('Recibido')
 }
 
-ctrl.remove = async (req,res) => {
+ctrl.remove = async (req,res) => { //modificar para que sea baja logica
     const id = req.params.propiedad_id;
     const subastas = Subastas.find(Subastas.propiedad_id = id)
     if(!subastas){
