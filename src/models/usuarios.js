@@ -4,7 +4,11 @@ const { ObjectId } = Schema
 const UsuarioSchema = new Schema({
     email: { type: String, required: true },
     password: { type: String, required: true },
-    creditos: { type: String, default: 2 }
+    nombre: { type: String, require: true},
+    apellido: { type: String, require: true},
+    creditos: { type: String, default: 2 },
+    tipo: { type: String }, // "admin" o "usuario"
+    tipo_suscripcion: {type: Boolean, default: false} //true = premium , false = estandar
 })
 
-module.exports = mongoose.model('Usuario', UsuarioSchema)
+module.exports = model('Usuario', UsuarioSchema)

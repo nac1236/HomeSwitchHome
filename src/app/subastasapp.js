@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
-import { Link } from 'react-router-dom'
 import ListaDeSubastas from './components/listaDeSubastas';
-import ActionPropiedad from './propiedadesapp';
+import Navbar from './components/Navbar';
 
 class ActionSubastas extends Component{
   constructor() {
@@ -12,6 +11,7 @@ class ActionSubastas extends Component{
     render() {
         return (
           <div className="pantalla2">
+             <Navbar/>
              <div className="header">
                <header>
                   <div className="titulo2">
