@@ -35,7 +35,7 @@ class FormAgregarPropiedad extends Component {
     this.fetchPropiedades();
   }
   addPropiedades(e) {
-      fetch('/api/propiedades', {
+      fetch('/api/propiedad', {
         method: 'POST',
         body: JSON.stringify(this.state),
         headers: {

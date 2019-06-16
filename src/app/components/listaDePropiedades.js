@@ -12,9 +12,13 @@ class ListaDePropiedades extends Component {
     this.fetchPropiedades()
   }
 
+  componentDidUpdate() {
+    this.fetchPropiedades()
+  }
+
   deletePropiedades(id) {
     if(confirm('¿Deseas eliminar esta propiedad?')) {
-      fetch(`/api/propiedades/${id}`, {
+      fetch(`/api/propiedad/${id}`, {
         method: 'DELETE',
         headers: {
           'Accept': 'application/json',
@@ -43,9 +47,6 @@ class ListaDePropiedades extends Component {
     return (
 
 <div>
-<<<<<<< HEAD
-<table className="striped bordered">
-=======
 <div className="row">
       <div className="col s6 ">
          <label>Filtrar por nombre:</label>
@@ -57,7 +58,6 @@ class ListaDePropiedades extends Component {
       </div>
 </div> 
 <table class="striped bordered">
->>>>>>> bef70f10707a62af18d2ad53a01c26fac1048cc7
   <thead className="grey">
   <tr>
     <th>Nombre</th>

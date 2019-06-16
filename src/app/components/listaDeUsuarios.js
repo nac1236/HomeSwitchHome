@@ -11,6 +11,10 @@ class ListaDeUsuarios extends Component{
     this.fetchUsuarios()
   }
 
+  componentDidUpdate() {
+    this.fetchUsuarios()
+  }
+
   fetchUsuarios() {
     fetch('api/usuarios')
       .then(res => res.json())

@@ -10,7 +10,7 @@ require('./database')
 const app = config(express())
  
 // cron
- require ('./controllers/creadorSemanas')
+ //require ('./controllers/creadorSemanas')
 
 // starting the server
 app.listen(app.get('port'), () => {

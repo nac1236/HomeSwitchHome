@@ -6,7 +6,7 @@ class Login extends React.Component {
     constructor() {
         super()
     }
-    render(){
+    render() {
         return (
             <div>
                 <div>
