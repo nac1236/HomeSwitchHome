@@ -63,5 +63,11 @@ ctrl.remove = async (req,res) => { //modificar para que sea baja logica
     }
 }
 
+ctrl.removeAll = (req,res) => {
+
+    Propiedad.deleteMany({ __v : 0})
+    res.json('Hecho. Borrado de propiedades terminado.')
+}
+
 
 module.exports = ctrl
