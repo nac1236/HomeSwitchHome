@@ -6,7 +6,7 @@ class Home extends Component {
         return(
             <div>
                 <Navbar/>
-                <img src="C:\Users\Usuario\Documents\HomeSwitchHome-develop\logos\Logo-HSH.png" alt="HomeSwitchHome"/>
+                <img src="...\logos\Logo-HSH.png" alt="HomeSwitchHome"/>
             </div>
         )
     }
