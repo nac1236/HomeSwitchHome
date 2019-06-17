@@ -6,6 +6,7 @@ const ctrlSubasta = require('../consultas/subastas')
 const ctrlReserva = require ('../consultas/reservas')
 const ctrlSemana = require('../consultas/semanas')
 const ctrlUsuario = require('../consultas/usuarios')
+const ctrlPuja = require ('../consultas/pujas')
 
 module.exports = app => {
 
@@ -51,6 +52,11 @@ module.exports = app => {
     router.get('/api/usuarios',ctrlUsuario.all)
     router.get('/api/usuario/',ctrlUsuario.index)
     router.post('/api/usuario',ctrlUsuario.create)
+
+    /* PUJAS */
+
+    router.get('/api/pujas', ctrlPuja.all)
+    router.post('/api/puja',ctrlPuja.create)
 
 
     app.use(router)
