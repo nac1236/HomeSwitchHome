@@ -1,7 +1,13 @@
 const Subasta = require ('../models/subastas')
 const Semana = require ('../models/semana')
+const Reserva = require ('../models/reserva')
 
 const ctrlSubasta = {};
+
+ctrlSubasta.all = async (req,res) => {
+    const subastas = await Subasta.find()
+    res.json(subastas)
+}
 
 ctrlSubasta.index =  async (req,res) => {
     const subastas = await Subasta.find();
@@ -12,28 +18,23 @@ ctrlSubasta.create = async (req,res) => {
     const hoy = new Date
     const subasta = new Subasta ({
         monto_minimo: req.body.monto_minimo,
-        puja_id:-1,
-        //reserva_id: req.params.reserva_id,
         fecha_finalizacion: hoy.setDate(hoy.getDate() + 3),
-        semana_reserva: req.body.semana_reserva
+        semana_reserva: req.params.semana_id
     })
-   
-    const subastas = Subasta.findOne({semana_reserva: subasta.semana_reserva})
-    if(!subastas){ 
-        await subasta.save()
-        res.json('Recibido. Subasta creada!')
+    
+    const semana = await Semana.findOne({_id: req.params.semana_id})
+    if (true){ //la condicion deberia ser si la semana esta libre
+        const reservas = await Reserva.findOne({semana_reserva: subasta.semana_reserva, valida : true})
+        if(!reservas){    
+            const subastas = await Subasta.findOne({semana_reserva: subasta.semana_reserva})
+            if(!subastas){ 
+                await subasta.save()
+                res.json('Recibido. Subasta creada!')
+            }
+        }
     }else{
-        // const reserva = Reserva.find(
-    //     Reserva.propiedad_id = subasta.propiedad_id &&
-    //     Reserva.semana == subasta.semana_reserva)
-    if(publicacion.mes_vencimiento > Date.today.month){
-          //  res.json('La reserva no se puede crear porque todavia no se cumplio el plazo de reserva normal.')
-    }else{
-        //res.json('La reserva no se puede crear porque esta reservada para ese semana.')
-        await subasta.save();
-        
+        res.json('La subasta no se puede crear porque esta reservada para ese semana.')
     }
-}
 }
 
 ctrlSubasta.remove = async (req,res) => {
@@ -44,7 +45,5 @@ ctrlSubasta.remove = async (req,res) => {
     .catch(err =>{console.log(err);
         res.status(500).json({error: err})});
 }
-
-
 
 module.exports = ctrlSubasta
