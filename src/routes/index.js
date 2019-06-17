@@ -20,7 +20,7 @@ module.exports = app => {
     /* SUBASTAS */
 
     router.get('/api/propiedad/:propiedad_id/subasta/:subasta_id',ctrlSubasta.index)
-    router.post('/api/propiedad/:propiedad_id/subasta/:reserva_id',ctrlSubasta.create)
+    router.post('/api/propiedad/:propiedad_id/subasta/:reserva_id',ctrlSubasta.create) //cambios en el metodo create, revisar!!
     router.delete('/api/propiedad/:propiedad_id/subasta/:subasta_id',ctrlSubasta.remove)
 
     /* HOTSALES */
@@ -36,6 +36,7 @@ module.exports = app => {
     router.get('/api/reserva/:propiedad_id/reserva',ctrlReserva.index)
     router.post('/api/reserva/:semanaId',ctrlReserva.create)
     router.delete('/api/reserva',ctrlReserva.removeAll)
+    router.get('/api/reserva/:propiedad_id',ctrlReserva.crearSubasta)
 
     /* SEMANAS */
 
