@@ -43,9 +43,6 @@ class ListaDePropiedades extends Component {
     return (
 
 <div>
-<<<<<<< HEAD
-<table className="striped bordered">
-=======
 <div className="row">
       <div className="col s6 ">
          <label>Filtrar por nombre:</label>
@@ -57,7 +54,6 @@ class ListaDePropiedades extends Component {
       </div>
 </div> 
 <table class="striped bordered">
->>>>>>> bef70f10707a62af18d2ad53a01c26fac1048cc7
   <thead className="grey">
   <tr>
     <th>Nombre</th>
