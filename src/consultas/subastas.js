@@ -22,15 +22,19 @@ ctrlSubasta.create = async (req,res) => {
         semana_reserva: req.params.semana_id
     })
     
-    const semana = await Semana.findOne({_id: req.params.semana_id})
-    if (true){ //la condicion deberia ser si la semana esta libre
-        const reservas = await Reserva.findOne({semana_reserva: subasta.semana_reserva, valida : true})
-        if(!reservas){    
+    const semana = await Semana.findOne({_id: subasta.semana_reserva})
+    if (semana.disponible){
+        const reservas = await Reserva.findOne({semana_reserva: subasta.semana_reserva})
+        if(!reservas || !reservas.valida){    
             const subastas = await Subasta.findOne({semana_reserva: subasta.semana_reserva})
             if(!subastas){ 
                 await subasta.save()
                 res.json('Recibido. Subasta creada!')
+            }else{
+                res.json('Ya hay una subasta creada para esa semana. No se puede crear otra!')
             }
+        } else {
+            res.json('Todavia no pasaron los seis meses necesarios')
         }
     }else{
         res.json('La subasta no se puede crear porque esta reservada para ese semana.')
@@ -44,6 +48,11 @@ ctrlSubasta.remove = async (req,res) => {
     .then(result => {result.status(200).json(result);})
     .catch(err =>{console.log(err);
         res.status(500).json({error: err})});
+}
+
+ctrlSubasta.deleteAll = async (req,res) => {
+    await Subasta.deleteMany({__v : 0 })
+    res.json('Se borraron todas las subastas.')
 }
 
 module.exports = ctrlSubasta

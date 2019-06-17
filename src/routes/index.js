@@ -21,8 +21,9 @@ module.exports = app => {
 
     router.get('/api/subastas', ctrlSubasta.all)
     router.get('/api/subasta',ctrlSubasta.index)
-    router.post('/api/subasta/:semana_id',ctrlSubasta.create) //cambios en el metodo create, revisar!!
+    router.post('/api/subasta/:semana_id',ctrlSubasta.create)
     router.delete('/api/propiedad/:propiedad_id/subasta/:subasta_id',ctrlSubasta.remove)
+    router.delete('/api/subastas/',ctrlSubasta.deleteAll)
 
     /* HOTSALES */
 
