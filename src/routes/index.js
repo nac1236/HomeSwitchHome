@@ -7,6 +7,7 @@ const ctrlReserva = require ('../consultas/reservas')
 const ctrlSemana = require('../consultas/semanas')
 const ctrlUsuario = require('../consultas/usuarios')
 const ctrlPuja = require ('../consultas/pujas')
+const ctrlTarjeta = require ('../consultas/tarjetas')
 
 module.exports = app => {
 
@@ -18,7 +19,7 @@ module.exports = app => {
     router.put('/api/propiedad/:propiedad_id',ctrlProp.modify)
     router.put('/api/propiedad/alta/:propiedad_id', ctrlProp.alta)
     router.delete('/api/propiedad/:propiedad_id',ctrlProp.baja)
-    router.delete('/api/propiedades/',ctrlProp.removeAll)
+    router.delete('/api/propiedades/',ctrlProp.removeAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
 
     /* SUBASTAS */
 
@@ -26,7 +27,7 @@ module.exports = app => {
     router.get('/api/subasta',ctrlSubasta.index)
     router.post('/api/subasta/:semana_id',ctrlSubasta.create)
     router.delete('/api/propiedad/:propiedad_id/subasta/:subasta_id',ctrlSubasta.remove)
-    router.delete('/api/subastas/',ctrlSubasta.deleteAll)
+    router.delete('/api/subastas/',ctrlSubasta.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
 
     /* HOTSALES */
 
@@ -40,14 +41,14 @@ module.exports = app => {
     router.get('/api/reservas/',ctrlReserva.all)
     router.get('/api/reserva/:propiedad_id/reserva',ctrlReserva.index)
     router.post('/api/reserva/:semanaId',ctrlReserva.create)
-    router.delete('/api/reserva',ctrlReserva.removeAll)
+    router.delete('/api/reserva',ctrlReserva.removeAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
     router.get('/api/reserva/:propiedad_id',ctrlReserva.crearSubasta)
 
     /* SEMANAS */
 
     router.get('/api/semanas/', ctrlSemana.all)
     router.post('/api/semana/:propiedad_id',ctrlSemana.crear)
-    router.delete('/api/semana/:propiedad_id',ctrlSemana.deleteAll)
+    router.delete('/api/semana/:propiedad_id',ctrlSemana.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
 
     /* USUARIOS */
     
@@ -60,6 +61,11 @@ module.exports = app => {
     router.get('/api/pujas', ctrlPuja.all)
     router.post('/api/puja',ctrlPuja.create)
 
+    /* TARJETAS */
+
+    router.get('/api/tarjetas',ctrlTarjeta.all)
+    router.post('/api/tarjeta/:usuario_id',ctrlTarjeta.create)
+    router.delete('/api/tarjetas',ctrlTarjeta.deleteAll) //sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
 
     app.use(router)
 }
