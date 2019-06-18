@@ -7,7 +7,7 @@ const ctrlImagenes = {};
 
 ctrlImagenes.index = async (req, res) => {
     const image= await Propiedad.findOne({
-        _id: {$regex: req.propiedad._id}
+        _id: {$regex: req.params.propiedad._id}
     })
     console.log(image)
     res.render('image', {image})
@@ -16,7 +16,7 @@ ctrlImagenes.index = async (req, res) => {
 ctrlImagenes.create = (req, res) => {
 
     const saveImage = async () => {
-        const propiedad = await Propiedad.find({$regex: req.params.req.params.nombre})
+        const propiedad = await Propiedad.find({$regex: req.params.nombre})
         
         const imageTempPath = req.file.path
         const ext = path.extname(req.file.originalname).toLowerCase()

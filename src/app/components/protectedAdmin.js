@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {Route, Redirect} from 'react-router-dom'
 import auth from '../auth'
-import Cookies from 'react-cookie'
+import cookie from 'react-cookies'
 
 export const ProtectedAdmin = ({component: Component, ...rest}) => {
     return (
         <Route 
             {...rest} 
             render={props => {
-                if (Cookies.withCookies()){
+                if (cookie.tipo == 'Admin'){
                     return <Component {...props}/>
                 }
                 else {

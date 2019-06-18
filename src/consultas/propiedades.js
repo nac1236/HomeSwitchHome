@@ -36,7 +36,7 @@ ctrl.crearProp = async (req) => {
         descripcion: req.body.descripcion,
         imagenes: [],
         costo: req.body.costo,
-        timestamp: Date.now,
+        timestamp: new Date,
         valida: true
     })
     await propiedad.save(); 

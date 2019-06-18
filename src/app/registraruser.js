@@ -5,15 +5,6 @@ import { Link } from 'react-router-dom'
 class FormAgregarUser extends Component {
   constructor() {
     super();
-    this.state={
-      email:'',
-      nombre:'',
-      apellido:'',
-      contraseña:'',
-      usuarios:[]
-    }
-    this.handleChange = this.handleChange.bind(this);
-    this.addUsuarios = this.addUsuarios.bind(this);
   }
   handleChange(e) {
     const { name, value } = e.target;
@@ -22,19 +13,8 @@ class FormAgregarUser extends Component {
     });
   }
 
-  fetchUsuarios() {
-    fetch('api/usuarios')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ usuarios: data }),
-          console.log(this.state.usuarios)
-      })
-  }
-  componentDidMount() {
-    this.fetchUsuarios();
-  }
   addUsuarios(e) {
-      fetch('/api/usuarios', {
+      fetch('/api/usuario', {
         method: 'POST',
         body: JSON.stringify(this.state),
         headers: {
@@ -46,8 +26,6 @@ class FormAgregarUser extends Component {
         .then(data => {
           console.log(data);
           M.toast({html: 'Usuario guardado'});
-          this.setState({mail:'', nombre: '', apellido: '', contraseña:''});
-          this.fetchUsuarios();
         })
         .catch(err => console.error(err));
         e.preventDefault();
@@ -60,8 +38,8 @@ class FormAgregarUser extends Component {
             <div>
                 <label  style={{ color: 'black' }}>Nombre:<input type="text" id="nombre" name="nombre" className="white" required onChange={this.handleChange}></input></label>
                 <label  style={{ color: 'black' }}>Apellido: <input type="text" id="apellido" name="apellido" className="white" required onChange={this.handleChange}></input></label>
-                <label  style={{ color: 'black' }}>Correo electrónico: <input type="text" id="mail" name="mail" className="white" required onChange={this.handleChange}></input></label>
-                <label  style={{ color: 'black' }}>Contraseña: <input type="password" id="contraseña" name="contraseña" className="white" required onChange={this.handleChange}></input></label>
+                <label  style={{ color: 'black' }}>Correo electrónico: <input type="mail" id="email" name="email" className="white" required onChange={this.handleChange}></input></label>
+                <label  style={{ color: 'black' }}>Contraseña: <input type="password" id="password" name="password" className="white" required onChange={this.handleChange}></input></label>
             </div>
              <div>
                 <button className="indigo accent-1 left" style={{ color: 'black' }} type="submit">

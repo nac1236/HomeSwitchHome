@@ -17,16 +17,38 @@ import Subastauser from './subastauser'
 class App extends Component {
 
     componentWillMount() {
-        this.state =  { 
-            userId: cookie.load('_id') ,
+        this.setState({ 
+            userId: cookie.load('_id'),
             tipo: cookie.load('tipo')
-        }
+        })
     }
 
     render() {
         return( 
             <div>
                 <Switch>
+                    <Route exact path="/" component={Login}></Route>
+                    <Route path="/home" component={Home}></Route>
+                    <Route 
+                        path="/propiedades"
+                        component={ActionPropiedad}>
+                    </Route>
+                    <Route path="/agregar_propiedad" component={FormAgregarPropiedad} />
+                    <Route path="/subastas" component={ActionSubastas}> </Route>
+                    <Route
+                        path="/admin" 
+                        component={AdminForm} >
+                    </Route>
+                    <Route 
+                        path="/usuarios" 
+                        component={Usuarios} > 
+                    </Route>
+                    <Route path="/propiedades_disponibles" component={Premium}> </Route>
+                    <Route path="/perfil" component={Perfil}> </Route>
+                    <Route path="/subastas_disponibles" component={Subastauser}></Route>
+
+
+                    {/**  
                     <Route exact path="/" component={Login}></Route>
                     <Route path="/home" component={Home}></Route>
                     <ProtectedRoute 
@@ -46,6 +68,7 @@ class App extends Component {
                     <ProtectedRoute path="/propiedades_disponibles" component={Premium}> </ProtectedRoute>
                     <ProtectedRoute path="/perfil" component={Perfil}> </ProtectedRoute>
                     <ProtectedRoute path="/subastas_disponibles" component={Subastauser}></ProtectedRoute>
+                    */}
                 </Switch>
          </div>
         )
