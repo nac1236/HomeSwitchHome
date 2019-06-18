@@ -1,6 +1,8 @@
 const Pago = require('../models/pagos')
 const Reserva = require('../models/reserva')
 const ctrlReserva = require('./reservas')
+const Usuario = require('../models/usuarios')
+const Tarjeta = require('../models/tarjetas')
 
 
 const ctrlPago = {}
@@ -18,15 +20,30 @@ ctrlPago.create = async (req,res) => {
     })
 
     const reserva = await Reserva.findById({_id: pago.reserva_id})
+    const tarjeta = await Tarjeta.findOne({usuario_id: pago.usuario_id})
+    const usuario = await Usuario.findById({_id: pago.usuario_id})
     if(reserva.valida){
-        //tambien hay que validar que eñl usuario tenga creditos y dinero disponble para pagar en su tarjeta
-        await pago.save()
-        ctrlReserva.marcarOcupada(pago.reserva_id)
-       //tendria que meter un callback 
-        //para que la reserva se cambie sola y para que la semana se cambie su estado
-        //sola tambien
-        res.json('Pago realizado.')
+        if (tarjeta.credito >= pago.monto){
+            if(usuario.creditos > 0){
+                //tambien hay que validar que eñl usuario tenga creditos y dinero disponble para pagar en su tarjeta
+                cobrar(usuario,tarjeta,pago.monto)
+                await ctrlReserva.marcarOcupada()
+                await pago.save()
+                res.json('Pago realizado.')
+        }else{
+            res.json('No se tienen creditos suficientes.')
+        }
+        }else{
+            res.json('La tarjeta no tiene fondos suficientes.')
+        }
     }
+}
+
+cobrar = async (usuario,tarjeta,monto) => {
+    usuario.creditos = usuario.creditos - 1
+    tarjeta.credito = tarjeta.credito - monto
+    await Tarjeta.findByIdAndUpdate({_id:tarjeta._id}, {credito: tarjeta.credito})
+    await Usuario.findByIdAndUpdate({_id: usuario._id}, {creditos : usuario.creditos})
 }
 
 ctrlPago.deleteAll = async (req,res) => {

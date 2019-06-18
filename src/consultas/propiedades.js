@@ -4,7 +4,12 @@ const Semana = require ('../models/semana')
 
 const ctrl = {};
 
-ctrl.all =  async (req,res) => { //muestra solo las propiedades que son validas
+ctrl.all =  async (req,res) => { //muestra las propiedades validas y las que no estan validas
+    const propiedades = await Propiedad.find();
+    res.json(propiedades)
+};
+
+ctrl.allValidas =  async (req,res) => { //muestra solo las propiedades que son validas
     const propiedades = await Propiedad.find({valida: true});
     res.json(propiedades)
 };
@@ -39,16 +44,14 @@ ctrl.create = async (req,res) => {
     res.json('Recibido')
 }
 
-ctrl.modify =  async (req,res) => {
-    const {nombre , localidad,
-    provincia, descripcion } = req.body;
-    await Propiedad.findOneAndUpdate({_id: Propiedad.id},
-        {   nombre : nombre,
-            localidad: localidad,
-            provincia: provincia,
-            descripcion: descripcion
-        })
-        res.json('Recibido')
+ctrl.modifyNombre =  async (req,res) => {
+    await Propiedad.findOneAndUpdate({_id: req.params.propiedad_id},{nombre : nombre})
+    res.json('Recibido')
+}
+
+ctrl.modifyDescripcion =  async (req,res) => {
+    await Propiedad.findOneAndUpdate({_id: req.params.propiedad_id},{descripcion: req.body.descripcion})
+    res.json('Recibido')
 }
 
 ctrl.baja = async (req,res) => { 
