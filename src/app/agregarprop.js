@@ -5,18 +5,8 @@ import { Link } from 'react-router-dom'
 class FormAgregarPropiedad extends Component {
   constructor() {
     super();
-    this.state={
-      _id:'',
-      nombre:'',
-      localidad:'',
-      provincia:'',
-      descripcion:'',
-      /*costo:'',*/
-      propiedades:[]
-    }
-    this.handleChange = this.handleChange.bind(this);
-    this.addPropiedades = this.addPropiedades.bind(this);
   }
+
   handleChange(e) {
     const { name, value } = e.target;
     this.setState({
@@ -24,17 +14,6 @@ class FormAgregarPropiedad extends Component {
     });
   }
 
-  fetchPropiedades() {
-    fetch('api/propiedades')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ propiedades: data }),
-          console.log(this.state.propiedades)
-      })
-  }
-  componentDidMount() {
-    this.fetchPropiedades();
-  }
   addPropiedades(e) {
       fetch('/api/propiedad', {
         method: 'POST',
@@ -48,8 +27,6 @@ class FormAgregarPropiedad extends Component {
         .then(data => {
           console.log(data);
           M.toast({html: 'Propiedad guardada'});
-          this.setState({_id:'', nombre: '', localidad: '', provincia:'', description: ''/*, costo: ''*/});
-          this.fetchPropiedades();
         })
         .catch(err => console.error(err));
         e.preventDefault();
@@ -66,13 +43,13 @@ class FormAgregarPropiedad extends Component {
         <h5 align="center">Agregar propiedad</h5>
           <div className="container">
             <div className="row">
-            <form method="post" enctrype="multipart/form-data" onSubmit={this.addPropiedades}>
+            <form method="post" enctype="multipart/form-data" onSubmit={this.addPropiedades}>
             <div>
                 <label style={{ color: 'black' }}>Nombre:<input type="text" id="nombre" name="nombre" className="white" required onChange={this.handleChange} autoFocus></input></label>
                 <label  style={{ color: 'black' }}>Localidad: <input type="text" id="localidad" name="localidad" className="white" required onChange={this.handleChange}></input></label>
                 <label  style={{ color: 'black' }}>Provincia: <input type="text" id="provincia" name="provincia" className="white" required onChange={this.handleChange}></input></label>
                 {/*<label  style={{ color: 'black' }}>Precio: <input type="number" id="costo" name="costo" className="white" required onChange={this.handleChange}></input></label>*/}
-                <label  style={{ color: 'black' }}>Descripción: <textarea type="text" id="decripcion" name="descripcion" className="white" required onChange={this.handleChange}></textarea></label>
+                <label  style={{ color: 'black' }}>Descripción: <textarea type="text" id="descripcion" name="descripcion" className="white" required onChange={this.handleChange}></textarea></label>
                 <label  style={{ color: 'black' }}>imagenes: <input type="file" id="imagenes" name="imagenes[]" multiple accept="image/png , .jpg, .jpeg" onChange={this.handleChange}></input></label>
             </div>
             <div className="row">

@@ -31,7 +31,7 @@ class ListaDePropiedades extends Component {
   }
 
   fetchPropiedades() {
-    fetch('api/propiedades')
+    fetch('api/props')
       .then(res => res.json())
       .then(data => {
         this.setState({ propiedades: data }),
