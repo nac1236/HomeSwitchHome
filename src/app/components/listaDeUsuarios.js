@@ -42,20 +42,25 @@ class ListaDeUsuarios extends Component{
           <input type="checkbox"></input>  
       </div>
     </div>
-    <table class="striped bordered">
+    <table className="striped bordered">
     <thead className="grey">
     <tr>
       <th>Nombre</th>
       <th>Apellido</th>
       <th>Email</th>
-      <th>Premium</th>
+      <th>Tipo</th>
     </tr>
     </thead>
     <tbody className="white">
     {
       this.state.usuarios.map(usuarios => {
         return (
-          <tr key={usuarios.id}>   
+          <tr key={usuarios.id}>
+            <td>{usuarios.nombre}</td>
+            <td>{usuarios.apellido}</td>
+            <td>{usuarios.email}</td>
+            <td>{}</td>
+            <td><button className=" indigo accent-1">Premium/Standar</button></td>   
           </tr>
          )
       })

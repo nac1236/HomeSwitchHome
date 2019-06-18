@@ -35,7 +35,7 @@ class FormAgregarPropiedad extends Component {
     this.fetchPropiedades();
   }
   addPropiedades(e) {
-      fetch('/api/propiedades', {
+      fetch('/api/propiedad', {
         method: 'POST',
         body: JSON.stringify(this.state),
         headers: {
@@ -66,24 +66,26 @@ class FormAgregarPropiedad extends Component {
           <div className="container">
             <div className="row">
             <form method="post" enctrype="multipart/form-data" onSubmit={this.addPropiedades}>
-            <div input-field>
+            <div>
                 <label style={{ color: 'black' }}>Nombre:<input type="text" id="nombre" name="nombre" className="white" required onChange={this.handleChange} autoFocus></input></label>
                 <label  style={{ color: 'black' }}>Localidad: <input type="text" id="localidad" name="localidad" className="white" required onChange={this.handleChange}></input></label>
                 <label  style={{ color: 'black' }}>Provincia: <input type="text" id="provincia" name="provincia" className="white" required onChange={this.handleChange}></input></label>
                 <label  style={{ color: 'black' }}>Descripción: <textarea type="text" id="decripcion" name="descripcion" className="white" required onChange={this.handleChange}></textarea></label>
                 <label  style={{ color: 'black' }}>imagenes: <input type="file" id="imagenes" name="imagenes[]" multiple accept="image/png , .jpg, .jpeg" onChange={this.handleChange}></input></label>
             </div>
-             <div>
+            <div className="row">
+             <div className="col s2">
                 <button className="indigo accent-1 left" style={{ color: 'black' }} type="submit">
                   Aceptar
                 </button>
               </div>
-            </form>
+              <div className="col s2">
+               <Link to="/propiedades" className="indigo accent-1 left" style={{ color: 'black' }} type="button">
+                      Volver atrás
+               </Link>
             </div>
-            <div>
-                  <Link to="/propiedades" className="indigo accent-1 left" style={{ color: 'black' }} type="button">
-                  Cancelar
-                  </Link>
+            </div>
+            </form>
             </div>
           </div>
         </div>
