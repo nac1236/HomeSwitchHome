@@ -1,9 +1,16 @@
 const Reserva = require ('../models/reserva')
 const Semana = require('../models/semana') 
 const ctrlSubasta = require('./subastas')
+const ctrlSemana = require('./semanas')
 const Propiedad = require ('../models/propiedades')
 
 const ctrlReserva = {}
+
+ctrlReserva.marcarOcupada = async (reservaId) => {
+    const reserva = await Reserva.findByIdAndUpdate({_id: reservaId}, { valida: false})
+    console.log(reserva._id)
+    ctrlSemana.marcarOcupada(reserva.semana_reserva)
+}
 
 ctrlReserva.all = async (req,res) => {
     const reservas = await Reserva.find()
@@ -42,9 +49,9 @@ ctrlReserva.create = async (req,res) => { //para crear reservas, esto se debe ha
      } //esto es necesario cambiarlo
 }
 
-ctrlReserva.removeAll = (req,res) => {
+ctrlReserva.deleteAll = async (req,res) => {
 
-        Reserva.deleteMany({ __v : 0})
+        await Reserva.deleteMany({ __v : 0})
         res.json('Hecho. Borrado terminado.')
 }
 

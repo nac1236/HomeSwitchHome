@@ -2,6 +2,10 @@ const Semana = require ('../models/semana')
 
 const ctrlSemana = {}
 
+ctrlSemana.marcarOcupada = async (semanaId) => {
+    await Semana.findByIdAndUpdate({_id: semanaId}, {disponible : false})
+}
+
 ctrlSemana.all = async (req,res) => {
     const semanas = await Semana.find()
     res.json(semanas)

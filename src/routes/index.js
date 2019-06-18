@@ -8,6 +8,7 @@ const ctrlSemana = require('../consultas/semanas')
 const ctrlUsuario = require('../consultas/usuarios')
 const ctrlPuja = require ('../consultas/pujas')
 const ctrlTarjeta = require ('../consultas/tarjetas')
+const ctrlPago = require ('../consultas/pagos')
 
 module.exports = app => {
 
@@ -41,7 +42,7 @@ module.exports = app => {
     router.get('/api/reservas/',ctrlReserva.all)
     router.get('/api/reserva/:propiedad_id/reserva',ctrlReserva.index)
     router.post('/api/reserva/:semanaId',ctrlReserva.create)
-    router.delete('/api/reserva',ctrlReserva.removeAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
+    router.delete('/api/reserva',ctrlReserva.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
     router.get('/api/reserva/:propiedad_id',ctrlReserva.crearSubasta)
 
     /* SEMANAS */
@@ -66,6 +67,12 @@ module.exports = app => {
     router.get('/api/tarjetas',ctrlTarjeta.all)
     router.post('/api/tarjeta/:usuario_id',ctrlTarjeta.create)
     router.delete('/api/tarjetas',ctrlTarjeta.deleteAll) //sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
+
+    /* PAGOS */
+
+    router.get('/api/pagos', ctrlPago.all)
+    router.post('/api/pago/:reserva_id',ctrlPago.create)//el id del usuario deberia traermelo desde la session
+    router.delete('/api/pagos/',ctrlPago.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
 
     app.use(router)
 }
