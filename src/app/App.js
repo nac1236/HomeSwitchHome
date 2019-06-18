@@ -9,6 +9,7 @@ import Login from './components/Login'
 import FormAgregarPropiedad from './agregarprop'
 import Premium from './premium'
 import Perfil from './perfil'
+import Subastauser from './subastauser'
 
 class App extends Component {
     render() {
@@ -24,6 +25,7 @@ class App extends Component {
                     <Route path="/usuarios" component={Usuarios}></Route>
                     <Route path="/propiedades_disponibles" component={Premium}></Route>
                     <Route path="/perfil" component={Perfil}></Route>
+                    <Route path="/subastas_disponibles" component={Subastauser}></Route>
                 </Switch>
          </div>
         )

@@ -24,6 +24,20 @@ class Premium extends Component {
             <div>
                <Navbarpremium/>
                <div className="row">
+                   <div className=" col s3">
+                       <p>Nombre</p>
+                       <input type="text"></input>
+                   </div>
+                   <div className=" col s3">
+                       <p>Locolidad</p>
+                       <input type="text"></input>
+                   </div>
+                   <div className=" col s3">
+                       <p>Provinicia</p>
+                       <input type="text"></input>
+                   </div>
+                </div>
+               <div className="row">
                {
                    this.state.propiedades.map(propiedad => {
                     return (
@@ -37,7 +51,15 @@ class Premium extends Component {
                                                <p>Locolidad: {propiedad.localidad}</p>
                                                <p>Provincia: {propiedad.provincia}</p>
                                                <p>Descripcion: {propiedad.descripcion}</p>
-                                               <button>Reservar</button>
+                                               {/*<p>Precio: {propiedad.costo}</p>*/}
+                                               <div className="row">
+                                                   <div className="col s6">
+                                                       <input type="date"></input>
+                                                   </div>
+                                                   <div className="col s2">
+                                                       <button  className=" indigo accent-1 left">Reservar</button>
+                                                   </div>
+                                               </div>
                                            </div>
                                        </div>
                                    </div>
