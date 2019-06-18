@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import { Link } from 'react-router-dom'
+
 
 class FormAgregarUser extends Component {
   constructor() {
@@ -34,7 +33,7 @@ class FormAgregarUser extends Component {
     this.fetchUsuarios();
   }
   addUsuarios(e) {
-      fetch('/api/usuarios', {
+      fetch('/api/usuario', {
         method: 'POST',
         body: JSON.stringify(this.state),
         headers: {
@@ -58,10 +57,12 @@ class FormAgregarUser extends Component {
             <form method="post"  onSubmit={this.addUsuarios}>
               <h4 align="center">Crea tu cuenta</h4>
             <div>
+                <label  style={{ color: 'black' }}>Correo electrónico: <input type="text" id="mail" name="mail" className="white" required onChange={this.handleChange} size="300"></input></label>
                 <label  style={{ color: 'black' }}>Nombre:<input type="text" id="nombre" name="nombre" className="white" required onChange={this.handleChange}></input></label>
                 <label  style={{ color: 'black' }}>Apellido: <input type="text" id="apellido" name="apellido" className="white" required onChange={this.handleChange}></input></label>
-                <label  style={{ color: 'black' }}>Correo electrónico: <input type="text" id="mail" name="mail" className="white" required onChange={this.handleChange}></input></label>
                 <label  style={{ color: 'black' }}>Contraseña: <input type="password" id="contraseña" name="contraseña" className="white" required onChange={this.handleChange}></input></label>
+                <label  style={{ color: 'black' }}>Confirme contraseña: <input type="password" id="otracontraseña" name="otracontraseña" className="white" required onChange={this.handleChange}></input></label>
+                <label  style={{ color: 'black' }}>Numero de tarjeta: <input type="number" id="tarjeta" name="tarjeta" className="white" required onChange={this.handleChange}></input></label>
             </div>
              <div>
                 <button className="indigo accent-1 left" style={{ color: 'black' }} type="submit">

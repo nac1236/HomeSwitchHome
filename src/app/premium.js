@@ -53,13 +53,11 @@ class Premium extends Component {
                                                <p>Descripcion: {propiedad.descripcion}</p>
                                                {/*<p>Precio: {propiedad.costo}</p>*/}
                                                <div className="row">
-                                                   <div className="col s6">
+                                                   <div className="col s7">
                                                        <input type="date"></input>
-                                                   </div>
-                                                   <div className="col s2">
-                                                       <button  className=" indigo accent-1 left">Reservar</button>
-                                                   </div>
+                                                   </div>                                                
                                                </div>
+                                               <button  className=" indigo accent-1 left">Reservar</button>
                                            </div>
                                        </div>
                                    </div>
