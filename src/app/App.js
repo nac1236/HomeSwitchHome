@@ -12,6 +12,7 @@ import Perfil from './perfil'
 import ProtectedRoute from './components/protectedRoute'
 import ProtectedAdmin from './components/protectedAdmin'
 import cookie from 'react-cookies'
+import Subastauser from './subastauser'
 
 class App extends Component {
 
@@ -28,7 +29,10 @@ class App extends Component {
                 <Switch>
                     <Route exact path="/" component={Login}></Route>
                     <Route path="/home" component={Home}></Route>
-                    <ProtectedRoute path="/propiedades" component={ActionPropiedad} />
+                    <ProtectedRoute 
+                        path="/propiedades"
+                        render={props => <ProtectedAdmin {...props} component={ActionPropiedad} />}> 
+                    </ProtectedRoute>
                     <ProtectedRoute path="/agregar_propiedad" component={FormAgregarPropiedad} />
                     <ProtectedRoute path="/subastas" component={ActionSubastas}> </ProtectedRoute>
                     <ProtectedRoute
@@ -41,6 +45,7 @@ class App extends Component {
                     </ProtectedRoute>
                     <ProtectedRoute path="/propiedades_disponibles" component={Premium}> </ProtectedRoute>
                     <ProtectedRoute path="/perfil" component={Perfil}> </ProtectedRoute>
+                    <ProtectedRoute path="/subastas_disponibles" component={Subastauser}></ProtectedRoute>
                 </Switch>
          </div>
         )

@@ -13,7 +13,7 @@ class FormAgregarUser extends Component {
       usuarios:[]
     }
     this.handleChange = this.handleChange.bind(this);
-    this.addUsuarios = this.addPropiedades.bind(this);
+    this.addUsuarios = this.addUsuarios.bind(this);
   }
   handleChange(e) {
     const { name, value } = e.target;
@@ -33,7 +33,7 @@ class FormAgregarUser extends Component {
   componentDidMount() {
     this.fetchUsuarios();
   }
-  addPropiedades(e) {
+  addUsuarios(e) {
       fetch('/api/usuarios', {
         method: 'POST',
         body: JSON.stringify(this.state),
