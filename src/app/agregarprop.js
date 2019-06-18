@@ -73,7 +73,7 @@ class FormAgregarPropiedad extends Component {
                 <label  style={{ color: 'black' }}>Provincia: <input type="text" id="provincia" name="provincia" className="white" required onChange={this.handleChange}></input></label>
                 {/*<label  style={{ color: 'black' }}>Precio: <input type="number" id="costo" name="costo" className="white" required onChange={this.handleChange}></input></label>*/}
                 <label  style={{ color: 'black' }}>Descripción: <textarea type="text" id="decripcion" name="descripcion" className="white" required onChange={this.handleChange}></textarea></label>
-                <label  style={{ color: 'black' }}>imagenes: <input type="file" id="imagenes" name="imagenes[]" multiple accept="image/png , .jpg, .jpeg" onChange={this.handleChange}></input></label>
+                <label  style={{ color: 'black' }}>imagenes: <input type="file" id="imagenes" name="imagenes[]" multiple accept="image/png , .jpg, .jpeg, .gif" onChange={this.handleChange}></input></label>
             </div>
             <div className="row">
              <div className="col s2">
