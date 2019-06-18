@@ -34,6 +34,6 @@
  }
 
  //cuando se termine el tiempo de puja hay que setear la semana como ocupada si alguien la gano o solo dejar invalida la subasta
-
+//recordar analizar si el usuario tiene fondos y creditos suficientes (para reservas y subastas)
 
  module.exports = ctrlPuja

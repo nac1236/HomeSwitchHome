@@ -1,6 +1,7 @@
 const Reserva = require ('../models/reserva')
 const Semana = require('../models/semana') 
 const ctrlSubasta = require('./subastas')
+const Propiedad = require ('../models/propiedades')
 
 const ctrlReserva = {}
 
@@ -20,7 +21,7 @@ ctrlReserva.create = async (req,res) => { //para crear reservas, esto se debe ha
         semana_reserva: req.params.semanaId,
         //El método getMonth() devuelve el mes del objeto Date según la hora local, donde el número cero indica el primer mes del año.
         mes_vencimiento: hoy.setMonth(hoy.getMonth() + 6),
-        costo: req.body.costo //por ahora el costo se manda desde algun formulario
+        //costo: req.body.costo //por ahora el costo se manda desde algun formulario
     }) // a continuacion tengo que cambiar el criterio de busqueda para saber que la semana no esta ocupada
     // Los pasos a seguir son:
     // A )
@@ -29,6 +30,9 @@ ctrlReserva.create = async (req,res) => { //para crear reservas, esto se debe ha
 
     // B ) 
     // 1) Devolver las semanas disponibles y que no tienen ninguna reserva asociada al front y a partor de ahi permitirle al usuario elegir nuevas semanas
+    const semana = await Semana.findById({_id : reserva.semana_reserva})
+    const propiedad = await Propiedad.findById({_id: semana.propiedad_id})
+    reserva.costo = propiedad.costo
     const reservas = await Reserva.findOne({semana_reserva : reserva.semana_reserva})
     if(!reservas){
         await reserva.save()

@@ -16,7 +16,9 @@ module.exports = app => {
     router.get('/api/propiedad/:propiedad_id', ctrlProp.index)
     router.post('/api/propiedad/',ctrlProp.create)
     router.put('/api/propiedad/:propiedad_id',ctrlProp.modify)
-    router.delete('/api/propiedad/:propiedad_id',ctrlProp.remove)
+    router.put('/api/propiedad/alta/:propiedad_id', ctrlProp.alta)
+    router.delete('/api/propiedad/:propiedad_id',ctrlProp.baja)
+    router.delete('/api/propiedades/',ctrlProp.removeAll)
 
     /* SUBASTAS */
 
