@@ -32,5 +32,4 @@ ctrlUsuario.create = async (req,res) => {
 } 
 
 
-
 module.exports = ctrlUsuario

@@ -6,5 +6,6 @@ module.exports = {
     Hotsale: require('./hotsale'),
     Usuario: require('./usuarios'),
     Semana: require('./semana'),
-    Tarjeta: require('./tarjetas')
+    Tarjeta: require('./tarjetas'),
+    Pagos: require('./pagos')
 }
