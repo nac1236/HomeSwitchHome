@@ -24,15 +24,12 @@ class ActionUsuarios extends Component{
                 <ListaDeUsuarios>
                  </ListaDeUsuarios>
                </div>    
-                <div className="terminar subasta">
+                <div>
                    <button className=" indigo accent-1">
-                      Premium/Standar
-                    </button>
-                    <button className=" indigo accent-1">
                       Cambiar Precio
                     </button>
-                  </div>
                 </div>
+            </div>
         )
     }
 }

@@ -10,9 +10,9 @@ class ActionSubastas extends Component{
   }
     render() {
         return (
-          <div className="pantalla2">
+          <div>
              <Navbar/>
-             <div className="header">
+             <div>
                <header>
                   <div className="titulo2">
                      <h5 align="center">Subastas</h5>
@@ -23,12 +23,7 @@ class ActionSubastas extends Component{
                 <ListaDeSubastas>
                  </ListaDeSubastas>
                </div>    
-                <div className="terminar subasta">
-                   <button className=" indigo accent-1">
-                      Terminar subasta
-                    </button>
-                  </div>
-                </div>
+          </div>
         )
     }
 }

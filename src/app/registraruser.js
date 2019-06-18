@@ -57,7 +57,7 @@ class FormAgregarUser extends Component {
       <div> 
             <form method="post"  onSubmit={this.addUsuarios}>
               <h4 align="center">Crea tu cuenta</h4>
-            <div input-field>
+            <div>
                 <label  style={{ color: 'black' }}>Nombre:<input type="text" id="nombre" name="nombre" className="white" required onChange={this.handleChange}></input></label>
                 <label  style={{ color: 'black' }}>Apellido: <input type="text" id="apellido" name="apellido" className="white" required onChange={this.handleChange}></input></label>
                 <label  style={{ color: 'black' }}>Correo electrónico: <input type="text" id="mail" name="mail" className="white" required onChange={this.handleChange}></input></label>
