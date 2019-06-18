@@ -5,5 +5,6 @@ module.exports = {
     Puja: require('./pujas'),
     Hotsale: require('./hotsale'),
     Usuario: require('./usuarios'),
-    Semana: require('./semana')
+    Semana: require('./semana'),
+    Tarjeta: require('./tarjetas')
 }
