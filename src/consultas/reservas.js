@@ -45,6 +45,7 @@ ctrlReserva.create = async (req,res) => { //para crear reservas, esto se debe ha
     // B ) 
     // 1) Devolver las semanas disponibles y que no tienen ninguna reserva asociada al front y a partor de ahi permitirle al usuario elegir nuevas semanas
     const semana = await Semana.findById({_id : reserva.semana_reserva})
+    console.log(semana._id)
     const propiedad = await Propiedad.findById({_id: semana.propiedad_id})
     reserva.costo = propiedad.costo
     const reservas = await Reserva.findOne({semana_reserva : reserva.semana_reserva})
