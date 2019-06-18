@@ -38,7 +38,8 @@ module.exports = app => {
         //console.log(usuario._id)
         if (usuario) {
                 req.session.userId = usuario._id;
-               res.send(req.session); // hasta aca se guarda el id que traje desde la bd
+                req.session.tipo = usuario.tipo
+                res.send(req.session); // hasta aca se guarda el id que traje desde la bd
         }
         //res.redirect('/login')
     })

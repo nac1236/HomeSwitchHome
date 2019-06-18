@@ -1,6 +1,7 @@
 const Propiedad = require ('../models/propiedades')
 const ctrlSemana = require('./semanas') 
 const Semana = require ('../models/semana')
+const Imagenes = require ('../controllers/imagenes')
 
 const ctrl = {};
 
@@ -22,14 +23,20 @@ ctrl.crearMes = async (req) => {
 }
 
 ctrl.crearProp = async (req) => {
+
     const propiedad = new Propiedad ({
         nombre: req.body.nombre,
         localidad:req.body.localidad,
         provincia: req.body.provincia,
         descripcion: req.body.descripcion,
-        costo: req.body.costo
+        imagenes: [],
+        costo: req.body.costo,
+        timestamp: Date.now,
+        valida: true
     })
     await propiedad.save(); 
+    
+    const altaImg = await Imagenes.create(req)
     
 }
 
