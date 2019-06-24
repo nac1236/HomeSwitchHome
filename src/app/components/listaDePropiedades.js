@@ -35,7 +35,7 @@ class ListaDePropiedades extends Component {
   }
 
   fetchPropiedades() {
-    fetch('api/propiedades')
+    fetch('api/props')
       .then(res => res.json())
       .then(data => {
         this.setState({ propiedades: data }),
@@ -45,49 +45,40 @@ class ListaDePropiedades extends Component {
 
   render() {
     return (
-
-<div>
-<div className="row">
-      <div className="col s6 ">
-         <label>Filtrar por nombre:</label>
-         <input type="text" size="15"></input>
-      </div>
-      <div className="col s6">
-         <label>Filtrar por localidad:</label>
-         <input type="text" size="15"></input>
-      </div>
-</div> 
-<table class="striped bordered">
-  <thead className="grey">
-  <tr>
-    <th>Nombre</th>
-    <th>Localidad</th>
-    <th>Provincia</th>
-    <th>Descripcion</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody className="white">
-  {
-    this.state.propiedades.map(propiedad => {
-      return (
-        <tr key={propiedad.id}>
-            <td>{propiedad.nombre}</td>
-            <td>{propiedad.localidad}</td>
-            <td>{propiedad.provincia}</td>
-            <td>{propiedad.descripcion}</td>
-            <td><button className=" indigo accent-1 left"  onClick={() => this.deletePropiedades(propiedad._id)}>Eliminar</button></td>
-            <td><button className=" indigo accent-1 left">Modificar</button></td>
-            <td><button className=" indigo accent-1 left">Subastar</button></td>
-       </tr>
-       )
-    })
-  }
-  </tbody>
-</table>
-</div>
+       <div>
+         <table className="striped bordered">
+           <thead className="grey">
+             <tr>
+               <th>Nombre</th>
+               <th>Localidad</th>
+               <th>Provincia</th>
+               <th>Descripcion</th>
+               <th>Precio</th>
+               <th></th>
+               <th></th>
+               <th></th>
+             </tr>
+           </thead>
+           <tbody className="white">
+           {
+             this.state.propiedades.map(propiedad => {
+                return (
+                 <tr key={propiedad.id}>
+                    <td>{propiedad.nombre}</td>
+                    <td>{propiedad.localidad}</td>
+                    <td>{propiedad.provincia}</td>
+                    <td>{propiedad.descripcion}</td>
+                    <td>{/*propiedad.costo*/}</td>
+                    <td><button className=" indigo accent-1 left"  onClick={() => this.deletePropiedades(propiedad._id)}>Eliminar</button></td>
+                    <td><button className=" indigo accent-1 left">Modificar</button></td>
+                    <td><button className=" indigo accent-1 left">Subastar</button></td>
+                  </tr>
+                 )
+               })
+             }
+             </tbody>
+           </table>
+          </div>
     )
   }
 }

@@ -18,14 +18,25 @@ render() {
             </div>
           </header>
         </div>
+        <div className="row">
+           <div className="col s4 ">
+             <label>Filtrar por nombre:</label>
+             <input type="text" size="15"></input>
+            </div>
+            <div className="col s4">
+              <label>Filtrar por localidad:</label>
+              <input type="text" size="15"></input>
+            </div>
+            <div className="col s4">
+               <Link to="agregar_propiedad" className="indigo accent-1 left" style={{ color: 'black' }} type="button">
+                 Agregar propiedad 
+                </Link>
+            </div>
+         </div>   
         <div className="listarPropiedades">
-          <ListaDePropiedades>
-          </ListaDePropiedades>
+          <ListaDePropiedades/>
         </div>
         <div>
-        <Link to="agregar_propiedad" className="indigo accent-1 left" style={{ color: 'black' }} type="button">
-              Agregar
-        </Link>  
       </div>
       </div>
     )}

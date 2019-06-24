@@ -9,7 +9,9 @@ const PropiedadSchema = new Schema({
     imagenes: [{
         filename: { type: String }
     }],
-    timestamp: { type: Date, default: Date.now }
+    costo: {type: Number},
+    timestamp: { type: Date, default: Date.now },
+    valida: { type:Boolean, default: new Boolean (true)}
 })
 
 module.exports = mongoose.model('Propiedad', PropiedadSchema)

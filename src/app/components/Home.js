@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import Navbar from './Navbar';
+import ListaDePropiedades from './listaDePropiedades';
+
 class Home extends Component {
     render(){
         return(
             <div>
                 <Navbar/>
-                <img src="C:\Users\Usuario\Documents\HomeSwitchHome-develop\logos\Logo-HSH.png" alt="HomeSwitchHome"/>
+                <ListaDePropiedades></ListaDePropiedades>
+                <img src="...\logos\Logo-HSH.png" alt="HomeSwitchHome"/>
             </div>
         )
     }
