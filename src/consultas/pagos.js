@@ -16,16 +16,15 @@ ctrlPago.create = async (req,res) => {
     const pago = new Pago({
         monto: req.body.monto,
         reserva_id: req.params.reserva_id,
-        usuario_id: "5d05320cd0894e0a3bc191ce"//req.params.usuario_id, // el usuario queda fijo hasta que se pueda recuperar el id desde la sesion
+        usuario_id: "5d094664e9e777164b5e1e89"//req.params.usuario_id, // el usuario queda fijo hasta que se pueda recuperar el id desde la sesion
     })
 
     const reserva = await Reserva.findById({_id: pago.reserva_id})
     const tarjeta = await Tarjeta.findOne({usuario_id: pago.usuario_id})
     const usuario = await Usuario.findById({_id: pago.usuario_id})
-    if(reserva.valida){
+    if(reserva.valida === true){
         if (tarjeta.credito >= pago.monto){
             if(usuario.creditos > 0){
-                //tambien hay que validar que eñl usuario tenga creditos y dinero disponble para pagar en su tarjeta
                 cobrar(usuario,tarjeta,pago.monto)
                 await ctrlReserva.marcarOcupada()
                 await pago.save()
