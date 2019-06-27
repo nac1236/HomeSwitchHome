@@ -10,6 +10,10 @@ const ctrlPuja = require ('../consultas/pujas')
 const ctrlTarjeta = require ('../consultas/tarjetas')
 const ctrlPago = require ('../consultas/pagos')
 
+//prueba
+const creaImg = require('../consultas/pruebaImg')
+
+
 module.exports = app => {
 
     /* PROPIEDADES */
@@ -75,6 +79,13 @@ module.exports = app => {
     router.get('/api/pagos', ctrlPago.all)
     router.post('/api/pago/:reserva_id',ctrlPago.create)//el id del usuario deberia traermelo desde la session
     router.delete('/api/pagos/',ctrlPago.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
+
+    /* Imagenes */
+
+    router.get('/api/imagen', creaImg.all)
+    router.get('/api/imagen/:imgId',creaImg.index)
+    router.post('/api/imagen/',creaImg.create)//el id del usuario deberia traermelo desde la session
+    router.delete('/api/imagen/',creaImg.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
 
     app.use(router)
 }
