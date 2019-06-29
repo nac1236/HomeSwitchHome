@@ -6,3 +6,6 @@ var ImagenSchema = new Schema({
 });
 
 module.exports = mongoose.model('Imagen', ImagenSchema)
+
+/* Dos opciones para laburar las imagenes (por ahora) --> multer o npm images
+*/

@@ -30,6 +30,7 @@ var imgPath = '/home/nacho/Descargas/imagen.jpeg';
 
 creaImg.create = async (req,res) => {
     var a = new A;
+    console.log(imgPath)
     a.img.data = fs.readFileSync(imgPath);
     a.img.contentType = 'image/jpeg';
     await a.save()
