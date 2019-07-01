@@ -48,7 +48,7 @@ class Premium extends Component {
                                        <div className="card blue-grey darken-1">
                                            <div className="card-content white-text">
                                                <p>Nombre: {propiedad.nombre}</p>
-                                               <p>Locolidad: {propiedad.localidad}</p>
+                                               <p>Localidad: {propiedad.localidad}</p>
                                                <p>Provincia: {propiedad.provincia}</p>
                                                <p>Descripcion: {propiedad.descripcion}</p>
                                                {/*<p>Precio: {propiedad.costo}</p>*/}
