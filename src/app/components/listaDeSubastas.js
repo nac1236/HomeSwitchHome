@@ -27,8 +27,10 @@ class ListaDeSubastas extends Component{
              <thead className="grey">
                <tr>
                  <th>Nombre de la propiedad</th>
-                 <th>Monto minimo</th>
-                 <th>Fecha de creacion</th>
+                 <th>Localidad de la propiedad</th>
+                 <th>Provincia de la propiedad</th>
+                 <th>Monto actual</th>
+                 <th>Semana de la reserva</th>
                  <th>Fecha de finalziacion</th>
                </tr>
               </thead>
@@ -38,8 +40,10 @@ class ListaDeSubastas extends Component{
                  return (
                    <tr key={subasta.id}>
                      <td>{}</td>
-                     <td>{subasta.monto_minimo}</td>
-                     <td>{subasta.fecha_creacion}</td>
+                     <td>{}</td>
+                     <td>{}</td>
+                     <td>{}</td>
+                     <td>{subasta.fecha_reserva}</td>
                      <td>{subasta.fecha_finalizacion}</td>
                      <td><button className=" indigo accent-1">Terminar subasta</button></td>
                    </tr>
