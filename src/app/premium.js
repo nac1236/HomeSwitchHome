@@ -51,7 +51,7 @@ class Premium extends Component {
                                                <p>Localidad: {propiedad.localidad}</p>
                                                <p>Provincia: {propiedad.provincia}</p>
                                                <p>Descripcion: {propiedad.descripcion}</p>
-                                               {/*<p>Precio: {propiedad.costo}</p>*/}
+                                               <p>Precio: {propiedad.costo}</p>
                                                <div className="row">
                                                    <div className="col s6">
                                                        <input type="date"></input>

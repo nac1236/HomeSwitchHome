@@ -32,6 +32,11 @@ class FormModificarPropiedad extends Component {
               <div className="col s5">
                 <input input type="text" id="nombre" name="nombre" required onChange={this.handleChange} autoFocus></input>
               </div>
+              <div className="col s2">
+                <button className="indigo accent-1 left" style={{ color: 'black' }} type="submit">
+                  <i className="tyni material-icons">edit</i>
+                </button>
+              </div>
             </div>
             <div className="row">
               <div className="col s2">
@@ -39,6 +44,11 @@ class FormModificarPropiedad extends Component {
               </div>
               <div className="col s5">
                 <input input  type="text" id="localidad" name="localidad" required onChange={this.handleChange}></input>
+              </div>
+              <div className="col s2">
+                <button className="indigo accent-1 left" style={{ color: 'black' }} type="submit">
+                  <i className="tyni material-icons">edit</i>
+                </button>
               </div>
             </div>
             <div className="row">
@@ -48,6 +58,11 @@ class FormModificarPropiedad extends Component {
               <div className="col s5">
                 <input type="text" id="provincia" name="provincia" required onChange={this.handleChange}></input>
               </div>
+              <div className="col s2">
+                <button className="indigo accent-1 left" style={{ color: 'black' }} type="submit">
+                  <i className="tyni material-icons">edit</i>
+                </button>
+              </div>
             </div>
             <div className="row">
               <div className="col s2">
@@ -55,6 +70,11 @@ class FormModificarPropiedad extends Component {
               </div>
               <div className="col s5">
                 <input type="number" id="costo" name="costo" required onChange={this.handleChange}></input>
+              </div>
+              <div className="col s2">
+                <button className="indigo accent-1 left" style={{ color: 'black' }} type="submit">
+                  <i className="tyni material-icons">edit</i>
+                </button>
               </div>
             </div>
             <div className="row">
@@ -64,13 +84,13 @@ class FormModificarPropiedad extends Component {
               <div className="col s5">
                  <textarea type="text" id="decripcion" name="descripcion" required onChange={this.handleChange}></textarea>
               </div>
-            </div>
-            <div className="row">
-             <div className="col s2">
+              <div className="col s2">
                 <button className="indigo accent-1 left" style={{ color: 'black' }} type="submit">
-                  Modificar
+                  <i className="tyni material-icons">edit</i>
                 </button>
               </div>
+            </div>
+            <div className="row">
               <div className="col s2">
                <Link to="/propiedades" className="indigo accent-1 left" style={{ color: 'black' }} type="button">
                       Volver atrás
