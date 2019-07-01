@@ -79,10 +79,10 @@ class FormAgregarSubasta extends Component {
               </div>
             </div>
             <div className="row">
-              <div className="col s2">
+              <div className="col s3">
                 <p>Semana de finalizacion:</p>
               </div>
-              <div className="col s5">
+              <div className="col s6">
                 <input type="date" id="fecha_finalizacion" name="fecha_finalizacion" required onChange={this.handleChange}></input>
               </div>
             </div>

@@ -62,7 +62,7 @@ class FormAgregarUser extends Component {
                 <label  style={{ color: 'black' }}>Apellido: <input type="text" id="apellido" name="apellido" className="white" required onChange={this.handleChange}></input></label>
                 <label  style={{ color: 'black' }}>Contraseña: <input type="password" id="contraseña" name="contraseña" className="white" required onChange={this.handleChange}></input></label>
                 <label  style={{ color: 'black' }}>Confirme contraseña: <input type="password" id="otracontraseña" name="otracontraseña" className="white" required onChange={this.handleChange}></input></label>
-                <label  style={{ color: 'black' }}>Numero de tarjeta: <input type="number" id="tarjeta" name="tarjeta" className="white" required onChange={this.handleChange}></input></label>
+                <label  style={{ color: 'black' }}>Numero de tarjeta: <input type="number" id="tarjeta" name="tarjeta" className="white" maxlength="16" required onChange={this.handleChange}></input></label>
             </div>
              <div>
                 <button className="indigo accent-1 left" style={{ color: 'black' }} type="submit">
