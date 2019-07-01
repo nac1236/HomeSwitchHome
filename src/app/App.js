@@ -7,6 +7,8 @@ import Usuarios from './usuarioapp'
 import ActionPropiedad from './propiedadesapp'
 import Login from './components/Login'
 import FormAgregarPropiedad from './agregarprop'
+import FormAgregarSubasta from './subastarprop'
+import FormModificarPropiedad from './modificarprop'
 import Premium from './premium'
 import Perfil from './perfil'
 import Subastauser from './subastauser'
@@ -20,6 +22,8 @@ class App extends Component {
                     <Route path="/home" component={Home}></Route>
                     <Route path="/propiedades" component={ActionPropiedad}></Route>
                     <Route path="/agregar_propiedad" component={FormAgregarPropiedad} ></Route>
+                    <Route path="/modificar_propiedad" component={FormModificarPropiedad} ></Route>
+                    <Route path="/agregar_subasta" component={FormAgregarSubasta} ></Route>
                     <Route path="/subastas" component={ActionSubastas}></Route>
                     <Route path="/admin" component={AdminForm}></Route>
                     <Route path="/usuarios" component={Usuarios}></Route>

@@ -66,7 +66,7 @@ class FormAgregarPropiedad extends Component {
         <h5 align="center">Agregar propiedad</h5>
           <div className="container">
             <div className="row">
-            <form method="post" enctrype="multipart/form-data" onSubmit={this.addPropiedades}>
+            <form method="post" enctype="multipart/form-data" onSubmit={this.addPropiedades}>
             <div>
                 <label style={{ color: 'black' }}>Nombre:<input type="text" id="nombre" name="nombre" className="white" required onChange={this.handleChange} autoFocus></input></label>
                 <label  style={{ color: 'black' }}>Localidad: <input type="text" id="localidad" name="localidad" className="white" required onChange={this.handleChange}></input></label>

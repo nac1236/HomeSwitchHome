@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 class ListaDePropiedades extends Component {
 
   constructor() {
@@ -66,8 +67,8 @@ class ListaDePropiedades extends Component {
                     <td>{propiedad.descripcion}</td>
                     <td>{/*propiedad.costo*/}</td>
                     <td><button className=" indigo accent-1 left"  onClick={() => this.deletePropiedades(propiedad._id)}>Eliminar</button></td>
-                    <td><button className=" indigo accent-1 left">Modificar</button></td>
-                    <td><button className=" indigo accent-1 left">Subastar</button></td>
+                    <td><Link to="/modificar_propiedad" className="indigo accent-1 left" style={{ color: 'black' }} type="button">Modificar</Link></td>
+                    <td><Link to="/modificar_subasta" className="indigo accent-1 left" style={{ color: 'black' }} type="button">Subastar</Link></td>
                   </tr>
                  )
                })
