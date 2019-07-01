@@ -21,7 +21,7 @@ class FormModificarPropiedad extends Component {
             <li className="right hide-on-med-and-down"><Link to="/">Cerrar sesion</Link></li>
           </ul>
         </nav>
-        <h5 align="center">Modificar propiedad</h5>
+        <br></br>
           <div className="container">
             <div className="row">
             <form method="post" enctype="multipart/form-data">
