@@ -112,8 +112,8 @@ module.exports = app => {
 
     /* Imagenes */
 
-    router.get('/api/imagen', creaImg.all)
-    router.get('/api/imagen/:imgId',creaImg.index)
+    router.get('/api/imagen', creaImg.all)// con este metodo recuperas el id de la imagen
+    router.get('/api/imagen/:imgId',creaImg.index)// con este metodo recuperas la url de la imagen (que es lo que necesitas para mostrarla!!)
     router.post('/api/imagen/',upload.single('imagenPrueba'),creaImg.create)//el id del usuario deberia traermelo desde la session
     router.delete('/api/imagen/',creaImg.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
 
