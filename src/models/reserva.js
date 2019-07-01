@@ -2,10 +2,10 @@ const { Schema, model } = require('mongoose')
 const { ObjectId } = Schema
 
 const ReservaSchema = new Schema({
-    propiedad_id: { type: ObjectId },
-    semana_reserva: { type: Number },
-    mes_creacion: { type:Date},
-    mes_vencimiento: {type: Date}
+    semana_reserva: { type: ObjectId },
+    mes_vencimiento: {type: Date},
+    costo: { type: Number },
+    valida: { type: Boolean, default:true }
 })
 
 module.exports = model('Reserva', ReservaSchema)

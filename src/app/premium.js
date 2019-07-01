@@ -29,7 +29,7 @@ class Premium extends Component {
                        <input type="text"></input>
                    </div>
                    <div className=" col s3">
-                       <p>Locolidad</p>
+                       <p>Localidad</p>
                        <input type="text"></input>
                    </div>
                    <div className=" col s3">
@@ -53,11 +53,13 @@ class Premium extends Component {
                                                <p>Descripcion: {propiedad.descripcion}</p>
                                                {/*<p>Precio: {propiedad.costo}</p>*/}
                                                <div className="row">
-                                                   <div className="col s7">
+                                                   <div className="col s6">
                                                        <input type="date"></input>
-                                                   </div>                                                
+                                                   </div>
+                                                   <div className="col s2">
+                                                       <button  className=" indigo accent-1 left">Reservar</button>
+                                                   </div>
                                                </div>
-                                               <button  className=" indigo accent-1 left">Reservar</button>
                                            </div>
                                        </div>
                                    </div>

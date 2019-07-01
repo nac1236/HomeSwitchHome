@@ -12,7 +12,7 @@ ctrlUsuario.index = async (req,res) => {
     res.json(usuario)
 }
 
-ctrlUsuario.create= async (req,res) => {
+ctrlUsuario.create = async (req,res) => {
     const usuario = new Usuario({
         email: req.body.email,
         password: req.body.password,
@@ -24,13 +24,12 @@ ctrlUsuario.create= async (req,res) => {
     })
     const usuarios = await Usuario.findOne({email:usuario.email})
     if(!usuarios){
-        //await usuario.save()
+        await usuario.save() //sacar comentario para guardar usuarios
         res.json('usuario guardado')
     }else{
         res.json('EL usuario no se pudo guardar.')
     }
 } 
-
 
 
 module.exports = ctrlUsuario
