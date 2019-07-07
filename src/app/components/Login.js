@@ -24,7 +24,7 @@ class Login extends React.Component {
                 <div className="container">
                 <div className="row">
                     <div className="col s6 left">
-                        <img src="file://.../logos/HSH-Complete.svg"/>   
+                        <img src='.../logos/HSH-Complete.svg'/>   
                     </div>
                     <div className="col s6 right">
                        <FormAgregarUser/>

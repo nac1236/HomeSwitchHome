@@ -6,6 +6,7 @@ import AdminForm from './components/admin'
 import ActionSubastas from './subastasapp'
 import Usuarios from './usuarioapp'
 import ActionPropiedad from './propiedadesapp'
+import ActionHotsale from './hotsaleapp'
 import Login from './components/Login'
 import FormAgregarPropiedad from './agregarprop'
 import FormAgregarSubasta from './agregarsub'
@@ -42,6 +43,7 @@ class App extends Component {
                     <Route path="/propiedades_disponibles" component={Premium}></Route>
                     <Route path="/perfil" component={Perfil}></Route>
                     <Route path="/subastas_disponibles" component={Subastauser}></Route>
+                    <Route path="/hotsales" component={ActionHotsale}></Route>
                     {/**  
                     <Route exact path="/" component={Login}></Route>
                     <Route path="/home" component={Home}></Route>

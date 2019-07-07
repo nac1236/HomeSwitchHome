@@ -20,8 +20,7 @@ class ActionSubastas extends Component{
                  </header>
                </div>
               <div>
-                <ListaDeSubastas>
-                 </ListaDeSubastas>
+                <ListaDeSubastas/>
                </div>    
           </div>
         )

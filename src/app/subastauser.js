@@ -32,26 +32,27 @@ class Subastauser extends Component {
                                <form>
                                <div className="col s4">
                                    <div className="card">
-                                       <div className="card blue-grey darken-1">
-                                           <div className="card-content white-text">
-                                               {/*<p>Nombre: {subasta._id.nombre}</p>
-                                               <p>Locolidad: {subasta._id.localidad}</p>
-                                               <p>Provincia: {subasta._id.provincia}</p>
-                                               <p>Descripcion: {subasta._id.descripcion}</p>*/}
-                                               <p>Semana de reserva:{subasta.semana_reserva}</p>
-                                               <div className="row">
-                                                   <div className="col s6">
-                                                       <input type="number"></input>
-                                                   </div>
-                                                   <div className="col s2">
-                                                       <button type="submit" className=" indigo accent-1 left">Pujar</button>
-                                                   </div>
-                                               </div>
-                                           </div>
+                                       <div className="card-image waves-effect waves-block waves-light">
+                                           <img className="activator" src="https://www.guatemala.com/fotos/201710/Lugares-turisticos-de-Guatemala-que-debes-conocer-segun-NatGeo-2-885x500.jpg"/>
                                        </div>
-                                   </div>
-                               </div>
-                               </form>
+                                       <div className="card-content ">
+                                             <span className="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
+                                       </div>
+                                       <div className="card-reveal">
+                                           <span className="card-title grey-text text-darken-4">{}<i class="material-icons right">close</i></span>
+                                                   <p>Localidad: {}</p>
+                                                   <p>Provincia: {}</p>
+                                                   <p>Descripcion: {}</p>
+                                                   <p>Monto actual: ${}</p>
+                                                   <p>Semana de reserva: {subasta.semana_reserva.fecha_inicio}</p>
+                                                   <div className="col s6">
+                                                     <input type="text"></input>
+                                                     <button  className=" indigo accent-1 left">Pujar</button>
+                                                  </div>
+                                        </div>                     
+                                    </div>
+                                 </div>
+                                 </form>
                            </div>
                        </div>
                     )

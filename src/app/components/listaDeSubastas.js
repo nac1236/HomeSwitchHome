@@ -4,7 +4,6 @@ class ListaDeSubastas extends Component{
     super();
     this.state = {
       subastas: [],
-      _id: ''
     }
   }
   componentDidMount() {
@@ -31,7 +30,7 @@ class ListaDeSubastas extends Component{
                  <th>Provincia de la propiedad</th>
                  <th>Monto actual</th>
                  <th>Semana de la reserva</th>
-                 <th>Fecha de finalziacion</th>
+                 <th>Fecha de finalización</th>
                </tr>
               </thead>
               <tbody className="white">
@@ -39,13 +38,13 @@ class ListaDeSubastas extends Component{
                this.state.subastas.map(subasta => {
                  return (
                    <tr key={subasta.id}>
-                     <td>{}</td>
-                     <td>{}</td>
-                     <td>{}</td>
-                     <td>{}</td>
-                     <td>{subasta.fecha_reserva}</td>
+                     <td>{/*subasta.semana_reserva.propiedad_id.nombre*/}</td>
+                     <td>{/*subasta.semana_reserva.propiedad_id.localidad*/}</td>
+                     <td>{/*subasta.semana_reserva.propiedad_id.provincia*/}</td>
+                     <td>${subasta.monto_minimo}</td>
+                     <td>{/*subasta.semana_reserva.fecha_inicio*/}</td>
                      <td>{subasta.fecha_finalizacion}</td>
-                     <td><button className=" indigo accent-1">Terminar subasta</button></td>
+                     <td><button className=" indigo accent-1">Finalizar subasta</button></td>
                    </tr>
                  )
                })

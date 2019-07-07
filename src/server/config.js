@@ -16,6 +16,10 @@ module.exports = app => {
 
     // Middlewares
     app.use(morgan('dev'))
+
+//temporal para guardar imagenes
+    app.use(express.static('uploads'))
+
     app.use(express.urlencoded({extended: false}))
     app.use(express.json())
 

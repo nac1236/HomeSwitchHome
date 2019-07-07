@@ -24,16 +24,22 @@ class Premium extends Component {
             <div>
                <Navbarpremium/>
                <div className="row">
-                   <div className=" col s3">
-                       <p>Nombre</p>
-                       <input type="text"></input>
+                   <div className=" col s1">
+                       <p>Nombre:</p>
                    </div>
                    <div className=" col s3">
-                       <p>Localidad</p>
                        <input type="text"></input>
                    </div>
+                   <div className=" col s1">
+                       <p>Localidad:</p>
+                   </div>
                    <div className=" col s3">
-                       <p>Provinicia</p>
+                       <input type="text"></input>
+                   </div>
+                   <div className=" col s1">
+                       <p>Provinicia:</p>
+                   </div>
+                   <div className=" col s3">
                        <input type="text"></input>
                    </div>
                 </div>
@@ -45,23 +51,23 @@ class Premium extends Component {
                            <div key={propiedad.id}>
                                <div className="col s4">
                                    <div className="card">
-                                       <div className="card blue-grey darken-1">
-                                           <div className="card-content white-text">
-                                               <p>Nombre: {propiedad.nombre}</p>
-                                               <p>Localidad: {propiedad.localidad}</p>
-                                               <p>Provincia: {propiedad.provincia}</p>
-                                               <p>Descripcion: {propiedad.descripcion}</p>
-                                               <p>Precio por semana:${propiedad.costo}</p>
-                                               <div className="row">
-                                                   <div className="col s6">
-                                                       <input type="date"></input>
-                                                   </div>
-                                                   <div className="col s2">
-                                                       <button  className=" indigo accent-1 left">Reservar</button>
-                                                   </div>
-                                               </div>
-                                           </div>
+                                       <div className="card-image waves-effect waves-block waves-light">
+                                           <img className="activator" src="https://www.guatemala.com/fotos/201710/Lugares-turisticos-de-Guatemala-que-debes-conocer-segun-NatGeo-2-885x500.jpg"/>
                                        </div>
+                                       <div className="card-content ">
+                                             <span className="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
+                                       </div>
+                                       <div className="card-reveal">
+                                           <span className="card-title grey-text text-darken-4">{propiedad.nombre}<i class="material-icons right">close</i></span>
+                                                   <p>Localidad: {propiedad.localidad}</p>
+                                                   <p>Provincia: {propiedad.provincia}</p>
+                                                   <p>Descripcion: {propiedad.descripcion}</p>
+                                                   <p>Precio por semana: ${propiedad.costo}</p>
+                                                   <div className="col s6">
+                                                     <input type="date" step="7"  min="2019-04-14"></input>
+                                                     <button  className=" indigo accent-1 left">Reservar</button>
+                                                  </div>                
+                                     </div>
                                    </div>
                                </div>
                            </div>

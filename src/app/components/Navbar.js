@@ -22,16 +22,19 @@ class Navbar extends React.Component {
                                 <ul>
                                     <li className="left hide-on-med-and-down"><Link to="/home">HomeSwitchHome</Link></li>
                                     {this.state.isLogged &&
-                                    <li><Link to="/propiedades">Propiedades</Link></li>
+                                     <li><Link to="/propiedades">Propiedades</Link></li>
                                     }
                                     {this.state.isLogged &&
-                                    <li className="left hide-on-med-and-down"><Link to="/subastas">Subastas</Link></li>
-                                   }
+                                     <li className="left hide-on-med-and-down"><Link to="/subastas">Subastas</Link></li>
+                                    }
+                                    {/*this.state.isLogged &&
+                                     <li className="left hide-on-med-and-down"><Link to="/hotsales">Hotsales</Link></li>
+                                    */}
                                      {this.state.isLogged &&
                                     <li className="left hide-on-med-and-down"><Link to="/usuarios">Usuarios</Link></li>
                                     }
-                                       {this.state.isLogged &&
-                                    <li className="right hide-on-med-and-down"><Link to="/">Cerrar sesion</Link></li>
+                                     {this.state.isLogged &&
+                                     <li className="right hide-on-med-and-down"><Link to="/">Cerrar sesion</Link></li>
                                    }
                                 </ul>
                             </div>

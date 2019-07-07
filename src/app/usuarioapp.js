@@ -22,20 +22,24 @@ class ActionUsuarios extends Component{
                 </header>
               </div>
               <div className="row">
-                 <div className="col s4 ">
-                     <label>Filtrar por nombre:</label>
-                     <input type="text" size="15"></input>
+                 <div className="col s1">
+                     <p>Filtrar por nombre:</p>
                  </div>
-                 <div className="col s4">
-                     <label>Filtrar por fecha de registro:</label>
-                     <input type="date" size="15"></input>
+                 <div className="col s3">
+                     <input type="text"></input>
                  </div>
-                 <div className="col s2 ">
-                     <label>Estandar</label>
+                 <div className="col s1s">
+                     <p>Filtrar por fecha de registro:</p>
+                 </div>
+                 <div className="col s3">
+                     <input type="date"></input>
+                 </div>
+                 <div className="col s1 ">
+                     <p>Estandar</p>
                      <input type="checkbox"></input>
                  </div>
-                 <div className="col s2 ">
-                     <label>Premium</label>
+                 <div className="col s1 ">
+                     <p>Premium</p>
                      <input type="checkbox"></input>  
                  </div>
               </div>
@@ -45,8 +49,7 @@ class ActionUsuarios extends Component{
                     </button>
               </div>
               <div>
-                <ListaDeUsuarios>
-                 </ListaDeUsuarios>
+                <ListaDeUsuarios/>
                </div>    
             </div>
         )

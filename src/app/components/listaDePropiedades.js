@@ -30,7 +30,6 @@ class ListaDePropiedades extends Component {
         });
     }
   }
-
   fetchPropiedades() {
     fetch('api/propiedades')
       .then(res => res.json())
@@ -50,7 +49,7 @@ class ListaDePropiedades extends Component {
                <th>Localidad</th>
                <th>Provincia</th>
                <th>Descripcion</th>
-               <th>Precio</th>
+               <th>Precio por semana</th>
                <th></th>
                <th></th>
                <th></th>
@@ -65,7 +64,7 @@ class ListaDePropiedades extends Component {
                     <td>{propiedad.localidad}</td>
                     <td>{propiedad.provincia}</td>
                     <td>{propiedad.descripcion}</td>
-                    <td>{propiedad.costo}</td>
+                    <td>${propiedad.costo}</td>
                     <td><button className=" indigo accent-1 left"  onClick={() => this.deletePropiedades(propiedad._id)}>Eliminar</button></td>
                     <td><Link to="/modificar_propiedad" className="indigo accent-1 left" style={{ color: 'black' }} type="button">Modificar</Link></td>
                     <td><Link to="/agregar_subasta" className="indigo accent-1 left" style={{ color: 'black' }} type="button">Subastar</Link></td>
