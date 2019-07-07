@@ -79,14 +79,6 @@ class FormAgregarSubasta extends Component {
               </div>
             </div>
             <div className="row">
-              <div className="col s3">
-                <p>Semana de finalizacion:</p>
-              </div>
-              <div className="col s6">
-                <input type="date" id="fecha_finalizacion" name="fecha_finalizacion" required onChange={this.handleChange}></input>
-              </div>
-            </div>
-            <div className="row">
              <div className="col s2">
                 <button className="indigo accent-1 left" style={{ color: 'black' }} type="submit">
                   Subastar
