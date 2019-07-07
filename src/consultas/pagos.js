@@ -1,5 +1,6 @@
 const Pago = require('../models/pagos')
 const Reserva = require('../models/reserva')
+const Semana = require ('../models/semana')
 const ctrlReserva = require('./reservas')
 const Usuario = require('../models/usuarios')
 const Tarjeta = require('../models/tarjetas')
@@ -16,7 +17,7 @@ ctrlPago.create = async (req,res) => {
     const pago = new Pago({
         monto: req.body.monto,
         reserva_id: req.params.reserva_id,
-        usuario_id: "5d094664e9e777164b5e1e89"//req.params.usuario_id, // el usuario queda fijo hasta que se pueda recuperar el id desde la sesion
+        usuario_id: "5d20f454ffe84d0e95901ae7"//req.params.usuario_id, // el usuario queda fijo hasta que se pueda recuperar el id desde la sesion
     })
 
     const reserva = await Reserva.findById({_id: pago.reserva_id})
@@ -26,7 +27,8 @@ ctrlPago.create = async (req,res) => {
         if (tarjeta.credito >= pago.monto){
             if(usuario.creditos > 0){
                 cobrar(usuario,tarjeta,pago.monto)
-                await ctrlReserva.marcarOcupada()
+                //await ctrlReserva.marcarOcupada(reserva.id,pago.monto) //voy a agregar los parametros para que afecte a la semana y a la reserva
+                marcarOcupada(reserva.id)
                 await pago.save()
                 res.json('Pago realizado.')
         }else{
@@ -43,6 +45,11 @@ cobrar = async (usuario,tarjeta,monto) => {
     tarjeta.credito = tarjeta.credito - monto
     await Tarjeta.findByIdAndUpdate({_id:tarjeta._id}, {credito: tarjeta.credito})
     await Usuario.findByIdAndUpdate({_id: usuario._id}, {creditos : usuario.creditos})
+}
+
+marcarOcupada = async (reservaId) =>{
+    const reserva = await Reserva.findByIdAndUpdate({_id: reservaId}, { valida: false})
+    await Semana.findByIdAndUpdate({_id: reserva.semana_reserva}, {disponible: false})
 }
 
 ctrlPago.deleteAll = async (req,res) => {

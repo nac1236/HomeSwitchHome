@@ -52,7 +52,7 @@ ctrl.create = async (req,res) => {
 }
 
 ctrl.modifyNombre =  async (req,res) => {
-    await Propiedad.findOneAndUpdate({_id: req.params.propiedad_id},{nombre : nombre})
+    await Propiedad.findOneAndUpdate({_id: req.params.propiedad_id},{nombre : req.body.nombre})
     res.json('Recibido')
 }
 

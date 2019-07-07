@@ -7,10 +7,10 @@ const Propiedad = require ('../models/propiedades')
 const ctrlReserva = {}
 
 ctrlReserva.marcarOcupada = async (reservaId,montoPago) => {
-    const reserva = findOne({_id: reservaId})
+    const reserva = Reserva.findOne({_id: reservaId})
     if(reserva.costo >= montoPago){
         
-        reserva = await Reserva.findByIdAndUpdate({_id: reservaId}, { valida: false})
+        reserva = await Reserva.findByIdAndUpdate({_id: reservaId}, {valida: false})
         console.log(reserva._id)
         ctrlSemana.marcarOcupada(reserva.semana_reserva)
     }

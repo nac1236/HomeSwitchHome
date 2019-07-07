@@ -12,8 +12,8 @@ ctrlSemana.all = async (req,res) => {
 }
 
 ctrlSemana.index = (req,res) => {
-    const semana = Semana.findOne() 
-    res.json(Semana)
+    const semana = Semana.findOne({_id : req.params.semana_id}) 
+    res.json(semana)
 }
 
 ctrlSemana.deleteAll = async (req,res) => {
