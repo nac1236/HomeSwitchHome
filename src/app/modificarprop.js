@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
-class ModificarProp extends Component {
+
+class FormModificarPropiedad extends Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);
@@ -14,53 +15,83 @@ class ModificarProp extends Component {
   }
   render() {
     return (
-      <div className="pantalla formulario">
-        <div className="header">
-          <header>
-            <div className="imagen">
-              <img src="C:\Users\Usuario\Documents.Logo-HSH" alt="HomeSwitchHome" />
-            </div>
-            <div className="titulo">
-              <h1>HomeSwitchHome</h1>
-            </div>
-            <div className="titulo2">
-              <h2>Modificar propiedad</h2>
-            </div>
-          </header>
-        </div>
-        <div className="formulario">
-          <div className="form">
-            <form method="post" enctrype="multipart/form-data">
-              <div className="nombre">
-                <label>Nombre: <input type="text" id="nombre" name="nombre" onChange={this.handleChange}></input></label>
+      <div >
+        <nav className="indigo accent-1">
+          <ul>
+            <li className="right hide-on-med-and-down"><Link to="/">Cerrar sesion</Link></li>
+          </ul>
+        </nav>
+        <br></br>
+          <div className="container">
+            <div className="row">
+            <form method="post" enctype="multipart/form-data">
+            <div className="row">
+              <div className="col s2">
+                <p>Nombre:</p>
               </div>
-              <div className="localidad">
-                <label>Localidad: <input type="text" id="localidad" name="localidad" onChange={this.handleChange}></input></label>
+              <div className="col s5">
+                <input input type="text" id="nombre" name="nombre" required onChange={this.handleChange} autoFocus></input>
               </div>
-              <div className="provincia">
-                <label>Provincia: <input type="text" id="provincia" name="provincia" onChange={this.handleChange}></input></label>
-              </div>
-              <div className="descripcion">
-                <label>Descripción: <textarea type="text" id="decripcion" name="descripcion" onChange={this.handleChange}></textarea></label>
-              </div>
-              <div className="imagenes">
-                <label>imagenes: <textarea type="file" id="imagenes" name="imagenes[]" multiple required accept="image/png , .jpg, .jpeg" onChange={this.handleChange}></textarea></label>
-              </div>
-              <div className="botones">
-                <button type="submit">
-                  Aceptar
+              <div className="col s2">
+                <button className="indigo accent-1 left" style={{ color: 'black' }} type="submit">
+                  <i className="tyni material-icons">edit</i>
                 </button>
-                <div className="cancelar">
-                  <button>
-                    Cancelar
-                  </button>
-                </div>
               </div>
+            </div>
+            <div className="row">
+              <div className="col s2">
+                <p>Localidad:</p>
+              </div>
+              <div className="col s5">
+                <input input  type="text" id="localidad" name="localidad" required onChange={this.handleChange}></input>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col s2">
+                <p>Provincia:</p>
+              </div>
+              <div className="col s5">
+                <input type="text" id="provincia" name="provincia" required onChange={this.handleChange}></input>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col s2">
+                <p>Precio:</p>
+              </div>
+              <div className="col s5">
+                <input type="number" id="costo" name="costo" required onChange={this.handleChange}></input>
+              </div>
+              <div className="col s2">
+                <button className="indigo accent-1 left" style={{ color: 'black' }} type="submit">
+                  <i className="tyni material-icons">edit</i>
+                </button>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col s2">
+                <p>Descripcion:</p>
+              </div>
+              <div className="col s5">
+                 <textarea type="text" id="decripcion" name="descripcion" required onChange={this.handleChange}></textarea>
+              </div>
+              <div className="col s2">
+                <button className="indigo accent-1 left" style={{ color: 'black' }} type="submit">
+                  <i className="tyni material-icons">edit</i>
+                </button>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col s2">
+               <Link to="/propiedades" className="indigo accent-1 left" style={{ color: 'black' }} type="button">
+                      Volver atrás
+               </Link>
+            </div>
+            </div>
             </form>
+            </div>
           </div>
         </div>
-      </div>
     )
   }
 }
-export default ModificarProp;
+export default FormModificarPropiedad;

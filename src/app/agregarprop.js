@@ -11,6 +11,7 @@ class FormAgregarPropiedad extends Component {
       localidad:'',
       provincia:'',
       descripcion:'',
+      costo:'',
       propiedades:[]
     }
     this.handleChange = this.handleChange.bind(this);
@@ -47,7 +48,7 @@ class FormAgregarPropiedad extends Component {
         .then(data => {
           console.log(data);
           M.toast({html: 'Propiedad guardada'});
-          this.setState({nombre: '', localidad: '', provincia:'', description: ''});
+          this.setState({_id:'', nombre: '', localidad: '', provincia:'', description: '', costo: ''});
           this.fetchPropiedades();
         })
         .catch(err => console.error(err));
@@ -70,6 +71,7 @@ class FormAgregarPropiedad extends Component {
                 <label style={{ color: 'black' }}>Nombre:<input type="text" id="nombre" name="nombre" className="white" required onChange={this.handleChange} autoFocus></input></label>
                 <label  style={{ color: 'black' }}>Localidad: <input type="text" id="localidad" name="localidad" className="white" required onChange={this.handleChange}></input></label>
                 <label  style={{ color: 'black' }}>Provincia: <input type="text" id="provincia" name="provincia" className="white" required onChange={this.handleChange}></input></label>
+                <label  style={{ color: 'black' }}>Precio: <input type="number" id="costo" name="costo" className="white" required onChange={this.handleChange}></input></label>
                 <label  style={{ color: 'black' }}>Descripción: <textarea type="text" id="decripcion" name="descripcion" className="white" required onChange={this.handleChange}></textarea></label>
                 <label  style={{ color: 'black' }}>imagenes: <input type="file" id="imagenes" name="imagenes[]" multiple accept="image/png , .jpg, .jpeg" onChange={this.handleChange}></input></label>
             </div>

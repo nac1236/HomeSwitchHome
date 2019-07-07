@@ -24,24 +24,6 @@ class ListaDeUsuarios extends Component{
       return (
   
   <div>
-    <div className="row">
-      <div className="col s4 ">
-         <label>Filtrar por nombre:</label>
-         <input type="text" size="15"></input>
-      </div>
-      <div className="col s4">
-         <label>Filtrar por fecha de registro:</label>
-         <input type="date" size="15"></input>
-      </div>
-      <div className="col s2 ">
-          <label>Estandar</label>
-          <input type="checkbox"></input>
-      </div>
-      <div className="col s2 ">
-          <label>Premium</label>
-          <input type="checkbox"></input>  
-      </div>
-    </div>
     <table className="striped bordered">
     <thead className="grey">
     <tr>
