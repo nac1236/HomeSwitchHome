@@ -31,6 +31,7 @@ class ListaDeSubastas extends Component{
                  <th>Monto actual</th>
                  <th>Semana de la reserva</th>
                  <th>Fecha de finalización</th>
+                 <th></th>
                </tr>
               </thead>
               <tbody className="white">
