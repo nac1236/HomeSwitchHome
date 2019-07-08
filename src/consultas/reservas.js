@@ -29,10 +29,10 @@ ctrlReserva.index = (req,res) => {
     res.json(reserva)
 }
 
-ctrlReserva.create = async (req,res) => { //para crear reservas, esto se debe hacer manualmente (por el momento)
+ctrlReserva.create = async (req) => { //para crear reservas, esto se debe hacer manualmente (por el momento)
     const hoy = new Date
     const reserva = new Reserva({
-        semana_reserva: req.params.semanaId,
+        semana_reserva: req,
         //El método getMonth() devuelve el mes del objeto Date según la hora local, donde el número cero indica el primer mes del año.
         mes_vencimiento: hoy.setMonth(hoy.getMonth() + 6),
         //costo: req.body.costo //por ahora el costo se manda desde algun formulario
@@ -51,9 +51,9 @@ ctrlReserva.create = async (req,res) => { //para crear reservas, esto se debe ha
     const reservas = await Reserva.findOne({semana_reserva : reserva.semana_reserva})
     if(!reservas){
         await reserva.save()
-         res.json('Recibido')
-    }else{
-         res.json('La propiedad ya tiene reservas para esa semana')
+         //res.json('Recibido')
+    //}else{
+        // res.json('La propiedad ya tiene reservas para esa semana')
      } //esto es necesario cambiarlo
 }
 

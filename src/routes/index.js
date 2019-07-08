@@ -111,7 +111,7 @@ module.exports = app => {
     router.post('/api/pago/:reserva_id',ctrlPago.create)//el id del usuario deberia traermelo desde la session
     router.delete('/api/pagos/',ctrlPago.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
 
-    /* Imagenes */
+    /* IMAGENES */
 
     router.get('/api/imagen', creaImg.all)// con este metodo recuperas el id de la imagen
     router.get('/api/imagen/:imgId',creaImg.index)// con este metodo recuperas la url de la imagen (que es lo que necesitas para mostrarla!!)

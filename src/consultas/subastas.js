@@ -10,7 +10,7 @@ ctrlSubasta.all = async (req,res) => {
 }
 
 ctrlSubasta.index =  async (req,res) => {
-    const subastas = await Subasta.find();
+    const subastas = await Subasta.findOne({puja_id: undefined});
     res.json(subastas)
 };
 
@@ -21,12 +21,12 @@ ctrlSubasta.create = async (req,res) => {
         fecha_finalizacion: hoy.setDate(hoy.getDate() + 3),
         semana_reserva: req.params.semana_id
     })
-    
+   
     const semana = await Semana.findOne({_id: subasta.semana_reserva})
     if (semana.disponible){
-        const reservas = await Reserva.findOne({semana_reserva: subasta.semana_reserva})
+        const reservas = await Reserva.findOne({semana_reserva: semana._id})
         if(!reservas || !reservas.valida){    
-            const subastas = await Subasta.findOne({semana_reserva: subasta.semana_reserva})
+            const subastas = await Subasta.findOne({semana_reserva: semana._id})
             if(!subastas){ 
                 await subasta.save()
                 res.json('Recibido. Subasta creada!')

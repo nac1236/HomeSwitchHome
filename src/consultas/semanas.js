@@ -1,4 +1,5 @@
 const Semana = require ('../models/semana')
+const ctrlReserva = require ('./reservas')
 
 const ctrlSemana = {}
 
@@ -31,6 +32,8 @@ ctrlSemana.create = async (p_id,inicio,fin) => {
     const semanas = await Semana.findOne({fecha_inicio: semana.fecha_inicio, propiedad_id: semana.propiedad_id}) 
     if(!semanas){
     await semana.save()
+    const s = await Semana.findOne({fecha_inicio: semana.fecha_inicio, propiedad_id: semana.propiedad_id}) 
+    ctrlReserva.create(s._id)//crea reserva para esas semana
     }
 }
 
