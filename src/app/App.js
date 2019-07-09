@@ -8,6 +8,9 @@ import ActionPropiedad from './propiedadesapp'
 import Login from './components/Login'
 import FormAgregarPropiedad from './agregarprop'
 import Premium from './premium'
+import FormAgregarSubasta from './agregarsub'
+import FormModificarPropiedad from './modificarprop'
+import UserActivo from './UserActivo'
 import Perfil from './perfil'
 import ProtectedRoute from './components/protectedRoute'
 import ProtectedAdmin from './components/protectedAdmin'
@@ -29,22 +32,15 @@ class App extends Component {
                 <Switch>
                     <Route exact path="/" component={Login}></Route>
                     <Route path="/home" component={Home}></Route>
-                    <Route 
-                        path="/propiedades"
-                        component={ActionPropiedad}>
-                    </Route>
-                    <Route path="/agregar_propiedad" component={FormAgregarPropiedad} />
-                    <Route path="/subastas" component={ActionSubastas}> </Route>
-                    <Route
-                        path="/admin" 
-                        component={AdminForm} >
-                    </Route>
-                    <Route 
-                        path="/usuarios" 
-                        component={Usuarios} > 
-                    </Route>
-                    <Route path="/propiedades_disponibles" component={Premium}> </Route>
-                    <Route path="/perfil" component={Perfil}> </Route>
+                    <Route path="/propiedades" component={ActionPropiedad}></Route>
+                    <Route path="/agregar_propiedad" component={FormAgregarPropiedad} ></Route>
+                    <Route path="/modificar_propiedad" component={FormModificarPropiedad} ></Route>
+                    <Route path="/agregar_subasta" component={FormAgregarSubasta} ></Route>
+                    <Route path="/subastas" component={ActionSubastas}></Route>
+                    <Route path="/admin" component={AdminForm}></Route>
+                    <Route path="/usuarios" component={Usuarios}></Route>
+                    <Route path="/propiedades_disponibles" component={UserActivo}></Route>
+                    <Route path="/perfil" component={Perfil}></Route>
                     <Route path="/subastas_disponibles" component={Subastauser}></Route>
 
 
