@@ -12,11 +12,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel": "^6.23.0",
     "errorhandler": "^1.5.1",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
     "express-session": "^1.16.2",
     "fs-extra": "^7.0.1",
+    "loader": "^2.1.1",
     "md5": "^2.2.1",
     "moment": "^2.24.0",
     "mongoose": "^5.5.9",
@@ -30,6 +32,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",

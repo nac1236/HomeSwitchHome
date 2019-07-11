@@ -10,6 +10,40 @@ const ctrlPuja = require ('../consultas/pujas')
 const ctrlTarjeta = require ('../consultas/tarjetas')
 const ctrlPago = require ('../consultas/pagos')
 
+//prueba
+const creaImg = require('../consultas/pruebaImg')
+
+const multer = require('multer')
+//const upload = multer({dest: 'uploads/'}) // para llamar a las funciones de multer
+//la opcion dest va a intentar guardar las imagenes entrantes en la carpeta /uploads
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+      cb(null, './uploads/');
+    },
+    filename: function(req, file, cb) {
+      cb(null, new Date().toISOString() + file.originalname);
+    }
+  });
+
+  const fileFilter = (req, file, cb) => {
+    // reject a file
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+      cb(null, true);
+    } else {
+      cb(null, false);
+    }
+  };
+
+  const upload = multer({
+    storage: storage,
+    limits: {
+      fileSize: 1024 * 1024 * 5
+    },
+    fileFilter: fileFilter
+  });
+
+
 module.exports = app => {
 
     /* PROPIEDADES */
@@ -75,6 +109,13 @@ module.exports = app => {
     router.get('/api/pagos', ctrlPago.all)
     router.post('/api/pago/:reserva_id',ctrlPago.create)//el id del usuario deberia traermelo desde la session
     router.delete('/api/pagos/',ctrlPago.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
+
+    /* Imagenes */
+
+    router.get('/api/imagen', creaImg.all)// con este metodo recuperas el id de la imagen
+    router.get('/api/imagen/:imgId',creaImg.index)// con este metodo recuperas la url de la imagen (que es lo que necesitas para mostrarla!!)
+    router.post('/api/imagen/',upload.single('imagenPrueba'),creaImg.create)//el id del usuario deberia traermelo desde la session
+    router.delete('/api/imagen/',creaImg.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
 
     app.use(router)
 }

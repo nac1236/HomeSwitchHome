@@ -12,10 +12,10 @@ export default class VistaDeListaPropiedades extends Component {
         return (
             <div className="row">
                 {
-                    this.props.propiedades.map(propiedad => {
+                    this.props.propiedades.map((propiedad, index) => {
                         return (
                             <div>
-                                <div key={propiedad._id}>
+                                <div key={index}>
                                     <div className="col s4">
                                         <div className="card">
                                             <div className="card-image waves-effect waves-block waves-light">

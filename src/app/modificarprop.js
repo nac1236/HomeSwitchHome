@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
-class ModificarProp extends Component {
+
+class FormModificarPropiedad extends Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);
@@ -63,4 +64,4 @@ class ModificarProp extends Component {
     )
   }
 }
-export default ModificarProp;
+export default FormModificarPropiedad;

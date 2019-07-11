@@ -5,11 +5,12 @@ import AdminForm from './components/admin'
 import ActionSubastas from './subastasapp'
 import Usuarios from './usuarioapp'
 import ActionPropiedad from './propiedadesapp'
+import ActionHotsale from './hotsaleapp'
 import Login from './components/Login'
 import FormAgregarPropiedad from './agregarprop'
-import Premium from './premium'
 import FormAgregarSubasta from './agregarsub'
 import FormModificarPropiedad from './modificarprop'
+import Premium from './premium'
 import UserActivo from './UserActivo'
 import Perfil from './perfil'
 import ProtectedRoute from './components/protectedRoute'
@@ -20,15 +21,15 @@ import Subastauser from './subastauser'
 class App extends Component {
 
     componentWillMount() {
-        this.setState({ 
+        this.setState({
             userId: cookie.load('_id'),
             tipo: cookie.load('tipo')
         })
     }
 
     render() {
-        return( 
-            <div>
+        return (
+            <>
                 <Switch>
                     <Route exact path="/" component={Login}></Route>
                     <Route path="/home" component={Home}></Route>
@@ -42,8 +43,7 @@ class App extends Component {
                     <Route path="/propiedades_disponibles" component={UserActivo}></Route>
                     <Route path="/perfil" component={Perfil}></Route>
                     <Route path="/subastas_disponibles" component={Subastauser}></Route>
-
-
+                    <Route path="/hotsales" component={ActionHotsale}></Route>
                     {/**  
                     <Route exact path="/" component={Login}></Route>
                     <Route path="/home" component={Home}></Route>
@@ -66,7 +66,7 @@ class App extends Component {
                     <ProtectedRoute path="/subastas_disponibles" component={Subastauser}></ProtectedRoute>
                     */}
                 </Switch>
-         </div>
+            </>
         )
     }
 }
