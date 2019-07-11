@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Navbarpremium from './components/Navbarpremium'
+import Navbaruser from './components/Navbaruser'
 class Subastauser extends Component {
     constructor() {
         super();
@@ -22,7 +22,7 @@ class Subastauser extends Component {
     render(){
         return (
             <div>
-               <Navbarpremium/>
+               <Navbaruser/>
                <div className="row">
                {
                    this.state.subastas.map(subasta => {
@@ -32,24 +32,18 @@ class Subastauser extends Component {
                                <form>
                                <div className="col s4">
                                    <div className="card">
-                                       <div className="card-image waves-effect waves-block waves-light">
-                                           <img className="activator" src="https://www.guatemala.com/fotos/201710/Lugares-turisticos-de-Guatemala-que-debes-conocer-segun-NatGeo-2-885x500.jpg"/>
-                                       </div>
-                                       <div className="card-content ">
-                                             <span className="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
-                                       </div>
-                                       <div className="card-reveal">
-                                           <span className="card-title grey-text text-darken-4">{}<i class="material-icons right">close</i></span>
-                                                   <p>Localidad: {}</p>
-                                                   <p>Provincia: {}</p>
-                                                   <p>Descripcion: {}</p>
-                                                   <p>Monto actual: ${}</p>
-                                                   <p>Semana de reserva: {subasta.semana_reserva.fecha_inicio}</p>
-                                                   <div className="col s6">
-                                                     <input type="text"></input>
-                                                     <button  className=" indigo accent-1 left">Pujar</button>
-                                                  </div>
-                                        </div>                     
+                                      <p>Semana de reserva: {subasta.semana_reserva.fecha_inicio}</p>
+                                      <p>Mayor postor: {}</p>
+                                      <p>Monto actual: ${}</p>
+                                      <p>Para pujar ingrese un monto más alto que el actual</p>
+                                      <div className="row">
+                                        <div className="col s3">
+                                           <input type="text"></input>
+                                        </div>
+                                        <div className="col s3">
+                                          <button  className=" indigo accent-1 left">Pujar</button>
+                                        </div>
+                                      </div>
                                     </div>
                                  </div>
                                  </form>

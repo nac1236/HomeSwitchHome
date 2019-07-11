@@ -11,9 +11,10 @@ import Login from './components/Login'
 import FormAgregarPropiedad from './agregarprop'
 import FormAgregarSubasta from './agregarsub'
 import FormModificarPropiedad from './modificarprop'
-import Premium from './premium'
+import UserActivo from './UserActivo'
 import Perfil from './perfil'
 import Subastauser from './subastauser'
+import Userreserva from'./userreserva'
 import ProtectedRoute from './components/protectedRoute'
 import ProtectedAdmin from './components/protectedAdmin'
 import cookie from 'react-cookies'
@@ -40,10 +41,11 @@ class App extends Component {
                     <Route path="/subastas" component={ActionSubastas}></Route>
                     <Route path="/admin" component={AdminForm}></Route>
                     <Route path="/usuarios" component={Usuarios}></Route>
-                    <Route path="/propiedades_disponibles" component={Premium}></Route>
+                    <Route path="/propiedades_disponibles" component={UserActivo}></Route>
                     <Route path="/perfil" component={Perfil}></Route>
                     <Route path="/subastas_disponibles" component={Subastauser}></Route>
                     <Route path="/hotsales" component={ActionHotsale}></Route>
+                    <Route path="/reservas_disponibles" component={ActionHotsale}></Route>
                     {/**  
                     <Route exact path="/" component={Login}></Route>
                     <Route path="/home" component={Home}></Route>
