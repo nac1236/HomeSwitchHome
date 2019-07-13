@@ -2,8 +2,6 @@ const Propiedad = require ('../models/propiedades')
 const ctrlSemana = require('./semanas') 
 const Semana = require ('../models/semana')
 const Imagenes = require ('../controllers/imagenes')
-const ctrlReserva = require ('./reservas')
-const mongoose = require ('mongoose')
 
 const ctrl = {};
 
@@ -60,6 +58,11 @@ ctrl.modifyNombre =  async (req,res) => {
 
 ctrl.modifyDescripcion =  async (req,res) => {
     await Propiedad.findOneAndUpdate({_id: req.params.propiedad_id},{descripcion: req.body.descripcion})
+    res.json('Recibido')
+}
+
+ctrl.modifyDescripcion =  async (req,res) => {
+    await Propiedad.findOneAndUpdate({_id: req.params.propiedad_id},{costo : req.body.costo})
     res.json('Recibido')
 }
 

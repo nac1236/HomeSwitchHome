@@ -79,7 +79,7 @@ module.exports = app => {
     router.get('/api/reserva/:propiedad_id/reserva',ctrlReserva.index)
     router.post('/api/reserva/:semanaId',ctrlReserva.create)
     router.delete('/api/reserva',ctrlReserva.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
-    router.get('/api/reserva/:propiedad_id',ctrlReserva.crearSubasta)
+    router.post('/api/reserva/:propiedad_id',ctrlReserva.crearSubasta)
 
     /* SEMANAS */
 

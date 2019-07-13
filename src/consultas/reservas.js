@@ -63,23 +63,25 @@ ctrlReserva.deleteAll = async (req,res) => {
         res.json('Hecho. Borrado terminado.')
 }
 
-ctrlReserva.crearSubasta = async (req,res) =>{
+ctrlReserva.crearSubasta = async (req,res) =>{ //tal vez se pueda cambiar cuando este terminado para poder hacer que le llegue directamente la información de la reserva a la que se le quiere dar de baja
     const semana = await Semana.findOne({propiedad_id: req.params.propiedad_id, fecha_inicio : req.body.fecha_inicio})
-    //console.log(semana._id)
-    if(semana.disponible){
-        const reserva = await Reserva.findOne({semana_reserva: semana._id})
-        //console.log(reserva._id)
-        if(reserva.mes_vencimiento >=  new Date){ //esto quiere decir que si se vencio la reserva puedo crear una subasta
-                //entonces poner reserva.valida a false //deberia existir una funcion que valide si todavia es valida o no. Eso podria agregarse en el cron
-                //y crear subasta
-            await Reserva.findOneAndUpdate(reserva._id, {
-                valida : false
-            })
-
-        }
-    }else{
-            //la semana ya fue comprada por lo que no debe hacerse mas respecto de lo alquileres
-        }
+    console.log(semana._id)
+    // if(semana.disponible){
+    //     const reserva = await Reserva.findOne({semana_reserva: semana._id})
+    //     // //console.log(reserva._id)
+    //     // if(reserva.mes_vencimiento >=  new Date){ //esto quiere decir que si se vencio la reserva puedo crear una subasta
+    //     //         //entonces poner reserva.valida a false //deberia existir una funcion que valide si todavia es valida o no. Eso podria agregarse en el cron
+    //     //         //y crear subasta
+    //     //     await Reserva.findOneAndUpdate(reserva._id, {
+    //     //         valida : false
+    //     //     })
+    //     //     //const p = await Propiedad.findOne(req.params.propiedad_id)
+    //     //     ctrlSubasta.create(reserva.semana_reserva, req.costo)
+    //     //     res.json("Termino la reserva. Subasta creada con exito!")
+    //     // }
+    // }else{
+    //         //la semana ya fue comprada por lo que no debe hacerse mas respecto de lo alquileres
+    //     }
 }
 
 module.exports = ctrlReserva
