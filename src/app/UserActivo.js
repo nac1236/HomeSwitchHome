@@ -3,12 +3,10 @@ import { Route, Switch } from 'react-router-dom'
 import Navbaruser from './components/Navbaruser'
 import VistaDeListaPropiedades from './components/UsuarioListaDePropiedades'
 import DetallePropiedad from './components/DetallePropiedad'
-import Userreserva from './userreserva';
-import Subastauser from './subastauser';
 
 class UserActivo extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             propiedades: [],
             _id: ''
@@ -18,7 +16,7 @@ class UserActivo extends Component {
         this.fetchPropiedades()
     }
     fetchPropiedades() {
-        fetch('api/propiedades')
+        fetch('api/props')
             .then(res => res.json())
             .then(data => {
                 this.setState({ propiedades: data }),

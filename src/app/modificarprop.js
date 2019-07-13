@@ -3,8 +3,12 @@ import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
 
 class FormModificarPropiedad extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props)
+    console.log(props)
+    this.state = {
+        propiedad: {}
+    }
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange(e) {
@@ -13,6 +17,83 @@ class FormModificarPropiedad extends Component {
       [name]: value
     });
   }
+  componentDidMount(){
+    fetch(`/api/propiedad/${this.props.match.params.propId}`)
+        .then(res => res.json())
+        .then(data => {
+            this.setState({propiedad: data})
+        })
+        console.log(this.state)
+}
+  editNombre(id) {
+    fetch(`/api/propiedad/nombre/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        nombre: this.state.nombre,
+      }),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        window.M.toast({html: 'Propiedad actualizada'});
+        this.setState({ nombre: ''});
+        fetch('api/props')
+            .then(res => res.json())
+            .then(data => {
+                this.setState({ propiedades: data }),
+                    console.log(this.state.propiedades)
+            })
+      });  
+}
+editDescripcion(id) {
+  fetch(`/api/propiedad/desc/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      descripcion: this.state.descripcion,
+    }),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(res => res.json())
+    .then(data => {
+      window.M.toast({html: 'Propiedad actualizada'});
+      this.setState({ descripcion: ''});
+      fetch('api/props')
+          .then(res => res.json())
+          .then(data => {
+              this.setState({ propiedades: data }),
+                  console.log(this.state.propiedades)
+          })
+    });
+}
+editCosto(id) {
+  fetch(`/api/propiedad/costo/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      costo: this.state.costo,
+    }),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(res => res.json())
+    .then(data => {
+      window.M.toast({html: 'Propiedad actualizada'});
+      this.setState({ costo: ''});
+      fetch('api/props')
+          .then(res => res.json())
+          .then(data => {
+              this.setState({ propiedades: data }),
+                  console.log(this.state.propiedades)
+          })
+    });
+}
   render() {
     return (
       <div >
@@ -26,24 +107,26 @@ class FormModificarPropiedad extends Component {
             <div className="row">
             <form method="post" enctype="multipart/form-data">
             <div className="row">
+              <form>
               <div className="col s2">
                 <p>Nombre:</p>
               </div>
               <div className="col s5">
-                <input input type="text" id="nombre" name="nombre" required onChange={this.handleChange} autoFocus></input>
+                <input input type="text" id="nombre" name="nombre" defaultValue={this.state.propiedad.nombre} onChange={this.handleChange} autoFocus></input>
               </div>
               <div className="col s2">
-                <button className="indigo accent-1 left" style={{ color: 'black' }} type="submit">
+                <button className="indigo accent-1 left" style={{ color: 'black' }} onClick={() => this.editNombre(this.state.propiedad._id)}>
                   <i className="tyni material-icons">edit</i>
                 </button>
               </div>
+              </form>
             </div>
             <div className="row">
               <div className="col s2">
                 <p>Localidad:</p>
               </div>
               <div className="col s5">
-                <input input  type="text" id="localidad" name="localidad" required onChange={this.handleChange}></input>
+                <p>{this.state.propiedad.localidad}</p>
               </div>
             </div>
             <div className="row">
@@ -51,7 +134,7 @@ class FormModificarPropiedad extends Component {
                 <p>Provincia:</p>
               </div>
               <div className="col s5">
-                <input type="text" id="provincia" name="provincia" required onChange={this.handleChange}></input>
+                <p>{this.state.propiedad.provincia}</p>
               </div>
             </div>
             <div className="row">
@@ -59,10 +142,10 @@ class FormModificarPropiedad extends Component {
                 <p>Precio:</p>
               </div>
               <div className="col s5">
-                <input type="number" id="costo" name="costo" required onChange={this.handleChange}></input>
+                <input type="number" id="costo" name="costo" defaultValue={this.state.propiedad.costo} onChange={this.handleChange}></input>
               </div>
               <div className="col s2">
-                <button className="indigo accent-1 left" style={{ color: 'black' }} type="submit">
+                <button className="indigo accent-1 left" style={{ color: 'black' }} onClick={() => this.editCosto(this.state.propiedad._id)}>
                   <i className="tyni material-icons">edit</i>
                 </button>
               </div>
@@ -72,10 +155,10 @@ class FormModificarPropiedad extends Component {
                 <p>Descripcion:</p>
               </div>
               <div className="col s5">
-                 <textarea type="text" id="decripcion" name="descripcion" required onChange={this.handleChange}></textarea>
+                 <input type="text" id="decripcion" name="descripcion"  onChange={this.handleChange} defaultValue={this.state.propiedad.descripcion}></input>
               </div>
               <div className="col s2">
-                <button className="indigo accent-1 left" style={{ color: 'black' }} type="submit">
+                <button className="indigo accent-1 left" style={{ color: 'black' }} onClick={() => this.editDescripcion(this.state.propiedad._id)}>
                   <i className="tyni material-icons">edit</i>
                 </button>
               </div>

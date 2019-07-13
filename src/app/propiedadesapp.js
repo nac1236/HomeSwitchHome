@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import ListaDePropiedades from './components/listaDePropiedades'
 import { Link } from 'react-router-dom'
 import Navbar from './components/Navbar';
 class ActionPropiedad extends Component {
@@ -37,11 +36,6 @@ render() {
                </Link>
             </div>
          </div>   
-        <div>
-          <ListaDePropiedades/>
-        </div>
-        <div>
-      </div>
       </div>
     )}
 }

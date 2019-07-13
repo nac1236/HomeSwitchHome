@@ -5,39 +5,34 @@ import Home from './components/Home'
 import AdminForm from './components/admin'
 import ActionSubastas from './subastasapp'
 import Usuarios from './usuarioapp'
-import ActionPropiedad from './propiedadesapp'
+import Adminprop from './Adminprop'
 import ActionHotsale from './hotsaleapp'
 import Login from './components/Login'
 import FormAgregarPropiedad from './agregarprop'
-import FormAgregarSubasta from './agregarsub'
-import FormModificarPropiedad from './modificarprop'
 import UserActivo from './UserActivo'
 import Perfil from './perfil'
-import Subastauser from './subastauser'
-import Userreserva from'./userreserva'
 import ProtectedRoute from './components/protectedRoute'
 import ProtectedAdmin from './components/protectedAdmin'
 import cookie from 'react-cookies'
+import Subastauser from './subastauser'
 
 class App extends Component {
 
     componentWillMount() {
-        this.setState({ 
+        this.setState({
             userId: cookie.load('_id'),
             tipo: cookie.load('tipo')
         })
     }
 
     render() {
-        return( 
-            <div>
+        return (
+            <>
                 <Switch>
                     <Route exact path="/" component={Login}></Route>
                     <Route path="/home" component={Home}></Route>
-                    <Route path="/propiedades" component={ActionPropiedad}></Route>
+                    <Route path="/propiedades" component={Adminprop}></Route>
                     <Route path="/agregar_propiedad" component={FormAgregarPropiedad} ></Route>
-                    <Route path="/modificar_propiedad" component={FormModificarPropiedad} ></Route>
-                    <Route path="/agregar_subasta" component={FormAgregarSubasta} ></Route>
                     <Route path="/subastas" component={ActionSubastas}></Route>
                     <Route path="/admin" component={AdminForm}></Route>
                     <Route path="/usuarios" component={Usuarios}></Route>
@@ -45,7 +40,6 @@ class App extends Component {
                     <Route path="/perfil" component={Perfil}></Route>
                     <Route path="/subastas_disponibles" component={Subastauser}></Route>
                     <Route path="/hotsales" component={ActionHotsale}></Route>
-                    <Route path="/reservas_disponibles" component={ActionHotsale}></Route>
                     {/**  
                     <Route exact path="/" component={Login}></Route>
                     <Route path="/home" component={Home}></Route>
@@ -68,7 +62,7 @@ class App extends Component {
                     <ProtectedRoute path="/subastas_disponibles" component={Subastauser}></ProtectedRoute>
                     */}
                 </Switch>
-         </div>
+            </>
         )
     }
 }

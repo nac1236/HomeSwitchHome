@@ -1,20 +1,15 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-class ListaDePropiedades extends Component {
-
-  constructor() {
-    super();
-    this.state = {
-      propiedades: [],
-      _id: ''
-    }
+import { Link } from 'react-router-dom' 
+import ActionPropiedad from '../propiedadesapp'
+import FormAgregarSubasta from '../agregarsub'
+export default class ListaDePropiedades extends Component {
+  constructor(props) {
+      super(props)
+      console.log(this.props)
+      this.deletePropiedades = this.deletePropiedades.bind(this)
   }
-  componentDidMount() {
-    this.fetchPropiedades()
-  }
-
   deletePropiedades(id) {
-    if(confirm('¿Deseas eliminar esta propiedad?')) {
+    if (confirm('¿Deseas eliminar esta propiedad?')) {
       fetch(`/api/propiedad/${id}`, {
         method: 'DELETE',
         headers: {
@@ -25,57 +20,54 @@ class ListaDePropiedades extends Component {
         .then(res => res.json())
         .then(data => {
           console.log(data);
-          M.toast({html: 'Propiedad eliminada'});
-          this.fetchPropiedades();
+          M.toast({ html: 'Propiedad eliminada' });
+          this.setState({ seActualizo: true })
+          fetch('api/props')
+            .then(res => res.json())
+            .then(data => {
+                this.setState({ propiedades: data }),
+                    console.log(this.state.propiedades)
+            })
         });
-    }
+    }   
   }
-  fetchPropiedades() {
-    fetch('api/propiedades')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ propiedades: data }),
-          console.log(this.state.propiedades)
-      })
-  }
-
   render() {
     return (
-       <div>
-         <table className="striped bordered">
-           <thead className="grey">
-             <tr>
-               <th>Nombre</th>
-               <th>Localidad</th>
-               <th>Provincia</th>
-               <th>Descripcion</th>
-               <th>Precio por semana</th>
-               <th></th>
-               <th></th>
-               <th></th>
-             </tr>
-           </thead>
-           <tbody className="white">
-           {
-             this.state.propiedades.map(propiedad => {
+      <div>
+        <ActionPropiedad/>
+        <table className="striped bordered">
+          <thead className="grey">
+            <tr>
+              <th>Nombre</th>
+              <th>Localidad</th>
+              <th>Provincia</th>
+              <th>Descripcion</th>
+              <th>Precio por semana</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody className="white">
+            {
+             this.props.propiedades.map(propiedad => {
                 return (
-                 <tr key={propiedad.id}>
+                  <tr key={propiedad.id}>
                     <td>{propiedad.nombre}</td>
                     <td>{propiedad.localidad}</td>
                     <td>{propiedad.provincia}</td>
                     <td>{propiedad.descripcion}</td>
                     <td>${propiedad.costo}</td>
-                    <td><button className=" indigo accent-1 left"  onClick={() => this.deletePropiedades(propiedad._id)}>Eliminar</button></td>
-                    <td><Link to="/modificar_propiedad" className="indigo accent-1 left" style={{ color: 'black' }} type="button">Modificar</Link></td>
-                    <td><Link to="/agregar_subasta" className="indigo accent-1 left" style={{ color: 'black' }} type="button">Subastar</Link></td>
+                    <td><button className=" indigo accent-1 left" onClick={() => this.deletePropiedades(propiedad._id)}>Eliminar</button></td>
+                    <td><Link  to={`${this.props.match.path}/${propiedad._id}`} className="indigo accent-1 left" style={{ color: 'black' }} type="button">Modificar</Link></td>
+                    <td><Link  to={`${this.props.match.path}_subasta/${propiedad._id}`} className="indigo accent-1 left" style={{ color: 'black' }} type="button">Subastar</Link></td>
                   </tr>
-                 )
-               })
-             }
-             </tbody>
-           </table>
-          </div>
+                )
+              })
+            }
+          </tbody>
+        </table>
+      </div>
     )
   }
 }
-export default ListaDePropiedades
