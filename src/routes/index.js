@@ -46,8 +46,6 @@ const storage = multer.diskStorage({
   });
 
 
-
-
 module.exports = app => {
 
     /* PROPIEDADES */
@@ -70,6 +68,7 @@ module.exports = app => {
     router.post('/api/subasta/:semana_id',ctrlSubasta.create)
     router.delete('/api/propiedad/:propiedad_id/subasta/:subasta_id',ctrlSubasta.remove)
     router.delete('/api/subastas/',ctrlSubasta.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
+    router.get('/api/subatas/:propiedad_id', ctrlSubasta.dePropiedad)
 
     /* HOTSALES */
 
@@ -88,7 +87,9 @@ module.exports = app => {
 
     /* SEMANAS */
 
+    router.get('/api/semana/:semana_id',ctrlSemana.index)
     router.get('/api/semanas/', ctrlSemana.all)
+    router.get('/api/semanas/:propiedad_id', ctrlSemana.allPropiedad)
     router.post('/api/semana/:propiedad_id',ctrlSemana.crear)
     router.delete('/api/semana/:propiedad_id',ctrlSemana.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
 
@@ -98,6 +99,8 @@ module.exports = app => {
     router.get('/api/usuario/',ctrlUsuario.index)
     router.post('/api/usuario',ctrlUsuario.create)
     router.post('/api/authenticate', ctrlUsuario.authenticate)
+    router.put('/api/altausuario/:usuario_id',ctrlUsuario.altaPremium)
+    router.put('/api/bajausuario/:usuario_id',ctrlUsuario.bajaPremium)
 
     /* PUJAS */
 
@@ -116,7 +119,7 @@ module.exports = app => {
     router.post('/api/pago/:reserva_id',ctrlPago.create)//el id del usuario deberia traermelo desde la session
     router.delete('/api/pagos/',ctrlPago.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
 
-    /* Imagenes */
+    /* IMAGENES */
 
     router.get('/api/imagen', creaImg.all)// con este metodo recuperas el id de la imagen
     router.get('/api/imagen/:imgId',creaImg.index)// con este metodo recuperas la url de la imagen (que es lo que necesitas para mostrarla!!)

@@ -19,7 +19,7 @@ ctrlUsuario.create = async (req, res) => {
         password: req.body.password,
         nombre: req.body.nombre,
         apellido: req.body.apellido,
-        creditos: 2,
+        creditos: 20,
         tipo: req.body.tipo,
         tipo_suscripcion: req.body.tipo_suscripcion
     })
@@ -30,7 +30,6 @@ ctrlUsuario.create = async (req, res) => {
     } else {
         res.json('EL usuario no se pudo guardar.')
     }
-<<<<<<< HEAD
 }
 
 ctrlUsuario.authenticate = function (req, res) {
@@ -71,8 +70,8 @@ ctrlUsuario.authenticate = function (req, res) {
             });
         }
     });
-=======
-} 
+}
+
 ctrlUsuario.altaPremium = async (req,res) => {
     Usuario.findByIdAndUpdate({_id: req.params.usuario_id},{tipo_suscripcion : true})
     res.json('Recibido')
@@ -81,8 +80,6 @@ ctrlUsuario.altaPremium = async (req,res) => {
 ctrlUsuario.bajaPremium = async (req,res) => {
     Usuario.findByIdAndUpdate({_id: req.params.usuario_id},{tipo_suscripcion : false})
     res.json('Recibido')
->>>>>>> develop-eze
 }
-
 
 module.exports = ctrlUsuario

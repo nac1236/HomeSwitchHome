@@ -14,11 +14,7 @@ import UserActivo from './UserActivo'
 import Perfil from './perfil'
 import cookie from 'react-cookies'
 import Subastauser from './subastauser'
-<<<<<<< HEAD
-import TokenDeAcceso from './TokenDeAcceso';
-=======
-import FormAgregarSubasta from './agregarsub'
->>>>>>> develop-eze
+import TokenDeAcceso from './TokenDeAcceso'
 
 class App extends Component {
 
@@ -44,11 +40,8 @@ class App extends Component {
                     <Route path="/perfil" component={Perfil}></Route>
                     <Route path="/subastas_disponibles" component={Subastauser}></Route>
                     <Route path="/hotsales" component={ActionHotsale}></Route>
-<<<<<<< HEAD
                     <Route path="/access" component={TokenDeAcceso}></Route>
-=======
                     <Route path="/agregar_subastas/:propId" component={FormAgregarSubasta}></Route>
->>>>>>> develop-eze
                     {/**  
                     <Route exact path="/" component={Login}></Route>
                     <Route path="/home" component={Home}></Route>
