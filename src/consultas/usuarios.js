@@ -30,6 +30,7 @@ ctrlUsuario.create = async (req, res) => {
     } else {
         res.json('EL usuario no se pudo guardar.')
     }
+<<<<<<< HEAD
 }
 
 ctrlUsuario.authenticate = function (req, res) {
@@ -70,6 +71,17 @@ ctrlUsuario.authenticate = function (req, res) {
             });
         }
     });
+=======
+} 
+ctrlUsuario.altaPremium = async (req,res) => {
+    Usuario.findByIdAndUpdate({_id: req.params.usuario_id},{tipo_suscripcion : true})
+    res.json('Recibido')
+}
+
+ctrlUsuario.bajaPremium = async (req,res) => {
+    Usuario.findByIdAndUpdate({_id: req.params.usuario_id},{tipo_suscripcion : false})
+    res.json('Recibido')
+>>>>>>> develop-eze
 }
 
 

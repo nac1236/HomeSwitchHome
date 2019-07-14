@@ -53,10 +53,10 @@ class Adminprop extends Component {
                         path={`${this.props.match.path}/:propId`} component={FormModificarPropiedad}
                        
                     />
-                    <Route
+                   {/*<Route
                         path={`${this.props.match.path}_subasta/:propId`} component={FormAgregarSubasta}
-                    />
-                </Switch>
+                    />*/}
+                 </Switch>
             </div>
         )
     }

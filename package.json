@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.2.0",
     "babel": "^6.23.0",
     "bcrypt": "^3.0.6",
     "cookie-parser": "^1.4.4",

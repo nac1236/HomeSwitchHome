@@ -7,10 +7,37 @@ class FormAgregarSubasta extends Component {
     super(props)
     console.log(props)
     this.state = {
-        propiedad: {}
+        propiedad: {},
+        semanas: [],
+        subastas:[],
     }
     this.handleChange = this.handleChange.bind(this);
     this.addSubasta = this.addSubasta.bind(this);
+  }
+  fetchSemanas(){
+    fetch(`/api/semanas/`)
+        .then(res => res.json())
+        .then(data => {
+            this.setState({semanas: data})
+        })
+        console.log(this.state.semanas)
+  }
+  fetchSubastas(){
+    fetch(`/api/subastas`)
+        .then(res => res.json())
+        .then(data => {
+            this.setState({subastas: data})
+        })
+        console.log(this.state.subastas)
+  }
+  componentDidMount(){
+    fetch(`/api/propiedad/${this.props.match.params.propId}`)
+        .then(res => res.json())
+        .then(data => {
+            this.setState({propiedad: data})
+        })
+        console.log(this.state)
+   this.fetchSemanas()
   }
   handleChange(e) {
     const { name, value } = e.target;
@@ -19,8 +46,8 @@ class FormAgregarSubasta extends Component {
     });
   }
 
-  addSubasta(e) {
-      fetch(`/api/subasta/${id}`, {
+  addSubasta(e,semana_id) {
+      fetch(`/api/subasta/${semana_id}`, {
         method: 'POST',
         body: JSON.stringify(this.state),
         headers: {
@@ -32,8 +59,8 @@ class FormAgregarSubasta extends Component {
         .then(data => {
           console.log(data);
           M.toast({html: 'Subasta guardada'});
-          this.setState({monto_minimo: '',fecha_finalizacion: '', semana_reserva:''});
-          this.fetchPropiedades();
+          this.setState({monto_minimo: ''});
+          this.fetchSubastas();
         })
         .catch(err => console.error(err));
         e.preventDefault();
@@ -52,42 +79,45 @@ class FormAgregarSubasta extends Component {
             <div className="row">
             <form onSubmit={this.addSubasta}>
             <div className="row">
-              <div className="col s2">
-                <p>Nombre:</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col s2">
-                <p>Localidad:</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col s2">
-                <p>Provincia:</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col s2">
-                <p>Monto minimo:</p>
-              </div>
               <div className="col s5">
-                <input type="number" id="costo" name="costo" required onChange={this.handleChange}></input>
+                <p>Nombre: {this.state.propiedad.nombre}</p>
               </div>
             </div>
             <div className="row">
-              <div className="col s2">
-                <p>Semana de reserva:</p>
-              </div>
               <div className="col s5">
-                <input type="date" id="semana_reserva" name="semana_reserva" required onChange={this.handleChange}></input>
+                <p>Localidad: {this.state.propiedad.localidad}</p>
               </div>
             </div>
             <div className="row">
-             <div className="col s2">
-                <button className="indigo accent-1 left" style={{ color: 'black' }} type="submit">
-                  Subastar
-                </button>
+              <div className="col s5">
+                <p>Provincia: {this.state.propiedad.provincia}</p>
               </div>
+            </div>
+            <div className="row">
+               <table className="striped bordered">
+                 <thead className="grey">
+                   <tr>
+                     <th>Fecha de inicio</th>
+                     <th>monto_minimo</th>
+                     <th></th>
+                   </tr>
+                 </thead>
+                 <tbody className="white">
+                 {
+                   this.state.semanas.map(semana => {
+                      return (
+                      <form onSubmit={this.addSubasta(semana._id)}>
+                        <tr key={semana._id}>
+                          <td>{semana.fecha_inicio}</td>
+                          <td><input type="number" name="monto_minimo" id="monto_minimo"></input></td>
+                          <td><button type="submit">Subastar</button></td>
+                        </tr>
+                      </form>
+                      )
+                    })
+                }
+                </tbody>
+               </table>
               <div className="col s2">
                <Link to="/propiedades" className="indigo accent-1 left" style={{ color: 'black' }} type="button">
                       Volver atrás
