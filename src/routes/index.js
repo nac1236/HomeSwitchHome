@@ -10,6 +10,8 @@ const ctrlPuja = require ('../consultas/pujas')
 const ctrlTarjeta = require ('../consultas/tarjetas')
 const ctrlPago = require ('../consultas/pagos')
 
+const withAuth = require('../sessions/withAuth')
+
 //prueba
 const creaImg = require('../consultas/pruebaImg')
 
@@ -42,6 +44,8 @@ const storage = multer.diskStorage({
     },
     fileFilter: fileFilter
   });
+
+
 
 
 module.exports = app => {
@@ -92,6 +96,7 @@ module.exports = app => {
     router.get('/api/usuarios',ctrlUsuario.all)
     router.get('/api/usuario/',ctrlUsuario.index)
     router.post('/api/usuario',ctrlUsuario.create)
+    router.post('/api/authenticate', ctrlUsuario.authenticate)
 
     /* PUJAS */
 
@@ -116,6 +121,10 @@ module.exports = app => {
     router.get('/api/imagen/:imgId',creaImg.index)// con este metodo recuperas la url de la imagen (que es lo que necesitas para mostrarla!!)
     router.post('/api/imagen/',upload.single('imagenPrueba'),creaImg.create)//el id del usuario deberia traermelo desde la session
     router.delete('/api/imagen/',creaImg.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
+
+    /* Tokens */
+
+    router.get('/checkToken', withAuth)
 
     app.use(router)
 }

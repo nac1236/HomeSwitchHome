@@ -13,10 +13,9 @@ import FormModificarPropiedad from './modificarprop'
 import Premium from './premium'
 import UserActivo from './UserActivo'
 import Perfil from './perfil'
-import ProtectedRoute from './components/protectedRoute'
-import ProtectedAdmin from './components/protectedAdmin'
 import cookie from 'react-cookies'
 import Subastauser from './subastauser'
+import TokenDeAcceso from './TokenDeAcceso';
 
 class App extends Component {
 
@@ -44,6 +43,7 @@ class App extends Component {
                     <Route path="/perfil" component={Perfil}></Route>
                     <Route path="/subastas_disponibles" component={Subastauser}></Route>
                     <Route path="/hotsales" component={ActionHotsale}></Route>
+                    <Route path="/access" component={TokenDeAcceso}></Route>
                     {/**  
                     <Route exact path="/" component={Login}></Route>
                     <Route path="/home" component={Home}></Route>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import FormAgregarUser from '../registraruser'
+
 class Login extends React.Component {
     constructor(props) {
         super(props)
@@ -19,7 +20,7 @@ class Login extends React.Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-        fetch('/api/login', {
+        fetch('/api/authenticate', {
             method: 'POST',
             body: JSON.stringify(this.state),
             headers: {
@@ -28,7 +29,7 @@ class Login extends React.Component {
         })
             .then(res => {
                 if (res.status === 200) {
-                    this.props.history.push('/propiedades_disponibles');
+                    this.props.history.push('/home');
                 } else {
                     const error = new Error(res.error);
                     throw error;
@@ -69,10 +70,12 @@ class Login extends React.Component {
                         <div className="col s6 right">
                             <FormAgregarUser />
                         </div>
+                        <Link to="/access">Tengo un token</Link>
                     </div>
                 </div>
             </div>
         )
     }
 }
+
 export default Login

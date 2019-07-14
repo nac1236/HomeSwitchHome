@@ -83,7 +83,7 @@ class FormAgregarPropiedad extends Component {
                 <div className="col s2">
                   <Link to="/propiedades" className="indigo accent-1 left" style={{ color: 'black' }} type="button">
                     Volver atrás
-               </Link>
+                  </Link>
                 </div>
               </div>
             </form>
