@@ -95,6 +95,8 @@ module.exports = app => {
     router.get('/api/usuarios',ctrlUsuario.all)
     router.get('/api/usuario/',ctrlUsuario.index)
     router.post('/api/usuario',ctrlUsuario.create)
+    router.put('/api/usuario/:usuario_id',ctrlUsuario.altaPremium)
+    router.put('/api/usuario/:usuario_id',ctrlUsuario.bajaPremium)
 
     /* PUJAS */
 
