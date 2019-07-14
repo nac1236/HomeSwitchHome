@@ -34,10 +34,24 @@ reservasSemana = async (result) => {
 }
 
 ctrlReserva.dePropiedad = async (req,res) => {
-    const s = await Semana.find({propiedad_id : req.params.propiedad_id, valida : true },function(err,docs){
-        console.log(docs.propiedad_id)
-    })
-    res.json('Recibido')
+    const s = await Semana.find({propiedad_id: req.params.propiedad_id, disponible: true})
+    console.log(s[0]._id,s[0].disponible)
+    if(!s){
+        res.json('No hay semanas disponibles')
+    }else{
+        const reservas = await Reserva.find({valida:true})
+        var temp =new Array
+        var indice = 0
+        for(var i = 0; i<s.length ; i++){
+            for(var j = 0;j<reservas.length; j++){
+                if(s[i].equals(reservas[j].semana_reserva)){
+                    temp[indice] = reservas[j]
+                    indice++
+                }
+            }
+        } 
+    }
+    res.json(temp)
 }
 
 ctrlReserva.create = async (req) => { //para crear reservas, esto se debe hacer manualmente (por el momento)
