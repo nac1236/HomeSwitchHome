@@ -81,6 +81,17 @@ ctrlSubasta.remove = async (req,res) => {
         res.status(500).json({error: err})});
 }
 
+ctrlSubasta.dePropiedad = async (req,res) => {
+    const p = await Propiedad.findOne({_id: req.params.propiedad_id})
+    const s = await Semana.findOne({propiedad_id : p._id})
+    const subastas = await Subasta.find({semana_reserva : s._id})
+    if(!subastas){
+        res.json('No hay subastas para esa propiedad.')
+    }else{
+        res.json(subastas)
+    }
+}
+
 ctrlSubasta.deleteAll = async (req,res) => {
     await Subasta.deleteMany({__v : 0 })
     res.json('Se borraron todas las subastas.')

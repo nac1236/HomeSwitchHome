@@ -29,6 +29,17 @@ ctrlReserva.index = (req,res) => {
     res.json(reserva)
 }
 
+reservasSemana = async (result) => {
+    console.log(result._id)
+}
+
+ctrlReserva.dePropiedad = async (req,res) => {
+    const s = await Semana.find({propiedad_id : req.params.propiedad_id, valida : true },function(err,docs){
+        console.log(docs.propiedad_id)
+    })
+    res.json('Recibido')
+}
+
 ctrlReserva.create = async (req) => { //para crear reservas, esto se debe hacer manualmente (por el momento)
     const hoy = new Date
     const reserva = new Reserva({

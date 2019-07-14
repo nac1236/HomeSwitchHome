@@ -66,6 +66,7 @@ module.exports = app => {
     router.post('/api/subasta/:semana_id',ctrlSubasta.create)
     router.delete('/api/propiedad/:propiedad_id/subasta/:subasta_id',ctrlSubasta.remove)
     router.delete('/api/subastas/',ctrlSubasta.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
+    router.get('/api/subatas/:propiedad_id', ctrlSubasta.dePropiedad)
 
     /* HOTSALES */
 
@@ -77,7 +78,7 @@ module.exports = app => {
     /* RESERVAS */
 
     router.get('/api/reservas/',ctrlReserva.all)
-    router.get('/api/reserva/:propiedad_id/reserva',ctrlReserva.index)
+    router.get('/api/reserva/:propiedad_id/reserva',ctrlReserva.dePropiedad)
     router.post('/api/reserva/:semanaId',ctrlReserva.create)
     router.delete('/api/reserva',ctrlReserva.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
     router.post('/api/reserva/:propiedad_id',ctrlReserva.crearSubasta)
