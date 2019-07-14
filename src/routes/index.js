@@ -87,6 +87,7 @@ module.exports = app => {
 
     router.get('/api/semana/:semana_id',ctrlSemana.index)
     router.get('/api/semanas/', ctrlSemana.all)
+    router.get('/api/semanas/:propiedad_id', ctrlSemana.allPropiedad)
     router.post('/api/semana/:propiedad_id',ctrlSemana.crear)
     router.delete('/api/semana/:propiedad_id',ctrlSemana.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
 
