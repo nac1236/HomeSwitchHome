@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.2.0",
     "babel": "^6.23.0",
     "errorhandler": "^1.5.1",
     "express": "^4.16.4",
