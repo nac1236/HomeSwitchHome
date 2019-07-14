@@ -6,7 +6,8 @@ const SubastaSchema = new Schema({
     monto_minimo: { type: Number },
     puja_id: { type: ObjectId},
     fecha_finalizacion: { type: Date },
-    semana_reserva: {type: ObjectId }
+    semana_reserva: {type: ObjectId },
+    valida: {type: Boolean, default: true}
 })
 
 module.exports = model('Subasta', SubastaSchema)

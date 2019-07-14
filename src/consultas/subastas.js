@@ -81,15 +81,36 @@ ctrlSubasta.remove = async (req,res) => {
         res.status(500).json({error: err})});
 }
 
+// ctrlSubasta.dePropiedad = async (req,res) => {
+//     const p = await Propiedad.findOne({_id: req.params.propiedad_id})
+//     const s = await Semana.findOne({propiedad_id : p._id})
+//     const subastas = await Subasta.find({semana_reserva : s._id})
+//     if(!subastas){
+//         res.json('No hay subastas para esa propiedad.')
+//     }else{
+//         res.json(subastas)
+//     }
+// }
+
 ctrlSubasta.dePropiedad = async (req,res) => {
-    const p = await Propiedad.findOne({_id: req.params.propiedad_id})
-    const s = await Semana.findOne({propiedad_id : p._id})
-    const subastas = await Subasta.find({semana_reserva : s._id})
-    if(!subastas){
-        res.json('No hay subastas para esa propiedad.')
+    const s = await Semana.find({propiedad_id: req.params.propiedad_id, disponible: true})
+    console.log(s[0]._id,s[0].disponible)
+    if(!s){
+        res.json('No hay semanas disponibles')
     }else{
-        res.json(subastas)
+        const subastas = await Subasta.find({valida:true})
+        var temp =new Array
+        var indice = 0
+        for(var i = 0; i<s.length ; i++){
+            for(var j = 0;j<subastas.length; j++){
+                if(s[i].equals(subastas[j].semana_reserva)){
+                    temp[indice] = subastas[j]
+                    indice++
+                }
+            }
+        } 
     }
+    res.json(temp)
 }
 
 ctrlSubasta.deleteAll = async (req,res) => {

@@ -65,6 +65,7 @@ module.exports = app => {
 
     router.get('/api/subastas', ctrlSubasta.all)
     router.get('/api/subasta',ctrlSubasta.index)
+    router.get('/api/subastas/:propiedad_id',ctrlSubasta.dePropiedad)
     router.post('/api/subasta/:semana_id',ctrlSubasta.create)
     router.delete('/api/propiedad/:propiedad_id/subasta/:subasta_id',ctrlSubasta.remove)
     router.delete('/api/subastas/',ctrlSubasta.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
@@ -81,9 +82,10 @@ module.exports = app => {
 
     router.get('/api/reservas/',ctrlReserva.all)
     router.get('/api/reserva/:propiedad_id',ctrlReserva.dePropiedad)
+    router.get('/api/reservas/vencidas/propiedad_id',ctrlReserva.reservasVencidas) //este metodo devuelve las reservas que ya estan vencidas
     router.post('/api/reserva/:semanaId',ctrlReserva.create)
     router.delete('/api/reserva',ctrlReserva.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
-    router.post('/api/reserva/:propiedad_id',ctrlReserva.crearSubasta)
+    router.post('/api/reserva/baja/:semana_id',ctrlReserva.crearSubasta) //este metodo sirve para terminar una reserva y crear la subasta, deberia ser llamado por la pantalla de crear subasta
 
     /* SEMANAS */
 

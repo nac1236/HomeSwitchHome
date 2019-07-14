@@ -89,25 +89,39 @@ ctrlReserva.deleteAll = async (req,res) => {
         res.json('Hecho. Borrado terminado.')
 }
 
-ctrlReserva.crearSubasta = async (req,res) =>{ //tal vez se pueda cambiar cuando este terminado para poder hacer que le llegue directamente la información de la reserva a la que se le quiere dar de baja
-    const semana = await Semana.findOne({propiedad_id: req.params.propiedad_id, fecha_inicio : req.body.fecha_inicio})
+
+ctrlReserva.reservasVencidas = async (req,res) =>{ 
+    const semanas = await Semana.find({propiedad_id: req.params.propiedad_id, disponible: true}) //para mostrar solo semanas disponibles
+    var reservas 
+    for(var i = 0; i<semanas.length ; i++){
+        reservas = await Reserva.find({semana_reserva:semanas[i]._id})
+    }
+    var temp = new Array
+    var indice = 0
+    for(var j = 0; j<reservas.length ; j++){
+        if(reservas[j].mes_vencimiento >= new Date){
+            temp[indice] = reservas[j] 
+        }   
+    }
+    if(!temp){
+        res.json('No hay reservas vencidas aun.')
+    }else{
+        res.json(temp)
+    }
+}
+
+
+ctrlReserva.crearSubasta = async (req,res) =>{ 
+    const semana = await Semana.findOne({_id: req.params.semana_id, disponible: true}) //para mostrar solo semanas disponibles
     console.log(semana._id)
-    // if(semana.disponible){
-    //     const reserva = await Reserva.findOne({semana_reserva: semana._id})
-    //     // //console.log(reserva._id)
-    //     // if(reserva.mes_vencimiento >=  new Date){ //esto quiere decir que si se vencio la reserva puedo crear una subasta
-    //     //         //entonces poner reserva.valida a false //deberia existir una funcion que valide si todavia es valida o no. Eso podria agregarse en el cron
-    //     //         //y crear subasta
-    //     //     await Reserva.findOneAndUpdate(reserva._id, {
-    //     //         valida : false
-    //     //     })
-    //     //     //const p = await Propiedad.findOne(req.params.propiedad_id)
-    //     //     ctrlSubasta.create(reserva.semana_reserva, req.costo)
-    //     //     res.json("Termino la reserva. Subasta creada con exito!")
-    //     // }
-    // }else{
-    //         //la semana ya fue comprada por lo que no debe hacerse mas respecto de lo alquileres
-    //     }
+    if(!semana){
+        res.json('La semana no esta disponible.')
+    }else{
+        const reserva = await Reserva.findOneAndUpdate({semana_reserva: semana._id}, {valida: false})
+        //y crear subasta
+        ctrlSubasta.create(reserva.semana_reserva, req.costo)
+        res.json("Termino la reserva. Subasta creada con exito!")
+    }
 }
 
 module.exports = ctrlReserva
