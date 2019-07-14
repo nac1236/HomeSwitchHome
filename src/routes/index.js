@@ -63,6 +63,7 @@ module.exports = app => {
 
     router.get('/api/subastas', ctrlSubasta.all)
     router.get('/api/subasta',ctrlSubasta.index)
+    router.get('/api/subastas/:propiedad_id',ctrlSubasta.dePropiedad)
     router.post('/api/subasta/:semana_id',ctrlSubasta.create)
     router.delete('/api/propiedad/:propiedad_id/subasta/:subasta_id',ctrlSubasta.remove)
     router.delete('/api/subastas/',ctrlSubasta.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
