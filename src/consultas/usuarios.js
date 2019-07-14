@@ -73,12 +73,12 @@ ctrlUsuario.authenticate = function (req, res) {
 }
 
 ctrlUsuario.altaPremium = async (req,res) => {
-    Usuario.findByIdAndUpdate({_id: req.params.usuario_id},{tipo_suscripcion : true})
+    await Usuario.findByIdAndUpdate({_id: req.params.usuario_id},{tipo_suscripcion : true})
     res.json('Recibido')
 }
 
 ctrlUsuario.bajaPremium = async (req,res) => {
-    Usuario.findByIdAndUpdate({_id: req.params.usuario_id},{tipo_suscripcion : false})
+    await Usuario.findByIdAndUpdate({_id: req.params.usuario_id},{tipo_suscripcion : false})
     res.json('Recibido')
 }
 

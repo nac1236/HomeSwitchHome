@@ -5,13 +5,13 @@ class FormAgregarUser extends Component {
   constructor() {
     super();
     this.state = {
-      mail: '',
+      email: '',
       nombre: '',
       apellido: '',
-      contraseña: '',
-      tarjeta: ''
+      contraseña: ''
     }
     this.handleChange = this.handleChange.bind(this)
+    this.addUsuarios = this.addUsuarios.bind(this)
   }
   handleChange(e) {
     const { name, value } = e.target;
@@ -24,7 +24,7 @@ class FormAgregarUser extends Component {
     console.log(e)
     fetch('/api/usuario', {
       method: 'POST',
-      body: JSON.stringify(e),
+      body: JSON.stringify(this.state),
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ class FormAgregarUser extends Component {
         <form method="post" onSubmit={this.addUsuarios}>
           <h4 align="center">Crea tu cuenta</h4>
           <div>
-            <label style={{ color: 'black' }}>Correo electrónico: <input type="text" id="mail" name="mail" className="white" required onChange={this.handleChange}></input></label>
+            <label style={{ color: 'black' }}>Correo electrónico: <input type="text" id="email" name="email" className="white" required onChange={this.handleChange}></input></label>
             <label style={{ color: 'black' }}>Nombre:<input type="text" id="nombre" name="nombre" className="white" required onChange={this.handleChange}></input></label>
             <label style={{ color: 'black' }}>Apellido: <input type="text" id="apellido" name="apellido" className="white" required onChange={this.handleChange}></input></label>
             <label style={{ color: 'black' }}>Contraseña: <input type="password" id="password" name="password" className="white" required onChange={this.handleChange}></input></label>

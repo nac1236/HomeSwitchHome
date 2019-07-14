@@ -39,7 +39,7 @@ export default class TokenDeAcceso extends Component {
                         <h1>Ingresá tu código de acceso</h1>
                         <form onSubmit={this.adminLogIn}>
                             <label>Código</label>
-                            <input type="password" id="accesstoken" name="admincode" value={this.state.accessInput} onChange={this.handleInputChange} required></input>
+                            <input type="password" id="accesstoken" name="accessInput" value={this.state.accessInput} onChange={this.handleInputChange} required></input>
                             <button className="btn waves-effect waves-teal">
                                 <input type="submit" value="Entrar"></input>
                             </button>
