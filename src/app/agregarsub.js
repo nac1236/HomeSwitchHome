@@ -3,8 +3,12 @@ import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
 
 class FormAgregarSubasta extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props)
+    console.log(props)
+    this.state = {
+        propiedad: {}
+    }
     this.handleChange = this.handleChange.bind(this);
     this.addSubasta = this.addSubasta.bind(this);
   }

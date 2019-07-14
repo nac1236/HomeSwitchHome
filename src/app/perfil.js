@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Navbarpremium from './components/Navbarpremium'
+import Navbaruser from './components/Navbaruser'
 function premium() {
     alert("Para ser premium acercate a nuestra sucursal o envía un mail a homeswitchhome@hotmail.com")
 }
@@ -7,7 +7,7 @@ class Perfil extends Component {
     render() {
         return( 
             <div>
-                <Navbarpremium/>
+                <Navbaruser/>
                 <br></br>
                 <div className="row">
                     <div className="col s6">

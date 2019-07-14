@@ -58,6 +58,7 @@ module.exports = app => {
     router.post('/api/propiedad/',ctrlProp.create)
     router.put('/api/propiedad/nombre/:propiedad_id',ctrlProp.modifyNombre)
     router.put('/api/propiedad/desc/:propiedad_id',ctrlProp.modifyDescripcion)
+    router.put('/api/propiedad/costo/:propiedad_id',ctrlProp.modifyCosto)
     router.put('/api/propiedad/alta/:propiedad_id', ctrlProp.alta)
     router.delete('/api/propiedad/:propiedad_id',ctrlProp.baja)
     router.delete('/api/propiedades/',ctrlProp.removeAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz

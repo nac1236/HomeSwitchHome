@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import ListaDePropiedades from './components/listaDePropiedades'
 import { Link } from 'react-router-dom'
 import Navbar from './components/Navbar';
 class ActionPropiedad extends Component {
@@ -35,15 +34,9 @@ class ActionPropiedad extends Component {
             <Link to="agregar_propiedad" className="indigo accent-1 left" style={{ color: 'black' }} type="button">
               Agregar propiedad
                </Link>
-          </div>
-        </div>
-        <div>
-          <ListaDePropiedades />
-        </div>
-        <div>
-        </div>
+            </div>
+         </div>   
       </div>
-    )
-  }
+    )}
 }
 export default ActionPropiedad;

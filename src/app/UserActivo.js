@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Navbarpremium from './components/Navbarpremium'
+import Navbaruser from './components/Navbaruser'
 import VistaDeListaPropiedades from './components/UsuarioListaDePropiedades'
 import DetallePropiedad from './components/DetallePropiedad'
 
-class Premium extends Component {
+class UserActivo extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -26,8 +26,8 @@ class Premium extends Component {
     render() {
         return (
             <div>
-                <Navbarpremium />
-                <div className="row">
+                <Navbaruser />
+                {/*<div className="row">
                     <div className=" col s1">
                         <p>Nombre:</p>
                     </div>
@@ -46,7 +46,7 @@ class Premium extends Component {
                     <div className=" col s3">
                         <input type="text"></input>
                     </div>
-                </div>
+                </div>*/}
                 <Switch>
                     <Route
                         path='/propiedades_disponibles' exact
@@ -60,4 +60,4 @@ class Premium extends Component {
         )
     }
 }
-export default Premium
+export default UserActivo
