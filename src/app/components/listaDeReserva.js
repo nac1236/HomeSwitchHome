@@ -3,8 +3,8 @@ export default class ListaDeReserva extends Component {
             super(props)
             console.log(props)
             this.state = {
-                semanas: [],
-                reservas:[]
+                reservas:[],
+                subastas:[]
             }
         this.handleChange = this.handleChange.bind(this);
         this.addSubasta = this.addSubasta.bind(this);
@@ -59,7 +59,7 @@ render(){
               <thead className="grey">
                  <tr>
                      <th>Fecha de inicio</th>
-                     <th>monto_minimo</th>
+                     <th>Monto minimo</th>
                      <th></th>
                  </tr>
                </thead>

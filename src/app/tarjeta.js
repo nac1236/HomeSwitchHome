@@ -7,7 +7,7 @@ class Tarjeta extends Component {
         }
       } 
 addPropiedades(e) {
-     fetch(`/api/tarjeta/:usuario_id`, {
+     fetch(`/api/tarjeta/${this.props.match.params.userId}`, {
      method: 'POST',
      body: JSON.stringify(this.state),
      headers: {

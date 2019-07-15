@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
-import ListaDeSemana from './components/listaDeSemana';
+import ListaDeReserva from './components/listaDeReserva';
 class FormAgregarSubasta extends Component {
   constructor(props) {
     super(props)
@@ -46,7 +46,7 @@ class FormAgregarSubasta extends Component {
                 <p>Provincia: {this.state.propiedad.provincia}</p>
               </div>
             </div>
-            <ListaDeSemana/>
+            <ListaDeReserva {...props} propiedad={this.state.propiedad}/>
             <div className="row">
               <div className="col s2">
                <Link to="/propiedades" className="indigo accent-1 left" style={{ color: 'black' }} type="button">

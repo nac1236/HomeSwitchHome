@@ -31,7 +31,7 @@ componentDidMount(){
                          <div className="col s4">
                            <div className="card">
                              <form>
-                                <p>Semana de reserva: {reserva.semana_reserva}</p>
+                                <p>Semana disponible: {reserva.semana_reserva}</p>
                                 <button>Reservar</button>
                               </form>
                             </div>
