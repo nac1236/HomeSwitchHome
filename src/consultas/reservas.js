@@ -117,7 +117,7 @@ ctrlReserva.crearSubasta = async (req,res) =>{
     }else{
         const reserva = await Reserva.findOneAndUpdate({semana_reserva: semana._id}, {valida: false})
         //y crear subasta
-        ctrlSubasta.create(reserva.semana_reserva, req.costo)
+        ctrlSubasta.create(reserva.semana_reserva, req.body.costo)
         res.json("Termino la reserva. Subasta creada con exito!")
     }
 }

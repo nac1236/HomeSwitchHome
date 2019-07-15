@@ -43,26 +43,19 @@ ctrlPuja.finalizar = async (subasta) =>{
    var ok = false
    var usuario
    var indice = 0
-   while(!ok){
+   while(indice <= pujas.length){
       usuario = await Usuario.findById({_id: pujas[indice].usuario_id})
       var tarjeta = await Tarjeta.find({usuario_id: usuario._id})
-      if (tarjeta.credito >= pago.monto){
-         if(usuario.creditos > 0){
+      if ((tarjeta.credito >= pago.monto) && (usuario.creditos > 0)){
             cobrar(usuario,tarjeta,pujas[indice].monto)
             marcarOcupada(reserva.id)
             await pago.save()
             //res.json('Pago realizado.')
-            ok = true 
-         }else{
-            //res.json('No se tienen creditos suficientes.')
-            ok = false
-         }
       }else{
-         //res.json('La tarjeta no tiene fondos suficientes.')
-         ok = false
+            //res.json('No se tienen creditos suficientes.')
+            console.log('No se tienen creditos suficientes o la tarjeta tiene fondos insuficientes.')
+            indice++     
       }
-
-      indice++
    }
 } 
 

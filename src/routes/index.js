@@ -116,7 +116,7 @@ module.exports = app => {
     /* PAGOS */
 
     router.get('/api/pagos', ctrlPago.all)
-    router.post('/api/pago/:reserva_id',ctrlPago.create)//el id del usuario deberia traermelo desde la session
+    router.post('/api/pago/:reserva_id',ctrlPago.createPostman)//el id del usuario deberia traermelo desde la session
     router.post('/api/pago/:reserva_id/:usuario_id',ctrlPago.create)//Este es el que se debe llamar para pagar desde la aplicacion de react
     router.delete('/api/pagos/',ctrlPago.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
 
