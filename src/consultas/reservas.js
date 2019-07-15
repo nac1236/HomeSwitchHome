@@ -60,7 +60,6 @@ ctrlReserva.create = async (req) => { //para crear reservas, esto se debe hacer 
         semana_reserva: req,
         //El método getMonth() devuelve el mes del objeto Date según la hora local, donde el número cero indica el primer mes del año.
         mes_vencimiento: hoy.setMonth(hoy.getMonth() + 6),
-        //costo: req.body.costo //por ahora el costo se manda desde algun formulario
     }) // a continuacion tengo que cambiar el criterio de busqueda para saber que la semana no esta ocupada
     // Los pasos a seguir son:
     // A )
