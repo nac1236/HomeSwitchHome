@@ -1,9 +1,72 @@
 import React, { Component } from 'react';
+
+class BotonAltaPremium extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  altaUser() {
+    fetch(`/api/altausuario/${this.props.id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(M.toast({ html: 'Usuario cambiado a premium' }))
+  }
+
+  render() {
+    return (
+      <button
+        type="button"
+        className="btn waves-effect waves-teal"
+        onClick={() => this.altaUser()}
+      >
+        Alta a premium
+        </button>
+    )
+  }
+}
+
+class BotonBajaPremium extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  bajaUser() {
+    fetch(`/api/bajausuario/${this.props.id}`,{
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(M.toast({ html: 'Usuario cambiado a estándar' }))
+  }
+
+  render() {
+    return (
+      <button
+        type="button"
+        className="btn waves-effect waves-teal"
+        onClick={() => this.bajaUser()}
+      >
+        Baja de premium
+        </button>
+    )
+  }
+}
+
 class ListaDeUsuarios extends Component {
   constructor() {
     super();
     this.state = {
       usuarios: [],
+      estandar: [],
+      premium: [],
       _id: ''
     }
   }
@@ -35,14 +98,14 @@ class ListaDeUsuarios extends Component {
           </thead>
           <tbody className="white">
             {
-              this.state.usuarios.map(usuarios => {
+              this.state.usuarios.map((usuarios, index) => {
                 return (
-                  <tr key={usuarios._id}>
+                  <tr key={index}>
                     <td>{usuarios.nombre}</td>
                     <td>{usuarios.apellido}</td>
                     <td>{usuarios.email}</td>
-                    <td>{}</td>
-                    <td><button className=" indigo accent-1">Premium/Standard</button></td>
+                    <td>{usuarios.tipo_suscripcion ? <p>Premium</p> : <p>Estándar</p>}</td>
+                    <td>{usuarios.tipo_suscripcion ? <BotonBajaPremium id={usuarios._id} /> : <BotonAltaPremium id={usuarios._id} />}</td>
                   </tr>
                 )
               })

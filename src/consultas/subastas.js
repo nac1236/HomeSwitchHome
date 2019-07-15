@@ -1,6 +1,7 @@
 const Subasta = require ('../models/subastas')
 const Semana = require ('../models/semana')
 const Reserva = require ('../models/reserva')
+const ctrlPuja = require ('../consultas/pujas')
 
 const ctrlSubasta = {};
 
@@ -114,7 +115,8 @@ ctrlSubasta.dePropiedad = async (req,res) => {
 }
 
 ctrlSubasta.finalizar = async (req,res) => {
-    
+    const subasta = await Subasta.findById(req.params.subasta_id)
+    ctrlPuja.finalizar(subasta)
 }
 
 ctrlSubasta.deleteAll = async (req,res) => {

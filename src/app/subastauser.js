@@ -4,20 +4,37 @@ class Subastauser extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          subastas: {},
-          _id: ''
+          subastas: [],
         }
       }
       componentDidMount() {
         this.fetchSubastas()
       }
+    
       fetchSubastas() {
-        fetch(`/api/subastas/${this.props.match.params.propId}`)
+        fetch(`api/subastas/${this.props.match.params.propId}`)
           .then(res => res.json())
           .then(data => {
             this.setState({ subastas: data }),
               console.log(this.state.subastas)
           })
+      }
+      addPuja(e){
+        fetch(`/api/puja`,{
+        method: 'POST',
+        body: JSON.stringify(this.state),
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        }
+        })
+          .then(res => res.json())
+          .then(data => {
+          console.log(data);
+          M.toast({ html: 'Realizaste una puja' });
+          })
+         .catch(err => console.error(err));
+         e.preventDefault();
       }
     render(){
         return (
@@ -51,7 +68,7 @@ class Subastauser extends Component {
                        </div>
                     )
                    })
-               }
+                }
                </div>
             </div>   
         )

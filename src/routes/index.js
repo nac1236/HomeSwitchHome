@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+
 const ctrlProp = require('../consultas/propiedades')
 const ctrlSubasta = require('../consultas/subastas')
 const ctrlReserva = require ('../consultas/reservas')
@@ -79,13 +80,16 @@ module.exports = app => {
 
     router.get('/api/reservas/',ctrlReserva.all)
     router.get('/api/reserva/:propiedad_id',ctrlReserva.dePropiedad)
+    router.get('/api/reservas/vencidas/propiedad_id',ctrlReserva.reservasVencidas) //este metodo devuelve las reservas que ya estan vencidas
     router.post('/api/reserva/:semanaId',ctrlReserva.create)
     router.delete('/api/reserva',ctrlReserva.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
-    router.post('/api/reserva/:propiedad_id',ctrlReserva.crearSubasta)
+    router.post('/api/reserva/baja/:semana_id',ctrlReserva.crearSubasta) //este metodo sirve para terminar una reserva y crear la subasta, deberia ser llamado por la pantalla de crear subasta
 
     /* SEMANAS */
 
+    router.get('/api/semana/:semana_id',ctrlSemana.index)
     router.get('/api/semanas/', ctrlSemana.all)
+    router.get('/api/semanas/:propiedad_id', ctrlSemana.allPropiedad)
     router.post('/api/semana/:propiedad_id',ctrlSemana.crear)
     router.delete('/api/semana/:propiedad_id',ctrlSemana.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
 
@@ -94,9 +98,8 @@ module.exports = app => {
     router.get('/api/usuarios',ctrlUsuario.all)
     router.get('/api/usuario/',ctrlUsuario.index)
     router.post('/api/usuario',ctrlUsuario.create)
-    router.put('/api/usuario/:usuario_id',ctrlUsuario.altaPremium)
-    router.put('/api/usuario/:usuario_id',ctrlUsuario.bajaPremium)
-
+    router.put('/api/altausuario/:usuario_id',ctrlUsuario.altaPremium)
+    router.put('/api/bajausuario/:usuario_id',ctrlUsuario.bajaPremium)
     /* PUJAS */
 
     router.get('/api/pujas', ctrlPuja.all)
@@ -114,7 +117,7 @@ module.exports = app => {
     router.post('/api/pago/:reserva_id',ctrlPago.create)//el id del usuario deberia traermelo desde la session
     router.delete('/api/pagos/',ctrlPago.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
 
-    /* Imagenes */
+    /* IMAGENES */
 
     router.get('/api/imagen', creaImg.all)// con este metodo recuperas el id de la imagen
     router.get('/api/imagen/:imgId',creaImg.index)// con este metodo recuperas la url de la imagen (que es lo que necesitas para mostrarla!!)
