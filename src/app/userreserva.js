@@ -29,7 +29,7 @@ componentDidMount(){
                      return(
                        <div key={reserva.id}>
                          <div className="col s4">
-                           <div className="card">
+                           <div className="card teal lighten-1">
                              <form>
                                 <p>Semana disponible: {reserva.semana_reserva}</p>
                                 <button>Reservar</button>
