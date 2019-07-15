@@ -1,13 +1,15 @@
 import React, {Component} from 'react'
+import { Redirect } from 'react-router-dom'
 class Tarjeta extends Component {
     constructor(props) {
         super(props);
         this.state={
-            tarjeta:{}
+            tarjeta:[]
         }
+        this.addTarjeta = this.addTarjeta.bind(this);
       } 
-addPropiedades(e) {
-     fetch(`/api/tarjeta/${this.props.match.params.userId}`, {
+addTarjeta(e) {
+     fetch(`/api/tarjeta/${this.props.match.params.propId}`, {
      method: 'POST',
      body: JSON.stringify(this.state),
      headers: {
@@ -19,6 +21,7 @@ addPropiedades(e) {
     .then(data => {
     console.log(data);
     M.toast({ html: 'Tarjeta registrada' });
+    this.setState({ _id: '', numero: '' });
     })
     .catch(err => console.error(err));
     e.preventDefault();
@@ -26,21 +29,28 @@ addPropiedades(e) {
 render(){
     return(
         <div className="container">
+            <h3 align="center">HomeSwichHome</h3>
+            <div className="container">
             <div className="row">
-                <div>
-                    <p>Ingrese su tarjeta de credito para poder registrarte</p>
+                <div className="col s3">
+                </div>
+                <div className="col s5">
+                    <p align="center">Ingrese su tarjeta de credito para poder registrarte</p>
                 </div>
             </div>
             <form onSubmit={this.addTarjeta}>
                 <div className="row">
-                    <div>
-                        <input type="text" name="numero" id="numero" ></input>
+                    <div className="col s3">
+                    </div>
+                    <div className="col s5">
+                        <input align="center" type="text" name="numero" id="numero" required ></input>
                     </div>
                     <div>
-                        <button type="submit">Registrar</button>
+                        <button align="center" type="submit">Registrar</button>
                     </div>
                 </div>
             </form>
+            </div>
         </div>
     )
 }

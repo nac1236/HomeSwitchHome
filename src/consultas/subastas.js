@@ -17,7 +17,7 @@ ctrlSubasta.index =  async (req,res) => {
 
 
 //Este metodo sirve para crear subastas desde Postman
-ctrlSubasta.create = async (req,res) => {
+ctrlSubasta.createPostman = async (req,res) => {
     const hoy = new Date
     const subasta = new Subasta ({
         monto_minimo: req.body.monto_minimo,

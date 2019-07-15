@@ -40,6 +40,7 @@ class Subastauser extends Component {
         return (
             <div>
                <Navbaruser/>
+               <h3>Subastas activas</h3>
                <div className="row">
                {
                    this.state.subastas.map(subasta => {

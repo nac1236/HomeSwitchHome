@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-
+import { Link } from 'react-router-dom'
 class FormAgregarUser extends Component {
   constructor() {
     super();
@@ -64,6 +64,7 @@ class FormAgregarUser extends Component {
             </button>
           </div>
         </form>
+        <Link to="tarjeta/5d2b93a2f4dd6723785167fa">Tarjeta</Link>
       </div>
     )
   }
