@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-
 const ctrlProp = require('../consultas/propiedades')
 const ctrlSubasta = require('../consultas/subastas')
 const ctrlReserva = require ('../consultas/reservas')
@@ -63,9 +62,11 @@ module.exports = app => {
 
     router.get('/api/subastas', ctrlSubasta.all)
     router.get('/api/subasta',ctrlSubasta.index)
+    router.get('/api/subastas/:propiedad_id',ctrlSubasta.dePropiedad)
     router.post('/api/subasta/:semana_id',ctrlSubasta.create)
     router.delete('/api/propiedad/:propiedad_id/subasta/:subasta_id',ctrlSubasta.remove)
     router.delete('/api/subastas/',ctrlSubasta.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
+    router.get('/api/subatas/:propiedad_id', ctrlSubasta.dePropiedad)
 
     /* HOTSALES */
 
@@ -93,6 +94,8 @@ module.exports = app => {
     router.get('/api/usuarios',ctrlUsuario.all)
     router.get('/api/usuario/',ctrlUsuario.index)
     router.post('/api/usuario',ctrlUsuario.create)
+    router.put('/api/usuario/:usuario_id',ctrlUsuario.altaPremium)
+    router.put('/api/usuario/:usuario_id',ctrlUsuario.bajaPremium)
 
     /* PUJAS */
 

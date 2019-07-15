@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import Navbaruser from './components/Navbaruser'
 class Subastauser extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-          subastas: [],
+          subastas: {},
           _id: ''
         }
       }
@@ -12,7 +12,7 @@ class Subastauser extends Component {
         this.fetchSubastas()
       }
       fetchSubastas() {
-        fetch('api/subasta')
+        fetch(`/api/subastas/${this.props.match.params.propId}`)
           .then(res => res.json())
           .then(data => {
             this.setState({ subastas: data }),
@@ -32,7 +32,7 @@ class Subastauser extends Component {
                                <form>
                                <div className="col s4">
                                    <div className="card">
-                                      <p>Semana de reserva: {subasta.semana_reserva.fecha_inicio}</p>
+                                      <p>Semana de reserva: {}</p>
                                       <p>Mayor postor: {}</p>
                                       <p>Monto actual: ${}</p>
                                       <p>Para pujar ingrese un monto más alto que el actual</p>

@@ -18,7 +18,7 @@ ctrlUsuario.create = async (req,res) => {
         password: req.body.password,
         nombre: req.body.nombre,
         apellido: req.body.apellido,
-        creditos: 2,
+        creditos: 20,
         tipo: req.body.tipo,
         tipo_suscripcion: req.body.tipo_suscripcion
     })
@@ -30,15 +30,15 @@ ctrlUsuario.create = async (req,res) => {
         res.json('EL usuario no se pudo guardar.')
     }
 } 
+
 ctrlUsuario.altaPremium = async (req,res) => {
-    Usuario.findByIdAndUpdate({_id: req.params.usuario_id},{tipo_suscripcion : true})
+    await Usuario.findByIdAndUpdate({_id: req.params.usuario_id},{tipo_suscripcion : true})
     res.json('Recibido')
 }
 
 ctrlUsuario.bajaPremium = async (req,res) => {
-    Usuario.findByIdAndUpdate({_id: req.params.usuario_id},{tipo_suscripcion : false})
+    await Usuario.findByIdAndUpdate({_id: req.params.usuario_id},{tipo_suscripcion : false})
     res.json('Recibido')
 }
-
 
 module.exports = ctrlUsuario

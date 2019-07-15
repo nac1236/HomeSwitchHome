@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Link } from 'react-router-dom' 
 export default class DetallePropiedad extends Component {
     constructor(props){
         super(props)
@@ -39,6 +39,12 @@ export default class DetallePropiedad extends Component {
                   <div className="col s2">
                       <h5>Precio por semana: ${this.state.propiedad.costo}</h5>
                   </div>
+              </div>
+              <div className="row">
+                  <Link to={`${'/reservas_disponibles'}/${this.props.match.params.propId}`}  className="indigo accent-1 left" style={{ color: 'black' }} type="button">Reservas disponibles</Link>                      
+              </div>
+              <div className="row">
+                  <Link to={`${'/subastas_disponibles'}/${this.props.match.params.propId}`}  className="indigo accent-1 left" style={{ color: 'black' }} type="button">Subastas activas</Link>
               </div>
             </div>
         )

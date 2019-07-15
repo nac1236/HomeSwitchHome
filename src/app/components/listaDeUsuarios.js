@@ -30,6 +30,7 @@ class ListaDeUsuarios extends Component {
               <th>Apellido</th>
               <th>Email</th>
               <th>Tipo</th>
+              <th></th>
             </tr>
           </thead>
           <tbody className="white">

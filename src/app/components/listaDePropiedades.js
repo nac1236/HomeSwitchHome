@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom' 
 import ActionPropiedad from '../propiedadesapp'
-import FormAgregarSubasta from '../agregarsub'
 export default class ListaDePropiedades extends Component {
   constructor(props) {
       super(props)

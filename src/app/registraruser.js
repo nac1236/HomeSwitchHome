@@ -8,7 +8,7 @@ class FormAgregarUser extends Component {
       mail: '',
       nombre: '',
       apellido: '',
-      contraseña: '',
+      password: '',
       tarjeta: ''
     }
     this.handleChange = this.handleChange.bind(this)
@@ -19,12 +19,18 @@ class FormAgregarUser extends Component {
       [name]: value
     });
   }
-
+  fetchUsuarios(){
+    fetch(`/api/usuarios`)
+        .then(res => res.json())
+        .then(data => {
+            this.setState({usuarios: data})
+        })
+        console.log(this.state.usuarios)
+  }
   addUsuarios(e) {
-    console.log(e)
     fetch('/api/usuario', {
       method: 'POST',
-      body: JSON.stringify(e),
+      body: JSON.stringify(this.state),
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -34,6 +40,8 @@ class FormAgregarUser extends Component {
       .then(data => {
         console.log(data);
         M.toast({ html: 'Usuario guardado' });
+        this.setState({mail: '', password:'', nombre:'', apellido:''});
+        this.fetchUsuarios();
       })
       .catch(err => console.error(err));
     e.preventDefault();

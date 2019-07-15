@@ -1,4 +1,5 @@
 const Semana = require ('../models/semana')
+const ctrlReserva = require ('./reservas')
 
 const ctrlSemana = {}
 
@@ -11,9 +12,14 @@ ctrlSemana.all = async (req,res) => {
     res.json(semanas)
 }
 
-ctrlSemana.index = (req,res) => {
-    const semana = Semana.findOne() 
-    res.json(Semana)
+ctrlSemana.index = async (req,res) => {
+    const semana = await Semana.findOne({_id : req.params.semana_id}) 
+    res.json(semana)
+}
+
+ctrlSemana.allPropiedad = async (req,res) => {
+    const semanas = await Semana.find({_id : req.params.propiedad_id}) 
+    res.json(semanas)
 }
 
 ctrlSemana.deleteAll = async (req,res) => {
@@ -31,6 +37,8 @@ ctrlSemana.create = async (p_id,inicio,fin) => {
     const semanas = await Semana.findOne({fecha_inicio: semana.fecha_inicio, propiedad_id: semana.propiedad_id}) 
     if(!semanas){
     await semana.save()
+    const s = await Semana.findOne({fecha_inicio: semana.fecha_inicio, propiedad_id: semana.propiedad_id}) 
+    ctrlReserva.create(s._id)//crea reserva para esas semana
     }
 }
 
