@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import FormAgregarUser from '../registraruser'
+import cookie from 'react-cookies'
 
 class Login extends React.Component {
     constructor(props) {
@@ -29,7 +30,24 @@ class Login extends React.Component {
         })
             .then(res => {
                 if (res.status === 200) {
-                    this.props.history.push('/home');
+                    console.log('====================================');
+                    console.log(JSON.stringify(this.state));
+                    console.log('====================================');
+                    fetch('/login', {
+                        method: 'POST',
+                        body: JSON.stringify(this.state),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data)
+                            let { userId, tipo } = data
+                            cookie.save('userId', userId, {})
+                            cookie.save('tipo', tipo, {})
+                        })
+                    this.props.history.push('/propiedades_disponibles');
                 } else {
                     const error = new Error(res.error);
                     throw error;

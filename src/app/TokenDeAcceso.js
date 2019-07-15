@@ -29,7 +29,6 @@ export default class TokenDeAcceso extends Component {
         }
     }
 
-
     render() {
         return (
 
@@ -45,11 +44,7 @@ export default class TokenDeAcceso extends Component {
                             </button>
                         </form>
                     </div>)
-                    : (<Redirect to={{
-                        pathname: "/home",
-                        state: { from: props.location }
-                    }}
-                    />)
+                    : this.props.history.push('/home')
                 }
             </div>
         )

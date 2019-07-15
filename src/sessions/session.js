@@ -32,14 +32,13 @@ module.exports = app => {
 
     router.post('/login', async (req, res) => {
         const usuario = await Usuario.findOne({
-                email: req.body.email,
-                password: req.body.password,
+                email: req.body.email
         })
         //console.log(usuario._id)
         if (usuario) {
                 req.session.userId = usuario._id;
-                req.session.tipo = usuario.tipo
-                res.send(req.session); // hasta aca se guarda el id que traje desde la bd
+                req.session.tipo = usuario.tipo_suscripcion
+                res.json(req.session); // hasta aca se guarda el id que traje desde la bd
         }
         //res.redirect('/login')
     })

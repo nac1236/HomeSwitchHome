@@ -3,18 +3,11 @@ import React, { Component } from 'react';
 class BotonAltaPremium extends Component {
   constructor(props) {
     super(props)
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  altaUser() {
-    fetch(`/api/altausuario/${this.props.id}`, {
-      method: 'PUT',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(res => res.json())
-      .then(M.toast({ html: 'Usuario cambiado a premium' }))
+  handleChange(e) {
+    this.props.onChange(this.props.id)
   }
 
   render() {
@@ -22,7 +15,7 @@ class BotonAltaPremium extends Component {
       <button
         type="button"
         className="btn waves-effect waves-teal"
-        onClick={() => this.altaUser()}
+        onClick={this.handleChange}
       >
         Alta a premium
         </button>
@@ -33,18 +26,11 @@ class BotonAltaPremium extends Component {
 class BotonBajaPremium extends Component {
   constructor(props) {
     super(props)
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  bajaUser() {
-    fetch(`/api/bajausuario/${this.props.id}`,{
-      method: 'PUT',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(res => res.json())
-      .then(M.toast({ html: 'Usuario cambiado a estándar' }))
+  handleChange(e) {
+    this.props.onChange(this.props.id)
   }
 
   render() {
@@ -52,7 +38,7 @@ class BotonBajaPremium extends Component {
       <button
         type="button"
         className="btn waves-effect waves-teal"
-        onClick={() => this.bajaUser()}
+        onClick={this.handleChange}
       >
         Baja de premium
         </button>
@@ -72,6 +58,50 @@ class ListaDeUsuarios extends Component {
   }
   componentDidMount() {
     this.fetchUsuarios()
+    this.filtrarEstandar()
+    this.filtrarPremium()
+    console.log(this.estandar)
+    console.log(this.premium)
+  }
+
+  filtrarPremium() {
+    this.setState({
+      estandar: this.state.usuarios.filter((usuario) => usuario.tipo_suscripcion == "true")
+    })
+  }
+
+  filtrarEstandar() {
+    this.setState({
+      estandar: this.state.usuarios.filter((usuario) => usuario.tipo_suscripcion == "false")
+    })
+  }
+
+  altaUser(id) {
+    fetch(`/api/altausuario/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then( () => {
+        M.toast({ html: 'Usuario cambiado a premium' })
+      })
+  }
+
+  bajaUser(id) {
+    fetch(`/api/bajausuario/${id}`,{
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then( () => {
+        M.toast({ html: 'Usuario cambiado a estándar' })
+      })
   }
 
   fetchUsuarios() {
@@ -105,7 +135,7 @@ class ListaDeUsuarios extends Component {
                     <td>{usuarios.apellido}</td>
                     <td>{usuarios.email}</td>
                     <td>{usuarios.tipo_suscripcion ? <p>Premium</p> : <p>Estándar</p>}</td>
-                    <td>{usuarios.tipo_suscripcion ? <BotonBajaPremium id={usuarios._id} /> : <BotonAltaPremium id={usuarios._id} />}</td>
+                    <td>{usuarios.tipo_suscripcion ? <BotonBajaPremium id={usuarios._id} onChange={this.bajaUser} /> : <BotonAltaPremium id={usuarios._id} />}</td>
                   </tr>
                 )
               })
