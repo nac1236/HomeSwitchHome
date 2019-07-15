@@ -113,6 +113,10 @@ ctrlSubasta.dePropiedad = async (req,res) => {
     res.json(temp)
 }
 
+ctrlSubasta.finalizar = async (req,res) => {
+    
+}
+
 ctrlSubasta.deleteAll = async (req,res) => {
     await Subasta.deleteMany({__v : 0 })
     res.json('Se borraron todas las subastas.')
