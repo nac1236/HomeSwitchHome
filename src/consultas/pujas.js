@@ -12,8 +12,8 @@
  ctrlPuja.create = async (req,res) => {
      const puja = new Pujas({
         monto_actual: req.body.monto_actual,
-        subasta_id: req.body.subasta,
-        usuario_id: req.body.usuario,
+        subasta_id: req.params.subasta_id,
+        usuario_id: req.params.usuario_id,
      })
      const subasta = await Subasta.findById({_id: puja.subasta_id})
      const pujas = await Pujas.find({_id: puja.subasta_id})

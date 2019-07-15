@@ -104,7 +104,8 @@ module.exports = app => {
     /* PUJAS */
 
     router.get('/api/pujas', ctrlPuja.all)
-    router.post('/api/puja',ctrlPuja.create)
+    router.post('/api/puja/:subasta_id/:usuario_id',ctrlPuja.create)
+    //router.delete()
 
     /* TARJETAS */
 
