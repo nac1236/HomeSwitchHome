@@ -1,3 +1,6 @@
 node_modules
 docs
 src/public/js
+./.babelrc
+.babelrc
+src/public/js/bundle.js
