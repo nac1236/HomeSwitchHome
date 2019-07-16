@@ -7,12 +7,12 @@ export default class Presentacion extends Component {
         }
     }
 fetchPropiedad() {
- fetch('/api/propiedad/5d2d50d7abbfda21206d6f39')
+ /*fetch('/api/propiedad/5d2d50d7abbfda21206d6f39')
      .then(res => res.json())
      .then(data => {
      this.setState({ propiedad: data }),
      console.log(this.state)
- })
+ })*/
 }
 componentDidMount(){
     this.fetchPropiedad()
