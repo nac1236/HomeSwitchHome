@@ -17,7 +17,7 @@ ctrlPago.createPostman = async (req,res) => {
     const pago = new Pago({
         monto: req.body.monto,
         reserva_id: req.params.reserva_id,
-        usuario_id: "5d2d31068ceb8c07f1c49f66"// el usuario queda fijo hasta que se pueda recuperar el id desde la sesion
+        usuario_id: red.body.userId // el usuario queda fijo hasta que se pueda recuperar el id desde la sesion
     })
 
     const reserva = await Reserva.findById({_id: pago.reserva_id})
