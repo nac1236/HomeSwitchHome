@@ -7,7 +7,6 @@ export default class VistaDeListaPropiedades extends Component {
         super(props)
         console.log(this.props)
     }
-
     render() {
         return (
             <div className="row">

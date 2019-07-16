@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import FormModificarPropiedad from './modificarprop'
-import FormAgregarSubasta from './agregarsub'
 import  ListaDePropiedades from './components/listaDePropiedades'
 class Adminprop extends Component {
     constructor(props) {
@@ -53,9 +52,6 @@ class Adminprop extends Component {
                         path={`${this.props.match.path}/:propId`} component={FormModificarPropiedad}
                        
                     />
-                   {/*<Route
-                        path={`${this.props.match.path}_subasta/:propId`} component={FormAgregarSubasta}
-                    />*/}
                  </Switch>
             </div>
         )

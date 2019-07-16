@@ -70,6 +70,7 @@ module.exports = app => {
     router.delete('/api/propiedad/:propiedad_id/subasta/:subasta_id',ctrlSubasta.remove)
     router.delete('/api/subastas/',ctrlSubasta.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
     router.get('/api/subatas/:propiedad_id', ctrlSubasta.dePropiedad)
+    router.put('/api/subasta/:subasta_id',ctrlSubasta.finalizar)
 
     /* HOTSALES */
 
@@ -107,7 +108,8 @@ module.exports = app => {
     /* PUJAS */
 
     router.get('/api/pujas', ctrlPuja.all)
-    router.post('/api/puja',ctrlPuja.create)
+    router.post('/api/puja/:subasta_id/:usuario_id',ctrlPuja.create)
+    //router.delete()
 
     /* TARJETAS */
 
@@ -118,7 +120,8 @@ module.exports = app => {
     /* PAGOS */
 
     router.get('/api/pagos', ctrlPago.all)
-    router.post('/api/pago/:reserva_id',ctrlPago.create)//el id del usuario deberia traermelo desde la session
+    router.post('/api/pago/:reserva_id',ctrlPago.createPostman)//el id del usuario deberia traermelo desde la session
+    router.post('/api/pago/:reserva_id/:usuario_id',ctrlPago.create)//Este es el que se debe llamar para pagar desde la aplicacion de react
     router.delete('/api/pagos/',ctrlPago.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
 
     /* IMAGENES */

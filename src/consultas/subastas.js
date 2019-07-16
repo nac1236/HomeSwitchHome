@@ -1,6 +1,7 @@
 const Subasta = require ('../models/subastas')
 const Semana = require ('../models/semana')
 const Reserva = require ('../models/reserva')
+const ctrlPuja = require ('../consultas/pujas')
 
 const ctrlSubasta = {};
 
@@ -16,7 +17,7 @@ ctrlSubasta.index =  async (req,res) => {
 
 
 //Este metodo sirve para crear subastas desde Postman
-ctrlSubasta.create = async (req,res) => {
+ctrlSubasta.createPostman = async (req,res) => {
     const hoy = new Date
     const subasta = new Subasta ({
         monto_minimo: req.body.monto_minimo,
@@ -111,6 +112,11 @@ ctrlSubasta.dePropiedad = async (req,res) => {
         } 
     }
     res.json(temp)
+}
+
+ctrlSubasta.finalizar = async (req,res) => {
+    const subasta = await Subasta.findById(req.params.subasta_id)
+    ctrlPuja.finalizar(subasta)
 }
 
 ctrlSubasta.deleteAll = async (req,res) => {

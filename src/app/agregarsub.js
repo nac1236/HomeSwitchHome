@@ -1,43 +1,15 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
-
 class FormAgregarSubasta extends Component {
   constructor(props) {
     super(props)
     console.log(props)
     this.state = {
-        propiedad: {},
-        semanas: [],
-        subastas:[],
+        reservas:[],
     }
     this.handleChange = this.handleChange.bind(this);
     this.addSubasta = this.addSubasta.bind(this);
-  }
-  fetchSemanas(){
-    fetch(`/api/semanas/`)
-        .then(res => res.json())
-        .then(data => {
-            this.setState({semanas: data})
-        })
-        console.log(this.state.semanas)
-  }
-  fetchSubastas(){
-    fetch(`/api/subastas`)
-        .then(res => res.json())
-        .then(data => {
-            this.setState({subastas: data})
-        })
-        console.log(this.state.subastas)
-  }
-  componentDidMount(){
-    fetch(`/api/propiedad/${this.props.match.params.propId}`)
-        .then(res => res.json())
-        .then(data => {
-            this.setState({propiedad: data})
-        })
-        console.log(this.state)
-   this.fetchSemanas()
   }
   handleChange(e) {
     const { name, value } = e.target;
@@ -45,27 +17,36 @@ class FormAgregarSubasta extends Component {
       [name]: value
     });
   }
-
-  addSubasta(e,semana_id) {
-      fetch(`/api/subasta/${semana_id}`, {
-        method: 'POST',
-        body: JSON.stringify(this.state),
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
+  fetchReservas() {
+    fetch(`/api/reserva/${this.props.match.params.propId}`)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ reservas: data }),
+          console.log(this.state.reservas)
       })
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          M.toast({html: 'Subasta guardada'});
-          this.setState({monto_minimo: ''});
-          this.fetchSubastas();
-        })
-        .catch(err => console.error(err));
-        e.preventDefault();
   }
-
+  addSubasta(e,semana_id) {
+    fetch(`/api/subasta/${semana_id}`, {
+      method: 'POST',
+      body: JSON.stringify(this.state),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        M.toast({html: 'Subasta guardada'});
+        this.setState({monto_minimo: ''});
+        this.fetchSubastas();
+      })
+      .catch(err => console.error(err));
+      e.preventDefault();
+}
+componentDidMount(){
+  this.fetchReservas()
+}
   render() {
     return (
       <div >
@@ -75,56 +56,44 @@ class FormAgregarSubasta extends Component {
           </ul>
         </nav>
         <h5 align="center">Agregar subasta</h5>
-          <div className="container">
-            <div className="row">
-            <form onSubmit={this.addSubasta}>
-            <div className="row">
-              <div className="col s5">
-                <p>Nombre: {this.state.propiedad.nombre}</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col s5">
-                <p>Localidad: {this.state.propiedad.localidad}</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col s5">
-                <p>Provincia: {this.state.propiedad.provincia}</p>
-              </div>
-            </div>
-            <div className="row">
-               <table className="striped bordered">
-                 <thead className="grey">
-                   <tr>
+          <div>
+          <div className="row">
+         <table className="striped bordered">
+              <thead className="grey">
+                 <tr>
                      <th>Fecha de inicio</th>
-                     <th>monto_minimo</th>
-                     <th></th>
-                   </tr>
-                 </thead>
-                 <tbody className="white">
-                 {
-                   this.state.semanas.map(semana => {
-                      return (
-                      <form onSubmit={this.addSubasta(semana._id)}>
-                        <tr key={semana._id}>
-                          <td>{semana.fecha_inicio}</td>
-                          <td><input type="number" name="monto_minimo" id="monto_minimo"></input></td>
-                          <td><button type="submit">Subastar</button></td>
-                        </tr>
-                      </form>
-                      )
-                    })
-                }
-                </tbody>
-               </table>
+                     <th>Monto minimo</th>
+                 </tr>
+               </thead>
+               <tbody className="white">
+               {
+                 this.state.reservas.map(reserva =>{
+                     return (
+                     <tr key={reserva.id}>
+                                 <td>{reserva.semana_reserva}</td>
+                                 <td>
+                                   <form  onSubmit={()=>this.addSubasta(reserva.semana_reserva)}>
+                                     <div className="col s5">
+                                       <input type="number" name="monto_minimo" id="monto_minimo" required onChange={this.handleChange}></input>
+                                     </div>
+                                     <div className="col s3">
+                                        <button type="submit">Subastar</button>
+                                     </div>
+                                   </form>
+                                 </td>
+                         </tr>
+                       )
+                 })
+               }
+               </tbody>
+         </table>
+        </div>      
+            <div className="row">
               <div className="col s2">
                <Link to="/propiedades" className="indigo accent-1 left" style={{ color: 'black' }} type="button">
                       Volver atrás
                </Link>
             </div>
-            </div>
-            </form>
             </div>
           </div>
         </div>

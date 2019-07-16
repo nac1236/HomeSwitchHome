@@ -15,6 +15,8 @@ import Perfil from './perfil'
 import cookie from 'react-cookies'
 import Subastauser from './subastauser'
 import TokenDeAcceso from './TokenDeAcceso'
+import Userreserva from './userreserva'
+import Tarjeta from './tarjeta'
 
 class App extends Component {
 
@@ -38,10 +40,12 @@ class App extends Component {
                     <Route path="/usuarios" component={Usuarios}></Route>
                     <Route path="/propiedades_disponibles" component={UserActivo}></Route>
                     <Route path="/perfil" component={Perfil}></Route>
-                    <Route path="/subastas_disponibles" component={Subastauser}></Route>
+                    <Route path="/subastas_disponibles/:propId" component={Subastauser}></Route>
+                    <Route path="/reservas_disponibles/:propId" component={Userreserva}></Route>
                     <Route path="/hotsales" component={ActionHotsale}></Route>
                     <Route path="/access" component={TokenDeAcceso}></Route>
                     <Route path="/agregar_subastas/:propId" component={FormAgregarSubasta}></Route>
+                    <Route path="/tarjeta/:propId" component={Tarjeta}></Route>
                     {/**  
                     <Route exact path="/" component={Login}></Route>
                     <Route path="/home" component={Home}></Route>
