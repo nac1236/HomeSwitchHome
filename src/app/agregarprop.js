@@ -76,12 +76,12 @@ class FormAgregarPropiedad extends Component {
               </div>
               <div className="row">
                 <div className="col s2">
-                  <button className="indigo accent-1 left" style={{ color: 'black' }} type="submit">
+                  <button  className="btn waves-effect waves-teal" type="submit">
                     Aceptar
                 </button>
                 </div>
                 <div className="col s2">
-                  <Link to="/propiedades" className="indigo accent-1 left" style={{ color: 'black' }} type="button">
+                  <Link to="/propiedades"  className="btn waves-effect waves-teal" type="button">
                     Volver atrás
                   </Link>
                 </div>

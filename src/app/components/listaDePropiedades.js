@@ -64,9 +64,9 @@ class ListaDePropiedades extends Component {
                     <td>{propiedad.provincia}</td>
                     <td>{propiedad.descripcion}</td>
                     <td>${propiedad.costo}</td>
-                    <td><button className="indigo accent-1" onClick={() => this.deletePropiedades(propiedad._id)}>Eliminar</button></td>
-                    <td><Link  to={`${this.props.match.path}/${propiedad._id}`} className="indigo accent-1" style={{ color: 'black' }} type="button">Modificar</Link></td>
-                    <td><Link  to={`${'/agregar_subastas'}/${propiedad._id}`}  className="indigo accent-1" style={{ color: 'black' }} type="button">Subastar</Link></td>
+                    <td><button  className="btn waves-effect waves-teal" onClick={() => this.deletePropiedades(propiedad._id)}>Eliminar</button></td>
+                    <td><Link  to={`${this.props.match.path}/${propiedad._id}`}  className="btn waves-effect waves-teal" type="button">Modificar</Link></td>
+                    <td><Link  to={`${'/agregar_subastas'}/${propiedad._id}`}   className="btn waves-effect waves-teal"  type="button">Subastar</Link></td>
                   </tr>
                 )
               })

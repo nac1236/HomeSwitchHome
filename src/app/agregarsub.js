@@ -25,9 +25,8 @@ class FormAgregarSubasta extends Component {
           console.log(this.state.reservas)
       })
   }
-  addSubasta(e, semana_id) {
-    e.preventDefault();
-    fetch(`/api/subasta/${semana_id}`, {
+  addSubasta(e,semana_id) {
+    fetch(`/api/reserva/baja/${semana_id}`, {
       method: 'POST',
       body: JSON.stringify(this.state),
       headers: {
@@ -38,16 +37,17 @@ class FormAgregarSubasta extends Component {
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        M.toast({ html: 'Subasta guardada' });
-        this.setState({ monto_minimo: '' });
-        this.fetchSubastas();
+        M.toast({html: 'Subasta guardada'});
+        this.setState({monto_minimo: ''});
+        this.fetchReservas()
       })
       .catch(err => console.error(err));
-
-  }
-  componentDidMount() {
-    this.fetchReservas()
-  }
+      e.preventDefault();
+      
+}
+componentDidMount(){
+  this.fetchReservas()
+}
   render() {
     return (
       <div >

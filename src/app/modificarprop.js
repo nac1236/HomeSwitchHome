@@ -107,38 +107,20 @@ class FormModificarPropiedad extends Component {
           <br></br>
           <div className="container">
             <div className="row">
-              <form method="post" enctype="multipart/form-data">
-                <div className="row">
-                  <form>
-                    <div className="col s2">
-                      <p>Nombre:</p>
-                    </div>
-                    <div className="col s5">
-                      <input input type="text" id="nombre" name="nombre" defaultValue={this.state.propiedad.nombre} onChange={this.handleChange} autoFocus></input>
-                    </div>
-                    <div className="col s2">
-                      <button className="indigo accent-1 left" style={{ color: 'black' }} onClick={() => this.editNombre(this.state.propiedad._id)}>
-                        <i className="tyni material-icons">edit</i>
-                      </button>
-                    </div>
-                  </form>
-                </div>
-                <div className="row">
-                  <div className="col s2">
-                    <p>Localidad:</p>
-                  </div>
-                  <div className="col s5">
-                    <p>{this.state.propiedad.localidad}</p>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col s2">
-                    <p>Provincia:</p>
-                  </div>
-                  <div className="col s5">
-                    <p>{this.state.propiedad.provincia}</p>
-                  </div>
-                </div>
+            <form method="post" enctype="multipart/form-data">
+            <div className="row">
+              <form>
+              <div className="col s2">
+                <p>Nombre:</p>
+              </div>
+              <div className="col s5">
+                <input input type="text" id="nombre" name="nombre" defaultValue={this.state.propiedad.nombre} onChange={this.handleChange} autoFocus></input>
+              </div>
+              <div className="col s2">
+                <button  className="btn waves-effect waves-teal" onClick={() => this.editNombre(this.state.propiedad._id)}>
+                  <i className="tyni material-icons">edit</i>
+                </button>
+              </div>
               </form>
             </div>
           </div>
@@ -153,7 +135,7 @@ class FormModificarPropiedad extends Component {
                 <input type="number" id="costo" name="costo" defaultValue={this.state.propiedad.costo} onChange={this.handleChange}></input>
               </div>
               <div className="col s2">
-                <button className="indigo accent-1 left" style={{ color: 'black' }} onClick={() => this.editCosto(this.state.propiedad._id)}>
+                <button  className="btn waves-effect waves-teal" onClick={() => this.editCosto(this.state.propiedad._id)}>
                   <i className="tyni material-icons">edit</i>
                 </button>
               </div>
@@ -164,7 +146,7 @@ class FormModificarPropiedad extends Component {
                 <input type="text" id="decripcion" name="descripcion" onChange={this.handleChange} defaultValue={this.state.propiedad.descripcion}></input>
               </div>
               <div className="col s2">
-                <button className="indigo accent-1 left" style={{ color: 'black' }} onClick={() => this.editDescripcion(this.state.propiedad._id)}>
+                <button  className="btn waves-effect waves-teal" onClick={() => this.editDescripcion(this.state.propiedad._id)}>
                   <i className="tyni material-icons">edit</i>
                 </button>
                 <div className="cancelar">
@@ -173,6 +155,14 @@ class FormModificarPropiedad extends Component {
                   </button>
                 </div>
               </div>
+            </div>
+            <div className="row">
+              <div className="col s2">
+               <Link to="/propiedades"  className="btn waves-effect waves-teal" type="button">
+                      Volver atrás
+               </Link>
+            </div>
+            </div>
             </form>
           </div>
         </div>
