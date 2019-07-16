@@ -51,7 +51,7 @@ class FormAgregarUser extends Component {
             <label style={{ color: 'black' }}>Confirme contraseña: <input type="password" id="otracontraseña" name="otracontraseña" className="white" onChange={this.handleChange}></input></label>
           </div>
           <div>
-            <button  className="btn waves-effect waves-teal" style={{ color: 'black' }} type="submit">
+            <button  className="btn waves-effect waves-teal" type="submit">
               Registrar
             </button>
           </div>
