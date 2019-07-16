@@ -111,9 +111,9 @@ module.exports = app => {
     router.get('/api/usuarios/porTipoEstandar',ctrlUsuario.estandarPrimero)
     router.get('/api/usuarios/porTipoPremium',ctrlUsuario.premiumPrimero)
     /*Para modificar informacion de los usuarios*/
-    router.put('/api/usuario/:usuario_id',ctrlUsuario.modifyNombre)
-    router.put('/api/usuario/:usuario_id',ctrlUsuario.modifyApellido)
-    router.put('/api/usuario/:usuario_id',ctrlUsuario.modifyPassword)
+    router.put('/api/usuario/nombre/:usuario_id',ctrlUsuario.modifyNombre)
+    router.put('/api/usuario/apellido/:usuario_id',ctrlUsuario.modifyApellido)
+    router.put('/api/usuario/pass/:usuario_id',ctrlUsuario.modifyPassword)
 
     //el siguiente metodo es para modificar los precios de cuota mensual de los usuarios
     
