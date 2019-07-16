@@ -88,11 +88,25 @@ ctrlReserva.deleteAll = async (req,res) => {
 }
 
 
+ctrlReserva.createSemanaVencida = async (req,res) => {
+    const semana = new Semana({
+        fecha_inicio: new Date(2019,5,1), 
+        fecha_fin: new Date(2019,5,7),
+        propiedad_id: req.params.propiedad_id
+    })
+    const semanas = await Semana.findOne({fecha_inicio: semana.fecha_inicio, propiedad_id: semana.propiedad_id}) 
+    if(!semanas){
+    await semana.save()
+    const s = await Semana.findOne({fecha_inicio: semana.fecha_inicio, propiedad_id: semana.propiedad_id}) 
+    ctrlReserva.crearVencida(s._id)//crea reserva para esas semana
+    }
+    res.json('Semana vencida creada.')
+}
 
-ctrlReserva.crearVencida = async (req,res) => {
+ctrlReserva.crearVencida = async (semana_id) => {
     const hoy = new Date
     const reserva = new Reserva({
-        semana_reserva: req.params.semana_id,
+        semana_reserva: semana_id,
         //El método getMonth() devuelve el mes del objeto Date según la hora local, donde el número cero indica el primer mes del año.
         mes_vencimiento: hoy.setDate(hoy.getDate() - 1),
     })

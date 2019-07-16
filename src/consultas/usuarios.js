@@ -13,6 +13,11 @@ ctrlUsuario.index = async (req, res) => {
     res.json(usuario)
 }
 
+ctrlUsuario.porId = async (req, res) => {
+    const usuario = await Usuario.findOne({ _id: req.params.usuario_id })
+    res.json(usuario)
+}
+
 ctrlUsuario.create = async (req, res) => {
     const usuario = new Usuario({
         email: req.body.email,
