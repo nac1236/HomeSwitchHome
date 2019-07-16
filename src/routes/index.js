@@ -89,6 +89,7 @@ module.exports = app => {
     router.post('/api/reserva/:semanaId',ctrlReserva.create)
     router.delete('/api/reserva',ctrlReserva.deleteAll)//sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
     router.post('/api/reserva/baja/:semana_id',ctrlReserva.crearSubasta) //este metodo sirve para terminar una reserva y crear la subasta, deberia ser llamado por la pantalla de crear subasta
+    router.post('/api/reserva/vencida/:propiedad_id',ctrlReserva.createSemanaVencida)
 
     /* SEMANAS */
 
