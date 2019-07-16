@@ -10,7 +10,6 @@ class ActionUsuarios extends Component {
     super();
 
   }
-<<<<<<< HEAD
   render() {
     return (
       <div>
@@ -62,44 +61,6 @@ class ActionUsuarios extends Component {
                   </label>
                 </p>
               </div>
-=======
-    render() {
-        return (
-          <div>
-             <Navbar/> 
-             <div>
-               <header>
-                  <div>
-                     <h5 align="center">Usuarios</h5>
-                  </div>
-                </header>
-              </div>
-              <div className="row">
-                 <div className="col s1">
-                     <p>Filtrar por nombre:</p>
-                 </div>
-                 <div className="col s3">
-                     <input type="text"></input>
-                 </div>
-                 <div className="col s1s">
-                     <p>Filtrar por fecha de registro:</p>
-                 </div>
-                 <div className="col s3">
-                     <input type="date"></input>
-                 </div>
-                 <div className="col s1 ">
-                     <p>Estandar</p>
-                     <input type="checkbox"></input>
-                 </div>
-                 <div className="col s1 ">
-                     <p>Premium</p>
-                     <input type="checkbox"></input>  
-                 </div>
-              </div>
-              <div>
-                <ListaDeUsuarios/>
-               </div>    
->>>>>>> b83b4e38ea976d565bf66cd0b75ce45cf19e0dbb
             </div>
           </div>
         </form>

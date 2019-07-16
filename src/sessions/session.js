@@ -45,10 +45,8 @@ module.exports = app => {
     })
 
     app.post('/logout', (req, res) => {
-        
-        req.session.destroy(
-            res.clearCookie('sid')
-        )
+        req.session.destroy()
+        res.json('Sesion destruida.')
     })
 
 
