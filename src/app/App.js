@@ -49,7 +49,7 @@ class App extends Component {
                     <Route path="/hotsales" component={ActionHotsale}></Route>
                     <Route path="/access" component={TokenDeAcceso}></Route>
                     <Route path="/agregar_subastas/:propId" component={FormAgregarSubasta}></Route>
-                    <Route path="/tarjeta/:propId" component={Tarjeta}></Route>
+                    <Route path="/tarjeta" component={Tarjeta}></Route>
                     {/**  
                     <Route exact path="/" component={Login}></Route>
                     <Route path="/home" component={Home}></Route>
