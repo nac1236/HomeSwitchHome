@@ -103,10 +103,14 @@ module.exports = app => {
     router.post('/api/usuario',ctrlUsuario.create)
     router.put('/api/usuario/alta/:usuario_id',ctrlUsuario.altaPremium)
     router.put('/api/usuario/baja/:usuario_id',ctrlUsuario.bajaPremium)
-    router.get('/api/usuarios/porNombre',ctrlUsuario.alfabeticamenteAscendente)//listar por nombre
-    router.get('/api/usuarios/porFecha')//listar por fecha de creacion
-    router.get('/api/usuarios/porFecha')//listar por tipo
-
+    /*Para ordenar los usuarios (filtrados)*/
+    router.get('/api/usuarios/porNombreAsc',ctrlUsuario.alfabeticamenteAscendente)//listar por nombre
+    router.get('/api/usuarios/porNombreDes',ctrlUsuario.alfabeticamenteDescendente)
+    router.get('/api/usuarios/porFechaAsc',ctrlUsuario.porFechaAscendente)//listar por fecha de creacion
+    router.get('/api/usuarios/porFechaDes',ctrlUsuario.porFechaDescendente)//listar por tipo
+    router.get('/api/usuarios/porTipoEstandar',ctrlUsuario.estandarPrimero)
+    router.get('/api/usuarios/porTipoPremium',ctrlUsuario.premiumPrimero)
+    /*Para modificar informacion de los usuarios*/
     router.put('/api/usuario/:usuario_id',ctrlUsuario.modifyNombre)
     router.put('/api/usuario/:usuario_id',ctrlUsuario.modifyApellido)
     router.put('/api/usuario/:usuario_id',ctrlUsuario.modifyPassword)

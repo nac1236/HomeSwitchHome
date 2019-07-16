@@ -41,14 +41,21 @@ ctrlUsuario.bajaPremium = async (req,res) => {
     res.json('Recibido')
 }
 
-ctrlUsuario.porFecha = async (req,res) => {
-    const usuarios = await Usuario.find()
+ctrlUsuario.porFechaAscendente = async (req,res) => {
+    var usuarios = await Usuario.find()
     usuarios.sort(function(a,b){
         a.timestamp - b.timestamp
     })
-    //console.log()
+    res.json(usuarios)
 }
 
+ctrlUsuario.porFechaDescendente = async (req,res) => {
+    var usuarios = await Usuario.find()
+    usuarios.sort(function(a,b){
+        a.timestamp - b.timestamp
+    })
+    res.json(usuarios)
+}
 
 
 ctrlUsuario.alfabeticamenteAscendente = async (req,res) => {
