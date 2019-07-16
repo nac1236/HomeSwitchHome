@@ -23,9 +23,9 @@ export default class TokenDeAcceso extends Component {
     adminLogIn = (e) => {
         e.preventDefault()
         if (this.state.accessInput === this.state.accessReal) {
-            this.setState({ isLogged: true })
+            this.props.history.push('/home')
         } else {
-            M.toast({html: 'Token inválido.'});
+            M.toast({ html: 'Token inválido.' });
         }
     }
 
@@ -33,19 +33,17 @@ export default class TokenDeAcceso extends Component {
         return (
 
             <div className="container">
-                {this.state.isLogged ? (
-                    <div className="card grey lighten-1">
-                        <h1>Ingresá tu código de acceso</h1>
-                        <form onSubmit={this.adminLogIn}>
-                            <label>Código</label>
-                            <input type="password" id="accesstoken" name="accessInput" value={this.state.accessInput} onChange={this.handleInputChange} required></input>
-                            <button className="btn waves-effect waves-teal">
-                                <input type="submit" value="Entrar"></input>
-                            </button>
-                        </form>
-                    </div>)
-                    : this.props.history.push('/home')
-                }
+
+                <div className="card grey lighten-1">
+                    <h1>Ingresá tu código de acceso</h1>
+                    <form onSubmit={(e) => this.adminLogIn(e)}>
+                        <label>Código</label>
+                        <input type="password" id="accesstoken" name="accessInput" value={this.state.accessInput} onChange={this.handleInputChange} required></input>
+                        <button className="btn waves-effect waves-teal">
+                            <input type="submit" value="Entrar"></input>
+                        </button>
+                    </form>
+                </div>
             </div>
         )
     }

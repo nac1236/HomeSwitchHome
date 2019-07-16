@@ -77,7 +77,7 @@ class ListaDeUsuarios extends Component {
   }
 
   altaUser(id) {
-    fetch(`/api/altausuario/${id}`, {
+    fetch(`/api/usuario/alta/${id}`, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
@@ -91,7 +91,7 @@ class ListaDeUsuarios extends Component {
   }
 
   bajaUser(id) {
-    fetch(`/api/bajausuario/${id}`,{
+    fetch(`/api/usuario/baja/${id}`,{
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
