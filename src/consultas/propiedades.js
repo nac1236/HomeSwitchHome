@@ -87,5 +87,9 @@ ctrl.removeAll = async (req,res) => {
     res.json('Hecho. Borrado de propiedades terminado.')
 }
 
+ctrl.cantidad = async (req,res) =>{
+    const cantidad = await Propiedad.find()
+    res.json(count(cantidad))
+}
 
 module.exports = ctrl

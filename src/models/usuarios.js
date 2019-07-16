@@ -11,7 +11,12 @@ const UsuarioSchema = new Schema({
     apellido: { type: String, require: true },
     creditos: { type: String, default: 2 },
     tipo: { type: String }, // "admin" o "usuario"
+<<<<<<< HEAD
     tipo_suscripcion: { type: Boolean, default: false } //true = premium , false = estandar
+=======
+    tipo_suscripcion: {type: Boolean, default: false}, //true = premium , false = estandar
+    timestamp: {type: String, default: Date.now}
+>>>>>>> a2c7fd90348c10514e472c1dc7917946e595770e
 })
 
 UsuarioSchema.pre('save', function (next) {

@@ -87,6 +87,23 @@ ctrlReserva.deleteAll = async (req,res) => {
         res.json('Hecho. Borrado terminado.')
 }
 
+ctrlReserva.crearVencida = async (req,res) => {
+    const hoy = new Date
+    const reserva = new Reserva({
+        semana_reserva: req.params,
+        //El método getMonth() devuelve el mes del objeto Date según la hora local, donde el número cero indica el primer mes del año.
+        mes_vencimiento: hoy.setDate(hoy.getDate() - 1),
+    })
+    const semana = await Semana.findById({_id : reserva.semana_reserva})
+    console.log(semana._id)
+    const propiedad = await Propiedad.findById({_id: semana.propiedad_id})
+    reserva.costo = propiedad.costo
+    const reservas = await Reserva.findOne({semana_reserva : reserva.semana_reserva})
+    if(!reservas){
+        await reserva.save()
+    }
+}
+
 
 ctrlReserva.reservasVencidas = async (req,res) =>{ 
     const semanas = await Semana.find({propiedad_id: req.params.propiedad_id, disponible: true}) //para mostrar solo semanas disponibles
@@ -97,7 +114,8 @@ ctrlReserva.reservasVencidas = async (req,res) =>{
     var temp = new Array
     var indice = 0
     for(var j = 0; j<reservas.length ; j++){
-        if(reservas[j].mes_vencimiento >= new Date){
+        console.log(reservas[j].mes_vencimiento <= new Date)
+        if(reservas[j].mes_vencimiento <= new Date){
             temp[indice] = reservas[j] 
         }   
     }
@@ -115,10 +133,15 @@ ctrlReserva.crearSubasta = async (req,res) =>{
     if(!semana){
         res.json('La semana no esta disponible.')
     }else{
-        const reserva = await Reserva.findOneAndUpdate({semana_reserva: semana._id}, {valida: false})
+        const reserva = await Reserva.findOne({semana_reserva: semana._id})
         //y crear subasta
-        ctrlSubasta.create(reserva.semana_reserva, req.body.costo)
-        res.json("Termino la reserva. Subasta creada con exito!")
+        if(reserva.mes_vencimiento <= new Date){
+            await Reserva.findByIdAndUpdate({_id: reserva._id}, {valida: false})
+            ctrlSubasta.create(reserva.semana_reserva, req.body.costo)
+            res.json("Termino la reserva. Subasta creada con exito!")
+        }else{
+            res.json("Todavia no se vencio el tiempo disponible para reservar (6 meses).")
+        }
     }
 }
 

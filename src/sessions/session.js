@@ -24,6 +24,7 @@ module.exports = app => {
     //         next()
     //     }
     // } //esta funcion es por ejemplo para que no entre a la pagina si no esta logueado
+
     
     router.get('/session', (req, res) => {
         res.json(req.session);

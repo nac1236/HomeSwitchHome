@@ -60,15 +60,15 @@ ctrlSubasta.create = async (semana_id,monto) => {
             const subastas = await Subasta.findOne({semana_reserva: semana._id})
             if(!subastas){ 
                 await subasta.save()
-                res.json('Recibido. Subasta creada!')
+                console.log('Recibido. Subasta creada!')
             }else{
-                res.json('Ya hay una subasta creada para esa semana. No se puede crear otra!')
+                console.log('Ya hay una subasta creada para esa semana. No se puede crear otra!')
             }
         } else {
-            res.json('Todavia no pasaron los seis meses necesarios')
+            console.log('Todavia no pasaron los seis meses necesarios')
         }
     }else{
-        res.json('La subasta no se puede crear porque esta reservada para ese semana.')
+        console.log('La subasta no se puede crear porque esta reservada para ese semana.')
     }
 }
 
