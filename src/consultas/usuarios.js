@@ -41,4 +41,94 @@ ctrlUsuario.bajaPremium = async (req,res) => {
     res.json('Recibido')
 }
 
+ctrlUsuario.porFecha = async (req,res) => {
+    const usuarios = await Usuario.find()
+    usuarios.sort(function(a,b){
+        a.timestamp - b.timestamp
+    })
+    //console.log()
+}
+
+
+
+ctrlUsuario.alfabeticamenteAscendente = async (req,res) => {
+    var usuarios = await Usuario.find()
+    usuarios.sort(function(a,b){
+        if (a.apellido < b.apellido) {
+          return -1;
+        }
+        if (a.apellido > b.apellido){
+          return 1;
+        }
+        // a debe ser igual b
+        return 0;
+    })
+    // var numbers = [4, 2, 5, 1, 3];
+    // numbers.sort(function(a, b) {
+    //     return a - b;
+    // });
+    // console.log(numbers);
+    res.json(usuarios)
+}
+
+ctrlUsuario.alfabeticamenteDescendente = async (req,res) => {
+    var usuarios = await Usuario.find()
+    usuarios.sort(function(a,b){
+        if (a.apellido > b.apellido) {
+          return -1;
+        }
+        if (a.apellido < b.apellido){
+          return 1;
+        }
+        // a debe ser igual b
+        return 0;
+    })
+    res.json(usuarios)
+}
+
+ctrlUsuario.estandarPrimero= async (req,res) => {
+    var usuarios = await Usuario.find()
+    usuarios.sort(function(a,b){
+        if (a.tipo_suscripcion > b.tipo_suscripcion) {
+          return -1;
+        }
+        if (a.tipo_suscripcion < b.tipo_suscripcion){
+          return 1;
+        }
+        // a debe ser igual b
+        return 0;
+    })
+    res.json(usuarios)
+}
+
+ctrlUsuario.premiumPrimero= async (req,res) => {
+    var usuarios = await Usuario.find()
+    usuarios.sort(function(a,b){
+        if (a.tipo_suscripcion > b.tipo_suscripcion) {
+          return -1;
+        }
+        if (a.tipo_suscripcion < b.tipo_suscripcion){
+          return 1;
+        }
+        // a debe ser igual b
+        return 0;
+    })
+    res.json(usuarios)
+}
+
+ctrlUsuario.modifyNombre = async (req,res) =>{
+    await Usuario.findByIdAndUpdate({_id: req.params.usuario_id},{nombre: req.body.nombre})
+    res.json('Recibido')
+}
+
+ctrlUsuario.modifyApellido = async (req,res) =>{
+    await Usuario.findByIdAndUpdate({_id: req.params.usuario_id},{apellido: req.body.apellido})
+    res.json('Recibido')
+}
+
+ctrlUsuario.modifyPassword = async (req,res) =>{
+    await Usuario.findByIdAndUpdate({_id: req.params.usuario_id},{password: req.body.password})
+    res.json('Recibido')
+}
+
 module.exports = ctrlUsuario
