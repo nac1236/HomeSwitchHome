@@ -13,7 +13,7 @@ export default class Userreserva extends Component {
     }
     this.addPago = this.addPago.bind(this);
   }
-  addPago(id_reserva) {
+  addPago(id_reserva){
     fetch(`/api/pago/${id_reserva}/${this.state.userId}`, {
       method: 'POST',
       body: JSON.stringify(this.state),
@@ -26,7 +26,7 @@ export default class Userreserva extends Component {
       .then(data => {
         console.log(data);
         M.toast({ html: 'El pago fue realizado' });
-        this.setState({ _id: '' });
+        this.setState({ _id: ''});
       })
       .catch(err => console.error(err));
   }
@@ -54,33 +54,33 @@ export default class Userreserva extends Component {
         </div>
       )
   }*/
-  componentDidMount() {
-    this.fetchReservas()
+  componentDidMount(){
+      this.fetchReservas()
   }
-  render() {
-    return (
-      <div>
-        <Navbaruser />
-        <h3>Fechas disponibles</h3>
-        <div className="row">
-          {
-            this.state.reservas.map(reserva => {
-              return (
-                <div key={reserva.id}>
-                  <div className="col s4">
-                    <div className="card green lighten-4">
-                      <form>
-                        <p>Semana disponible: {reserva.semana_reserva}</p>
-                        <button onClick={() => this.addPago(reserva.id)} className="btn waves-effect waves-teal">Reservar</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              )
-            }
-            )}
-        </div>
-      </div>
-    )
+      render(){
+          return (
+              <div>
+                 <Navbaruser/>
+                 <h3>Fechas disponibles</h3>
+                 <div className="row">
+                   {
+                     this.state.reservas.map(reserva =>{
+                       return(
+                         <div key={reserva.id}>
+                           <div className="col s4">
+                             <div className="card green lighten-4">
+                               <form>
+                                       <p>Semana disponible: {reserva.semana_reserva}</p>
+                                      <button onClick={() => this.addPago(reserva.id)} className="btn waves-effect waves-teal">Reservar</button>
+                                </form>
+                              </div>
+                            </div>
+                         </div>
+                       )
+                     }
+                     )}
+                 </div>
+              </div>   
+          )
+      }
   }
-}

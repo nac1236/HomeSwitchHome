@@ -2,6 +2,8 @@ const { Schema, model } = require('mongoose')
 const { ObjectId } = Schema
 const bcrypt = require('bcrypt')
 
+const saltRounds = 10
+
 const UsuarioSchema = new Schema({
     email: { type: String, required: true },
     password: { type: String, required: true },

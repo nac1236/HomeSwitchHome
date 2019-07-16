@@ -67,10 +67,6 @@ class Login extends React.Component {
                     <nav className=" indigo accent-1">
                         <form onSubmit={this.onSubmit}>
                             <ul>
-
-                                <li className="left hide-on-med-and-down"><Link to="/home">Admin</Link></li>
-                                <li className="left hide-on-med-and-down"><Link to="/propiedades_disponibles">Admin</Link></li>
-                                <li className="left hide-on-med-and-down"><input type="password" id="passadmin"></input></li>
                                 <li className="right hide-on-med-and-down"><input type="submit" value="Iniciar sesión"></input></li>
                                 <li className="right hide-on-med-and-down"><input type="password" name="password" value={this.state.password} onChange={this.handleInputChange} required id="contraseña_login" size="12" rows="3"></input></li>
                                 <li className="right hide-on-med-and-down"><label style={{ color: 'white' }}>Contraseña: </label></li>

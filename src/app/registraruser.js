@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { Link, Route } from 'react-router-dom'
-import Tarjeta from './tarjeta';
-
+import { Link } from 'react-router-dom'
 class FormAgregarUser extends Component {
   constructor() {
     super();
@@ -13,6 +11,7 @@ class FormAgregarUser extends Component {
       contraseña: ''
     }
     this.handleChange = this.handleChange.bind(this)
+    this.addUsuarios = this.addUsuarios.bind(this)
   }
   handleChange(e) {
     const { name, value } = e.target;
@@ -21,15 +20,31 @@ class FormAgregarUser extends Component {
     });
   }
 
-  onClick() {
+  addUsuarios(e) {
+    e.preventDefault();
+    console.log(e)
+    fetch('/api/usuario', {
+      method: 'POST',
+      body: JSON.stringify(this.state),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
 
+      })
+      .catch(err => console.error(err));
+    
   }
 
 
   render() {
     return (
       <div className="container">
-        <form method="post">
+        <form method="post" onSubmit={this.addUsuarios}>
           <h4 align="center">Crea tu cuenta</h4>
           <div>
             <label style={{ color: 'black' }}>Correo electrónico: <input type="text" id="email" name="email" className="white" required onChange={this.handleChange}></input></label>
@@ -40,14 +55,11 @@ class FormAgregarUser extends Component {
           </div>
           <div>
             <button className="btn waves-effect waves-teal" type="submit">
-              <Route path="/tarjeta" component={Tarjeta}></Route>
-              <Link to="/tarjeta" usuario={this.state}>
-                Registrar
-              </Link>
+              Registrar
             </button>
           </div>
         </form>
-
+        <Link to="/tarjeta" usuario={this.state}>Tarjeta</Link>
       </div>
     )
   }

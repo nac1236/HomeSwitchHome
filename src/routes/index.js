@@ -129,6 +129,7 @@ module.exports = app => {
     //la siguiente ruta NO DEBE SER LLAMADA POR LA APLICACIOND DE REACT. Es solo para usar desde POSTMAN
 
     router.post('/api/precios',ctrlPrecios.create)
+    router.delete('/api/usuarios',ctrlUsuario.deleteAll)
 
     /* PUJAS */
 

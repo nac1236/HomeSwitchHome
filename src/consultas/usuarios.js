@@ -184,4 +184,9 @@ ctrlUsuario.modifyPassword = async (req,res) =>{
     res.json('Recibido')
 }
 
+ctrlUsuario.deleteAll = async (req,res) => {
+    await Usuario.deleteMany({__v : 0 })
+    res.json('Se borraron todas las subastas.')
+}
+
 module.exports = ctrlUsuario
