@@ -40,7 +40,7 @@ class FormAgregarUser extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="container">
         <form method="post" onSubmit={this.addUsuarios}>
           <h4 align="center">Crea tu cuenta</h4>
           <div>

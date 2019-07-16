@@ -26,6 +26,7 @@ class FormAgregarSubasta extends Component {
       })
   }
   addSubasta(e, semana_id) {
+    e.preventDefault();
     fetch(`/api/subasta/${semana_id}`, {
       method: 'POST',
       body: JSON.stringify(this.state),
@@ -42,7 +43,7 @@ class FormAgregarSubasta extends Component {
         this.fetchSubastas();
       })
       .catch(err => console.error(err));
-    e.preventDefault();
+
   }
   componentDidMount() {
     this.fetchReservas()
@@ -72,7 +73,7 @@ class FormAgregarSubasta extends Component {
                       <tr key={reserva.id}>
                         <td>{reserva.semana_reserva}</td>
                         <td>
-                          <form onSubmit={() => this.addSubasta(reserva.semana_reserva)}>
+                          <form onSubmit={(e) => this.addSubasta(e, reserva.semana_reserva)}>
                             <div className="col s5">
                               <input type="number" name="monto_minimo" id="monto_minimo" required onChange={this.handleChange}></input>
                             </div>

@@ -10,8 +10,11 @@ const ctrlPuja = require ('../consultas/pujas')
 const ctrlTarjeta = require ('../consultas/tarjetas')
 const ctrlPago = require ('../consultas/pagos')
 const ctrlPrecios = require ('../consultas/precioCuota')
+<<<<<<< HEAD
 
 const withAuth = require('../sessions/withAuth')
+=======
+>>>>>>> b83b4e38ea976d565bf66cd0b75ce45cf19e0dbb
 
 //prueba
 const creaImg = require('../consultas/pruebaImg')
@@ -113,9 +116,10 @@ module.exports = app => {
     router.get('/api/usuarios/porTipoEstandar',ctrlUsuario.estandarPrimero)
     router.get('/api/usuarios/porTipoPremium',ctrlUsuario.premiumPrimero)
     /*Para modificar informacion de los usuarios*/
-    router.put('/api/usuario/:usuario_id',ctrlUsuario.modifyNombre)
-    router.put('/api/usuario/:usuario_id',ctrlUsuario.modifyApellido)
-    router.put('/api/usuario/:usuario_id',ctrlUsuario.modifyPassword)
+
+    router.put('/api/usuario/nombre/:usuario_id',ctrlUsuario.modifyNombre)
+    router.put('/api/usuario/apellido/:usuario_id',ctrlUsuario.modifyApellido)
+    router.put('/api/usuario/pass/:usuario_id',ctrlUsuario.modifyPassword)
 
     //el siguiente metodo es para modificar los precios de cuota mensual de los usuarios
     
@@ -137,6 +141,9 @@ module.exports = app => {
     router.get('/api/tarjetas',ctrlTarjeta.all)
     router.post('/api/tarjeta/:usuario_id',ctrlTarjeta.create)
     router.delete('/api/tarjetas',ctrlTarjeta.deleteAll) //sirve para borrar todo(como prueba), no llamar a este metodo desde la interfaz
+    router.post('/api/tarjeta/:usuario_id',ctrlTarjeta.agregar)//este hay que llamarlo para agregaruna tarjeta
+    router.get('/api/tarjetas/:usuario_id',ctrlTarjeta.deUsuario) //con este metodo podes ver las tarjetas que tiene registradas y no estan en uso para elegir cual usar
+    router.put('/api/tarjetas/:usuario_id/:tarjeta_id',ctrlTarjeta.elegirNueva)//despues de usar el metodo de arriba tocas un boton y le mandas a este metodo el id de usuario y el id de la tarjeta
 
     router.post('/api/tarjeta/:usuario_id',ctrlTarjeta.agregar)//este hay que llamarlo para agregaruna tarjeta
     router.get('/api/tarjetas/:usuario_id',ctrlTarjeta.deUsuario) //con este metodo podes ver las tarjetas que tiene registradas y no estan en uso para elegir cual usar

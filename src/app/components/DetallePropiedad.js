@@ -28,21 +28,21 @@ export default class DetallePropiedad extends Component {
             <div>
               <h3 align="center">{this.state.propiedad.nombre}</h3>
               <div className="row">
-                 <div className="col s2">
-                     <p>Localidad: {this.state.propiedad.localidad}</p>
+                 <div className="col s3">
+                     <h5>Localidad: {this.state.propiedad.localidad}</h5>
                  </div>
-                 <div className="col s2">
-                     <p>Provincia: {this.state.propiedad.provincia}</p>
+                 <div className="col s4">
+                     <h5>Provincia: {this.state.propiedad.provincia}</h5>
                  </div>
               </div>
               <div className="row">
                   <div className="col s6">
-                      <p>Descripción: {this.state.propiedad.descripcion}</p>
+                      <h5>Descripción: {this.state.propiedad.descripcion}</h5>
                   </div>
               </div>
               <div className="row">
-                  <div className="col s2">
-                      <h5>Precio por semana: ${this.state.propiedad.costo}</h5>
+                  <div className="col s4">
+                      <h4>Precio por semana: ${this.state.propiedad.costo}</h4>
                   </div>
               </div>
               {this.state.tipo && 

@@ -96,14 +96,14 @@ class FormModificarPropiedad extends Component {
   }
   render() {
     return (
-      <>
-        <div >
-          <nav className="indigo accent-1">
-            <ul>
-              <li className="right hide-on-med-and-down"><Link to="/">Cerrar sesion</Link></li>
-            </ul>
-          </nav>
-          <br></br>
+      <div >
+        <nav className="indigo accent-1">
+          <ul>
+            <li className="right hide-on-med-and-down"><Link to="/">Cerrar sesion</Link></li>
+          </ul>
+        </nav>
+        <h5 align="center">Modificar propiedad</h5>
+        <br></br>
           <div className="container">
             <div className="row">
               <form method="post" enctype="multipart/form-data">
