@@ -116,6 +116,7 @@ module.exports = app => {
     router.put('/api/usuario/nombre/:usuario_id',ctrlUsuario.modifyNombre)
     router.put('/api/usuario/apellido/:usuario_id',ctrlUsuario.modifyApellido)
     router.put('/api/usuario/pass/:usuario_id',ctrlUsuario.modifyPassword)
+    router.post('/api/authenticate', ctrlUsuario.authenticate)
 
     //el siguiente metodo es para modificar los precios de cuota mensual de los usuarios
     
