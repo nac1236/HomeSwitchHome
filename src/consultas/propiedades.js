@@ -41,7 +41,7 @@ ctrl.crearProp = async (req) => {
     })
     await propiedad.save(); 
     
-    const altaImg = await Imagenes.create(req)
+    //const altaImg = await Imagenes.create(req)
     
 }
 

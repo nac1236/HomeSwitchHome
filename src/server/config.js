@@ -9,6 +9,8 @@ const routes = require('../routes/index')
 
 const session = require('../sessions/session')
 
+const cookieParser = require('cookie-parser');
+
 module.exports = app => {
 
     // Configuracion
@@ -16,6 +18,7 @@ module.exports = app => {
 
     // Middlewares
     app.use(morgan('dev'))
+    app.use(cookieParser())
 
 //temporal para guardar imagenes
     app.use(express.static('uploads'))

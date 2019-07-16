@@ -25,8 +25,8 @@ class FormAgregarSubasta extends Component {
           console.log(this.state.reservas)
       })
   }
-  addSubasta(semana_id) {
-    fetch(`/api/reserva/baja/${semana_id}`, {
+  addSubasta(e,semana_id) {
+    fetch(`/api/subasta/${semana_id}`, {
       method: 'POST',
       body: JSON.stringify(this.state),
       headers: {
@@ -38,10 +38,11 @@ class FormAgregarSubasta extends Component {
       .then(data => {
         console.log(data);
         M.toast({html: 'Subasta guardada'});
-        this.setState({_id:'',monto_minimo: ''});
-        this.fetchReservas()
+        this.setState({monto_minimo: ''});
+        this.fetchSubastas();
       })
       .catch(err => console.error(err));
+      e.preventDefault();
 }
 componentDidMount(){
   this.fetchReservas()
@@ -71,7 +72,7 @@ componentDidMount(){
                      <tr key={reserva.id}>
                                  <td>{reserva.semana_reserva}</td>
                                  <td>
-                                   <form  onSubmit={this.addSubasta(reserva.semana_reserva)}>
+                                   <form  onSubmit={()=>this.addSubasta(reserva.semana_reserva)}>
                                      <div className="col s5">
                                        <input type="number" name="monto_minimo" id="monto_minimo" required onChange={this.handleChange}></input>
                                      </div>

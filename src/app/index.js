@@ -7,7 +7,7 @@ import { CookiesProvider } from 'react-cookie'
 ReactDOM.render(
     <CookiesProvider>
         <Router>
-            <App />
+            <App/>
         </Router>
     </CookiesProvider>,
     document.getElementById('app')

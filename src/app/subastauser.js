@@ -12,7 +12,7 @@ class Subastauser extends Component {
       }
     
       fetchSubastas() {
-        fetch(`api/subastas/${this.props.match.params.propId}`)
+        fetch(`/api/subastas/${this.props.match.params.propId}`)
           .then(res => res.json())
           .then(data => {
             this.setState({ subastas: data }),

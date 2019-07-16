@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import FormAgregarUser from '../registraruser'
+
 class Login extends React.Component {
     constructor(props) {
         super(props)
@@ -19,7 +20,7 @@ class Login extends React.Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-        fetch('/api/login', {
+        fetch('/api/authenticate', {
             method: 'POST',
             body: JSON.stringify(this.state),
             headers: {
@@ -28,7 +29,7 @@ class Login extends React.Component {
         })
             .then(res => {
                 if (res.status === 200) {
-                    this.props.history.push('/propiedades_disponibles');
+                    this.props.history.push('/home');
                 } else {
                     const error = new Error(res.error);
                     throw error;
@@ -49,9 +50,9 @@ class Login extends React.Component {
                             <ul>
 
                                 <li className="left hide-on-med-and-down"><Link to="/home">Admin</Link></li>
-                                <li className="left hide-on-med-and-down"><Link to="/propiedades_disponibles">Login</Link></li>
+                                <li className="left hide-on-med-and-down"><Link to="/propiedades_disponibles">Admin</Link></li>
                                 <li className="left hide-on-med-and-down"><input type="password" id="passadmin"></input></li>
-                                <li className="right hide-on-med-and-down"><button type="submit" >Iniciar sesión</button></li>
+                                <li className="right hide-on-med-and-down"><input type="submit" value="Iniciar sesión"></input></li>
                                 <li className="right hide-on-med-and-down"><input type="password" name="password" value={this.state.password} onChange={this.handleInputChange} required id="contraseña_login" size="12" rows="3"></input></li>
                                 <li className="right hide-on-med-and-down"><label style={{ color: 'white' }}>Contraseña: </label></li>
                                 <li className="right hide-on-med-and-down"><input type="email" name="email" value={this.state.email} onChange={this.handleInputChange} required id="correo" size="12" rows="3"></input></li>
@@ -69,11 +70,13 @@ class Login extends React.Component {
                         <div className="col s6 right">
                             <FormAgregarUser />
                         </div>
+                        <Link to="/access">Tengo un token</Link>
                     </div>
                 </div>
             </div>
         )
     }
 }
+
 export default Login
 
