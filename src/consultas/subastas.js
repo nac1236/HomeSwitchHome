@@ -115,8 +115,10 @@ ctrlSubasta.dePropiedad = async (req,res) => {
 }
 
 ctrlSubasta.finalizar = async (req,res) => {
-    const subasta = await Subasta.findById(req.params.subasta_id)
+    const subasta = await Subasta.findById({_id:req.params.subasta_id})
     ctrlPuja.finalizar(subasta)
+    await Subasta.findByIdAndUpdate({_id: req.params.subasta_id}, {valida:false})
+    res.json('subasta finalizada.')
 }
 
 ctrlSubasta.deleteAll = async (req,res) => {
