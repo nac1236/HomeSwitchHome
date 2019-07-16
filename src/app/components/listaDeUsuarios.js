@@ -135,7 +135,7 @@ class ListaDeUsuarios extends Component {
                     <td>{usuarios.apellido}</td>
                     <td>{usuarios.email}</td>
                     <td>{usuarios.tipo_suscripcion ? <p>Premium</p> : <p>Estándar</p>}</td>
-                    <td>{usuarios.tipo_suscripcion ? <BotonBajaPremium id={usuarios._id} onChange={this.bajaUser} /> : <BotonAltaPremium id={usuarios._id} />}</td>
+                    <td>{usuarios.tipo_suscripcion ? <BotonBajaPremium id={usuarios._id} onChange={this.bajaUser} /> : <BotonAltaPremium id={usuarios._id} onChange={this.altaUser}/>}</td>
                   </tr>
                 )
               })

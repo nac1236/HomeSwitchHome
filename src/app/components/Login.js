@@ -44,8 +44,8 @@ class Login extends React.Component {
                         .then(data => {
                             console.log(data)
                             let { userId, tipo } = data
-                            cookie.save('userId', userId, {})
-                            cookie.save('tipo', tipo, {})
+                            cookie.save('userId', userId, {path: '/'})
+                            cookie.save('tipo', tipo, {path: '/'})
                         })
                     this.props.history.push('/propiedades_disponibles');
                 } else {

@@ -26,7 +26,7 @@ class UserActivo extends Component {
     render() {
         return (
             <div>
-                <Navbaruser />
+                <Navbaruser history={this.props.history}/>
                 {/*<div className="row">
                     <div className=" col s1">
                         <p>Nombre:</p>

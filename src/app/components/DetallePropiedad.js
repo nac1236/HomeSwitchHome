@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom' 
+import cookie from 'react-cookies';
+
 export default class DetallePropiedad extends Component {
     constructor(props){
         super(props)
         console.log(props)
         this.state = {
-            propiedad: {}
+            propiedad: {},
+            tipo: ''
         }
     }
 
@@ -16,9 +19,11 @@ export default class DetallePropiedad extends Component {
                 this.setState({propiedad: data})
             })
             console.log(this.state)
+        this.setState({ tipo: cookie.load('tipo')})
     }
 
     render() {
+        console.log(cookie.tipo)
         return (
             <div>
               <h3 align="center">{this.state.propiedad.nombre}</h3>
@@ -40,11 +45,12 @@ export default class DetallePropiedad extends Component {
                       <h5>Precio por semana: ${this.state.propiedad.costo}</h5>
                   </div>
               </div>
+              {this.state.tipo && 
               <div className="row">
                   <div className="col s2">
                       <Link to={`${'/reservas_disponibles'}/${this.props.match.params.propId}`}  className="indigo accent-1 left" style={{ color: 'black' }} type="button">Reservas disponibles</Link>
                   </div>                      
-              </div>
+              </div>}
               <div className="row">
                   <div className="col s2">
                       <Link to={`${'/subastas_disponibles'}/${this.props.match.params.propId}`}  className="indigo accent-1 left" style={{ color: 'black' }} type="button">Subastas activas</Link>

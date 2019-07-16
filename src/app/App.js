@@ -20,6 +20,10 @@ import Tarjeta from './tarjeta'
 
 class App extends Component {
 
+    constructor(props){
+        super(props)
+    }
+
     componentWillMount() {
         this.setState({
             userId: cookie.load('_id'),
