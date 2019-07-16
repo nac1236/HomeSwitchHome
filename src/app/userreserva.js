@@ -4,6 +4,7 @@ export default class Userreserva extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      semana:[],
       reservas: [],
       pago:[],
     }
@@ -34,6 +35,22 @@ fetchReservas() {
         console.log(this.state.reservas)
     })
 }
+/*fetchSemana(id_semana) {
+  fetch(`/api/semana/${id_semana}`)
+    .then(res => res.json())
+    .then(data => {
+      this.setState({ reservas: data }),
+        console.log(this.state.reservas)
+    })
+}
+semana(id_semana){
+  this.fetchSemana(id_semana)
+    return(
+      <div>
+       {id_semana.fecha_inicio}
+      </div>
+    )
+}*/
 componentDidMount(){
     this.fetchReservas()
 }
@@ -48,10 +65,10 @@ componentDidMount(){
                      return(
                        <div key={reserva.id}>
                          <div className="col s4">
-                           <div className="card teal lighten-1">
+                           <div className="card green lighten-4">
                              <form>
-                                <p>Semana disponible: {reserva.semana_reserva}</p>
-                                <button onClick={() => this.addPago(reserva._id)}>Reservar</button>
+                                     <p>Semana disponible: {reserva.semana_reserva}</p>
+                                    <button onClick={() => this.addPago(reserva.semana_reserva)} className="btn waves-effect waves-teal">Reservar</button>
                               </form>
                             </div>
                           </div>

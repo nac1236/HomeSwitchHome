@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import FormAgregarUser from '../registraruser'
+import Presentacion from './presentacion';
 
 class Login extends React.Component {
     constructor(props) {
@@ -62,15 +63,18 @@ class Login extends React.Component {
                         </form>
                     </nav>
                 </div>
-                <div className="container">
+                <div>
+                    <div className="col s3">
+                       <Link to="/access">Tengo un token</Link>
+                    </div>
                     <div className="row">
                         <div className="col s6 left">
-                            <img src='.../logos/HSH-Complete.svg' />
+                            <br></br>
+                          <Presentacion/>
                         </div>
                         <div className="col s6 right">
-                            <FormAgregarUser />
+                            <FormAgregarUser/>
                         </div>
-                        <Link to="/access">Tengo un token</Link>
                     </div>
                 </div>
             </div>

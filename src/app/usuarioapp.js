@@ -44,11 +44,6 @@ class ActionUsuarios extends Component{
                  </div>
               </div>
               <div>
-                   <button className=" indigo accent-1">
-                      Cambiar Precio
-                    </button>
-              </div>
-              <div>
                 <ListaDeUsuarios/>
                </div>    
             </div>

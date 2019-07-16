@@ -19,8 +19,8 @@ class Subastauser extends Component {
               console.log(this.state.subastas)
           })
       }
-      addPuja(e){
-        fetch(`/api/puja`,{
+      addPuja(e, subasta_id){
+        fetch(`/api/puja/${subasta_id}/userId`,{
         method: 'POST',
         body: JSON.stringify(this.state),
         headers: {
@@ -32,6 +32,7 @@ class Subastauser extends Component {
           .then(data => {
           console.log(data);
           M.toast({ html: 'Realizaste una puja' });
+          this.setState({ monto_actual:'' });
           })
          .catch(err => console.error(err));
          e.preventDefault();
@@ -47,7 +48,7 @@ class Subastauser extends Component {
                     return (
                        <div>
                            <div key={subasta.id}>
-                               <form>
+                               <form onSubmit={()=>this.addPuja(subasta.id)}>
                                <div className="col s4">
                                    <div className="card">
                                       <p>Semana de reserva: {}</p>
@@ -56,10 +57,10 @@ class Subastauser extends Component {
                                       <p>Para pujar ingrese un monto más alto que el actual</p>
                                       <div className="row">
                                         <div className="col s3">
-                                           <input type="text"></input>
+                                           <input type="text" id="monto_actual" name="monto_actual"></input>
                                         </div>
                                         <div className="col s3">
-                                          <button  className=" indigo accent-1 left">Pujar</button>
+                                          <button type="submit" className=" indigo accent-1 left">Pujar</button>
                                         </div>
                                       </div>
                                     </div>
