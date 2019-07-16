@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import ActionPropiedad from '../propiedadesapp';
+
 class ListaDePropiedades extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       propiedades: [],
       _id: '',
@@ -29,14 +31,7 @@ class ListaDePropiedades extends Component {
         });
     }
   }
-  fetchPropiedades() {
-    fetch('api/props')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ propiedades: data }),
-          console.log(this.state.propiedades)
-      })
-  }
+
   render() {
     return (
       <div>
@@ -56,7 +51,7 @@ class ListaDePropiedades extends Component {
           </thead>
           <tbody className="white">
             {
-              this.state.propiedades.map((propiedad, index) => {
+              this.props.propiedades.map((propiedad, index) => {
                 return (
                   <tr key={index}>
                     <td>{propiedad.nombre}</td>
@@ -77,3 +72,5 @@ class ListaDePropiedades extends Component {
     )
   }
 }
+
+export default ListaDePropiedades

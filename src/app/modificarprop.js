@@ -107,63 +107,64 @@ class FormModificarPropiedad extends Component {
           <br></br>
           <div className="container">
             <div className="row">
-            <form method="post" enctype="multipart/form-data">
-            <div className="row">
-              <form>
-              <div className="col s2">
-                <p>Nombre:</p>
-              </div>
-              <div className="col s5">
-                <input input type="text" id="nombre" name="nombre" defaultValue={this.state.propiedad.nombre} onChange={this.handleChange} autoFocus></input>
-              </div>
-              <div className="col s2">
-                <button  className="btn waves-effect waves-teal" onClick={() => this.editNombre(this.state.propiedad._id)}>
-                  <i className="tyni material-icons">edit</i>
-                </button>
-              </div>
+              <form method="post" enctype="multipart/form-data">
+                <div className="row">
+                  <form>
+                    <div className="col s2">
+                      <p>Nombre:</p>
+                    </div>
+                    <div className="col s5">
+                      <input input type="text" id="nombre" name="nombre" defaultValue={this.state.propiedad.nombre} onChange={this.handleChange} autoFocus></input>
+                    </div>
+                    <div className="col s2">
+                      <button className="btn waves-effect waves-teal" onClick={() => this.editNombre(this.state.propiedad._id)}>
+                        <i className="tyni material-icons">edit</i>
+                      </button>
+                    </div>
+                  </form>
+                </div>
               </form>
             </div>
-          </div>
-        </div >
-        <div className="formulario">
-          <div className="form">
-            <form method="post" enctrype="multipart/form-data">
-              <div className="nombre">
-                <label>Nombre: <input type="text" id="nombre" name="nombre" onChange={this.handleChange}></input></label>
-              </div>
-              <div className="col s5">
-                <input type="number" id="costo" name="costo" defaultValue={this.state.propiedad.costo} onChange={this.handleChange}></input>
-              </div>
-              <div className="col s2">
-                <button  className="btn waves-effect waves-teal" onClick={() => this.editCosto(this.state.propiedad._id)}>
-                  <i className="tyni material-icons">edit</i>
-                </button>
-              </div>
-              <div className="descripcion">
-                <label>Descripción: <textarea type="text" id="decripcion" name="descripcion" onChange={this.handleChange}></textarea></label>
-              </div>
-              <div className="col s5">
-                <input type="text" id="decripcion" name="descripcion" onChange={this.handleChange} defaultValue={this.state.propiedad.descripcion}></input>
-              </div>
-              <div className="col s2">
-                <button  className="btn waves-effect waves-teal" onClick={() => this.editDescripcion(this.state.propiedad._id)}>
-                  <i className="tyni material-icons">edit</i>
-                </button>
-                <div className="cancelar">
-                  <button>
-                    Cancelar
+          </div >
+          <div className="formulario">
+            <div className="form">
+              <form method="post" enctrype="multipart/form-data">
+                <div className="nombre">
+                  <label>Nombre: <input type="text" id="nombre" name="nombre" onChange={this.handleChange}></input></label>
+                </div>
+                <div className="col s5">
+                  <input type="number" id="costo" name="costo" defaultValue={this.state.propiedad.costo} onChange={this.handleChange}></input>
+                </div>
+                <div className="col s2">
+                  <button className="btn waves-effect waves-teal" onClick={() => this.editCosto(this.state.propiedad._id)}>
+                    <i className="tyni material-icons">edit</i>
                   </button>
                 </div>
-              </div>
+                <div className="descripcion">
+                  <label>Descripción: <textarea type="text" id="decripcion" name="descripcion" onChange={this.handleChange}></textarea></label>
+                </div>
+                <div className="col s5">
+                  <input type="text" id="decripcion" name="descripcion" onChange={this.handleChange} defaultValue={this.state.propiedad.descripcion}></input>
+                </div>
+                <div className="col s2">
+                  <button className="btn waves-effect waves-teal" onClick={() => this.editDescripcion(this.state.propiedad._id)}>
+                    <i className="tyni material-icons">edit</i>
+                  </button>
+                  <div className="cancelar">
+                    <button>
+                      Cancelar
+                  </button>
+                  </div>
+                </div>
+              </form>
             </div>
             <div className="row">
               <div className="col s2">
-               <Link to="/propiedades"  className="btn waves-effect waves-teal" type="button">
-                      Volver atrás
+                <Link to="/propiedades" className="btn waves-effect waves-teal" type="button">
+                  Volver atrás
                </Link>
+              </div>
             </div>
-            </div>
-            </form>
           </div>
         </div>
       </div>
