@@ -46,7 +46,7 @@ render(){
                         <input align="center" type="text" name="numero" id="numero" required ></input>
                     </div>
                     <div>
-                        <button align="center" type="submit">Registrar</button>
+                        <button align="center"  className="btn waves-effect waves-teal" type="submit">Registrar</button>
                     </div>
                 </div>
             </form>

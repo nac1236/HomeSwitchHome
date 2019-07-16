@@ -31,7 +31,7 @@ class ActionPropiedad extends Component {
             <input type="text"></input>
           </div>
           <div className="col s4">
-            <Link to="agregar_propiedad" className="indigo accent-1" style={{ color: 'black' }} type="button">
+            <Link to="agregar_propiedad"  className="btn waves-effect waves-teal"  type="button">
               Agregar propiedad
                </Link>
             </div>

@@ -116,7 +116,7 @@ editCosto(id) {
                 <input input type="text" id="nombre" name="nombre" defaultValue={this.state.propiedad.nombre} onChange={this.handleChange} autoFocus></input>
               </div>
               <div className="col s2">
-                <button className="indigo accent-1 left" style={{ color: 'black' }} onClick={() => this.editNombre(this.state.propiedad._id)}>
+                <button  className="btn waves-effect waves-teal" onClick={() => this.editNombre(this.state.propiedad._id)}>
                   <i className="tyni material-icons">edit</i>
                 </button>
               </div>
@@ -146,7 +146,7 @@ editCosto(id) {
                 <input type="number" id="costo" name="costo" defaultValue={this.state.propiedad.costo} onChange={this.handleChange}></input>
               </div>
               <div className="col s2">
-                <button className="indigo accent-1 left" style={{ color: 'black' }} onClick={() => this.editCosto(this.state.propiedad._id)}>
+                <button  className="btn waves-effect waves-teal" onClick={() => this.editCosto(this.state.propiedad._id)}>
                   <i className="tyni material-icons">edit</i>
                 </button>
               </div>
@@ -159,14 +159,14 @@ editCosto(id) {
                  <input type="text" id="decripcion" name="descripcion"  onChange={this.handleChange} defaultValue={this.state.propiedad.descripcion}></input>
               </div>
               <div className="col s2">
-                <button className="indigo accent-1 left" style={{ color: 'black' }} onClick={() => this.editDescripcion(this.state.propiedad._id)}>
+                <button  className="btn waves-effect waves-teal" onClick={() => this.editDescripcion(this.state.propiedad._id)}>
                   <i className="tyni material-icons">edit</i>
                 </button>
               </div>
             </div>
             <div className="row">
               <div className="col s2">
-               <Link to="/propiedades" className="indigo accent-1 left" style={{ color: 'black' }} type="button">
+               <Link to="/propiedades"  className="btn waves-effect waves-teal" type="button">
                       Volver atrás
                </Link>
             </div>

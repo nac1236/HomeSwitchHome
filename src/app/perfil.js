@@ -116,7 +116,7 @@ class Perfil extends Component {
                                    <input type="text" name="nombre" id="apellido" onChange={this.handleChange}></input>
                                 </div>
                                 <div className="col s5">
-                                    <button  className=" indigo accent-1 left"><i className="tyni material-icons">edit</i></button>
+                                    <button  c className="btn waves-effect waves-teal"><i className="tyni material-icons">edit</i></button>
                                 </div>
                             </div>
                             <div className="row">
@@ -127,7 +127,7 @@ class Perfil extends Component {
                                     <input type="text" name="apellido" id="apellido" onChange={this.handleChange}></input>
                                 </div>
                                 <div className="col s5">
-                                     <button  className=" indigo accent-1 left"><i className="tyni material-icons">edit</i></button>
+                                     <button   className="btn waves-effect waves-teal"><i className="tyni material-icons">edit</i></button>
                                 </div>
                             </div>
                             <p>Para cambiar la contraseña ingrese su contraseña y despues ingrese su nueva contraseña</p>
@@ -147,13 +147,13 @@ class Perfil extends Component {
                                     <input type="password" name="password" id="password" onChange={this.handleChange}></input>
                                 </div>
                                 <div className="col s5">
-                                     <button  className=" indigo accent-1 left"><i className="tyni material-icons">edit</i></button>
+                                     <button   className="btn waves-effect waves-teal"><i className="tyni material-icons">edit</i></button>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col s6">
                                    <p>Tipo de usuario:</p>
-                                   <button  className=" indigo accent-1 left" onClick={() => premium()}>¡Quiero ser Premium!</button>
+                                   <button   className="btn waves-effect waves-teal" onClick={() => premium()}>¡Quiero ser Premium!</button>
                                 </div>
                                 <div className="col s3">
                                     <p>Creditos:</p>
@@ -181,7 +181,7 @@ class Perfil extends Component {
                                                                 {tarjeta.numero}
                                                             </div>
                                                             <div className="col s4">
-                                                                <button className=" indigo accent-1">Cambiar tarjeta activa</button>
+                                                                <button  className="btn waves-effect waves-teal">Cambiar tarjeta activa</button>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -199,7 +199,7 @@ class Perfil extends Component {
                                     <input type="text" placeholder="Numero de tarjeta" required></input>
                                 </div>
                                 <div className="col s4">
-                                    <button type="submit" className=" indigo accent-1 left">Registrar</button>
+                                    <button type="submit"  className="btn waves-effect waves-teal">Registrar</button>
                                 </div>
                             </div>
                         </form>

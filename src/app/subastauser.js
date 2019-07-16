@@ -60,7 +60,7 @@ class Subastauser extends Component {
                                            <input type="text" id="monto_actual" name="monto_actual"></input>
                                         </div>
                                         <div className="col s3">
-                                          <button type="submit" className=" indigo accent-1 left">Pujar</button>
+                                          <button type="submit" className="btn waves-effect waves-teal">Pujar</button>
                                         </div>
                                       </div>
                                     </div>

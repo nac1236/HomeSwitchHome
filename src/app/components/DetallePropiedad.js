@@ -42,12 +42,12 @@ export default class DetallePropiedad extends Component {
               </div>
               <div className="row">
                   <div className="col s2">
-                      <Link to={`${'/reservas_disponibles'}/${this.props.match.params.propId}`}  className="indigo accent-1 left" style={{ color: 'black' }} type="button">Reservas disponibles</Link>
+                      <Link to={`${'/reservas_disponibles'}/${this.props.match.params.propId}`}   className="btn waves-effect waves-teal" type="button">Reservas disponibles</Link>
                   </div>                      
               </div>
               <div className="row">
                   <div className="col s2">
-                      <Link to={`${'/subastas_disponibles'}/${this.props.match.params.propId}`}  className="indigo accent-1 left" style={{ color: 'black' }} type="button">Subastas activas</Link>
+                      <Link to={`${'/subastas_disponibles'}/${this.props.match.params.propId}`}   className="btn waves-effect waves-teal" type="button">Subastas activas</Link>
                   </div>
               </div>
             </div>
