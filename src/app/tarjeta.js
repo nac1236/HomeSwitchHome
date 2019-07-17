@@ -16,24 +16,7 @@ class Tarjeta extends Component {
         })
     }
 
-    addUsuarios(e) {
-        console.log(e)
-        fetch('/api/usuario', {
-            method: 'POST',
-            body: JSON.stringify(this.state),
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                addTarjeta(data._id)
-            })
-            .catch(err => console.error(err));
-        e.preventDefault();
-    }
+    
 
     addTarjeta(id) {
         fetch(`/api/tarjeta/${id}` , {

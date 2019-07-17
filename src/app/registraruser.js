@@ -59,7 +59,7 @@ class FormAgregarUser extends Component {
             </button>
           </div>
         </form>
-        <Link to="/tarjeta" usuario={this.state}>Tarjeta</Link>
+        {/*<Link to="/tarjeta" usuario={this.state}>Tarjeta</Link>*/}
       </div>
     )
   }

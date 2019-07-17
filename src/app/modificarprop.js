@@ -25,7 +25,8 @@ class FormModificarPropiedad extends Component {
       })
     console.log(this.state)
   }
-  editNombre(id) {
+  editNombre(e, id) {
+    e.preventDefault()
     fetch(`/api/propiedad/nombre/${id}`, {
       method: 'PUT',
       body: JSON.stringify({
@@ -48,7 +49,8 @@ class FormModificarPropiedad extends Component {
           })
       });
   }
-  editDescripcion(id) {
+  editDescripcion(e, id) {
+    e.preventDefault()
     fetch(`/api/propiedad/desc/${id}`, {
       method: 'PUT',
       body: JSON.stringify({
@@ -71,7 +73,8 @@ class FormModificarPropiedad extends Component {
           })
       });
   }
-  editCosto(id) {
+  editCosto(e, id) {
+    e.preventDefault()
     fetch(`/api/propiedad/costo/${id}`, {
       method: 'PUT',
       body: JSON.stringify({
@@ -96,68 +99,77 @@ class FormModificarPropiedad extends Component {
   }
   render() {
     return (
-      <div>
-        <div >
-          <nav className="indigo accent-1">
-            <ul>
-              <li className="right hide-on-med-and-down"><Link to="/">Cerrar sesion</Link></li>
-            </ul>
-          </nav>
-          <h5 align="center">Modificar propiedad</h5>
-          <br></br>
-          <div className="container">
+      <div >
+        <nav className="indigo accent-1">
+          <ul>
+            <li className="right hide-on-med-and-down"><Link to="/">Cerrar sesion</Link></li>
+          </ul>
+        </nav>
+        <h5 align="center">Modificar propiedad</h5>
+        <br></br>
+        <div className="container">
+          <div className="row">
             <div className="row">
-              <form method="post" enctype="multipart/form-data">
-                <div className="row">
-                  <form>
-                    <div className="col s2">
-                      <p>Nombre:</p>
-                    </div>
-                    <div className="col s5">
-                      <input input type="text" id="nombre" name="nombre" defaultValue={this.state.propiedad.nombre} onChange={this.handleChange} autoFocus></input>
-                    </div>
-                    <div className="col s2">
-                      <button className="btn waves-effect waves-teal" onClick={() => this.editNombre(this.state.propiedad._id)}>
-                        <i className="tyni material-icons">edit</i>
-                      </button>
-                    </div>
-                  </form>
+              <form onSubmit={(e) => this.editNombre(e, this.state.propiedad._id)}>
+                <div className="col s2">
+                  <p>Nombre:</p>
+                </div>
+                <div className="col s5">
+                  <input input type="text" id="nombre" name="nombre" defaultValue={this.state.propiedad.nombre} onChange={this.handleChange} autoFocus></input>
+                </div>
+                <div className="col s2">
+                  <button className="btn waves-effect waves-teal" type="submit">
+                    <i className="tyni material-icons">edit</i>
+                  </button>
                 </div>
               </form>
             </div>
-          </div >
-          <div className="formulario">
-            <div className="form">
-              <form method="post" enctrype="multipart/form-data">
-                <div className="nombre">
-                  <label>Nombre: <input type="text" id="nombre" name="nombre" onChange={this.handleChange}></input></label>
+            <div className="row">
+              <div className="col s2">
+                <p>Localidad:</p>
+              </div>
+              <div className="col s5">
+                <p>{this.state.propiedad.localidad}</p>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col s2">
+                <p>Provincia:</p>
+              </div>
+              <div className="col s5">
+                <p>{this.state.propiedad.provincia}</p>
+              </div>
+            </div>
+            <form onSubmit={(e) => this.editCosto(e, this.state.propiedad._id)}>
+              <div className="row">
+                <div className="col s2">
+                  <p>Precio:</p>
                 </div>
                 <div className="col s5">
                   <input type="number" id="costo" name="costo" defaultValue={this.state.propiedad.costo} onChange={this.handleChange}></input>
                 </div>
                 <div className="col s2">
-                  <button className="btn waves-effect waves-teal" onClick={() => this.editCosto(this.state.propiedad._id)}>
+                  <button className="btn waves-effect waves-teal" type="submit">
                     <i className="tyni material-icons">edit</i>
                   </button>
                 </div>
-                <div className="descripcion">
-                  <label>Descripción: <textarea type="text" id="decripcion" name="descripcion" onChange={this.handleChange}></textarea></label>
+              </div>
+            </form>
+            <form onSubmit={(e) => this.editDescripcion(e, this.state.propiedad._id)}>
+              <div className="row">
+                <div className="col s2">
+                  <p>Descripcion:</p>
                 </div>
                 <div className="col s5">
                   <input type="text" id="decripcion" name="descripcion" onChange={this.handleChange} defaultValue={this.state.propiedad.descripcion}></input>
                 </div>
                 <div className="col s2">
-                  <button className="btn waves-effect waves-teal" onClick={() => this.editDescripcion(this.state.propiedad._id)}>
+                  <button className="btn waves-effect waves-teal" type="submit">
                     <i className="tyni material-icons">edit</i>
                   </button>
-                  <div className="cancelar">
-                    <button>
-                      Cancelar
-                  </button>
-                  </div>
                 </div>
-              </form>
-            </div>
+              </div>
+            </form>
             <div className="row">
               <div className="col s2">
                 <Link to="/propiedades" className="btn waves-effect waves-teal" type="button">

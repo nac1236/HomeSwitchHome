@@ -24,7 +24,7 @@ ctrlUsuario.create = async (req, res) => {
         password: req.body.password,
         nombre: req.body.nombre,
         apellido: req.body.apellido,
-        creditos: 20,
+        creditos: 2,
         tipo: req.body.tipo,
         tipo_suscripcion: req.body.tipo_suscripcion
     })

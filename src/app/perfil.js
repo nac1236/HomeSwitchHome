@@ -23,7 +23,12 @@ class Perfil extends Component {
     });
   }
   fetchTarjetas() {
-    fetch(`/api/tarjetas/${this.state.userId}`)
+    fetch(`/api/tarjetas/${this.state.userId}`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }})
       .then(res => res.json())
       .then(data => {
         this.setState({ tarjetas: data }),
@@ -93,7 +98,7 @@ class Perfil extends Component {
       });
   }
   addTarjetas(e) {
-    fetch(`/api/tarjeta/${this.state.userId}`, {
+    fetch(`/api/tarjetas/${this.state.userId}`, {
       method: 'POST',
       body: JSON.stringify(this.state),
       headers: {

@@ -25,7 +25,8 @@ ctrlTarjeta.agregar = async (req,res) => {
     const tarjeta = new Tarjeta ({
         credito : saldo,
         numero : "1234567812345678",
-        usuario_id : req.params.usuario_id
+        usuario_id : req.params.usuario_id,
+        en_uso: false
     })
     await tarjeta.save()
     res.json("La tarjeta se creo correctamente.")
